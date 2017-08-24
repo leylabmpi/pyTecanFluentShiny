@@ -13,19 +13,18 @@ shinyUI(fluidPage(
   fluidRow(
     verbatimTextOutput('script_out')
   ),
+  fluidRow(
+    column(4,
+      br(),
+      actionButton("runBtn", "Run command"),
+      br(),
+      br()
+    )
+  ),
   tabsetPanel(
     tabPanel("I/O", 
       fluidRow(
-        column(3,
-              br(),
-              actionButton("runBtn", "Run command"),
-              br() ,
-              br(),
-              uiOutput("download_btn")
-        ),
-        column(6,
-              fileInput("ConcFile", "Concentration File: Excel or tab-delim file of sample concentrations"),
-              br(),
+        column(5,
               h5('The input is an Excel or tab-delimited file with columns:'),
               h6('* Sample labware  (eg., "96 Well[001]")'),
               h6('* Sample location (numeric value; minimum of 1)'),
@@ -36,7 +35,9 @@ shinyUI(fluidPage(
               h6('* Sample locations in plates numbered are column-wise.'),
               h6('* All volumes are in ul.')
         ),
-        column(3,
+        column(4,
+               br(),
+               fileInput("ConcFile", "Concentration File: Excel or tab-delim file of sample concentrations"),
                textInput("prefix", 
                          label = "Output file name prefix", 
                          value = "TECAN_dilute")
