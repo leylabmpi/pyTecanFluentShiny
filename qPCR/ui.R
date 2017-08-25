@@ -73,7 +73,7 @@ shinyUI(fluidPage(
         )
       )
     ),
-    tabPanel("Example input",
+    tabPanel("Example Input",
       fluidRow(
         column(12, h4('qPCR Setup File format example:'))
       ),

@@ -102,7 +102,7 @@ shinyServer(function(input, output, session) {
   )
   
   # example data table
-  output$example_tbl = output$raw_tbl = DT::renderDataTable(
+  output$example_tbl = DT::renderDataTable(
     make_example_data(),
     extensions = c('Buttons'),
     options = list(

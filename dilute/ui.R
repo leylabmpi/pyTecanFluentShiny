@@ -78,10 +78,12 @@ shinyUI(fluidPage(
                          label = 'Which rows (not including header) of the column file to use ("all"=all rows; "1-48"=rows 1-48)',
                          value = 'all')
         )
-      ),
+      )
+    ),
+    tabPanel("Example Input",
       fluidRow(
         column(12, br(), hr(), h4('Concentration File format example:'))
-      ),
+       ),
       fluidRow(
         column(12, DT::dataTableOutput('example_tbl'))
       )

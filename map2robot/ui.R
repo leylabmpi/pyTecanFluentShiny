@@ -70,7 +70,7 @@ shinyUI(fluidPage(
         )
       )
     ),
-    tabPanel("Example input",
+    tabPanel("Example Input",
       fluidRow(
         column(12, h4('Mapping File format example:'))
       ),
