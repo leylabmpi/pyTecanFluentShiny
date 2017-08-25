@@ -14,39 +14,39 @@ shinyUI(fluidPage(
     verbatimTextOutput('script_out')
   ),
   fluidRow(
-    column(4,
+    column(2,
       br(),
       actionButton("runBtn", "Run command"),
+      br(),
+      br()
+    ),
+    column(2,
+      br(),
+      uiOutput('download_btn'),
       br(),
       br()
     )
   ),
   tabsetPanel(
-    tabPanel("I/O", 
+    tabPanel("Input/Output", 
       fluidRow(
-        column(5,
-              h5('The input is an Excel or tab-delimited file with columns:'),
-              h6('* Sample labware  (eg., "96 Well[001]")'),
-              h6('* Sample location (numeric value; minimum of 1)'),
-              h6('* Sample concentration (numeric value; units=ng/ul)'),
-              br(),
-              h5('Notes:'),
-              h6('* You can designate the input table columns for each value (see options).'),
-              h6('* Sample locations in plates numbered are column-wise.'),
-              h6('* All volumes are in ul.')
+        column(4,
+               br(),
+               h4('Description'),
+               h5('The input is an Excel or tab-delimited file with columns:'),
+               h6('* Sample labware  (eg., "96 Well[001]")'),
+               h6('* Sample location (numeric value; minimum of 1)'),
+               h6('* Sample concentration (numeric value; units=ng/ul)'),
+               br(),
+               h5('Notes:'),
+               h6('* You can designate the input table columns for each value (see options)'),
+               h6('* Sample locations in plates numbered are column-wise'),
+               h6('* All volumes are in ul')
         ),
         column(4,
                br(),
+               h4('Input & Output'),
                fileInput("ConcFile", "Concentration File: Excel or tab-delim file of sample concentrations"),
-               textInput("prefix", 
-                         label = "Output file name prefix", 
-                         value = "TECAN_dilute")
-        )
-      )
-    ),
-    tabPanel("Concentation file",
-      fluidRow(
-        column(4,
                selectInput('format',
                            label = "File  excel or tab-delimited. If blank, the format will be guessed",
                            choices = c(' ' = 'blank',
@@ -55,9 +55,16 @@ shinyUI(fluidPage(
                            selected = 'blank'),
                checkboxInput("header", 
                              label = "Header in the file?",
-                             value = TRUE)
+                             value = TRUE),
+               br(),
+               br(),
+               textInput("prefix", 
+                         label = "Output file name prefix", 
+                         value = "TECAN_dilute")
         ),
         column(4,
+               br(),
+               h4('Concentration File settings'),
                numericInput('labware',
                             label = "Column containing the sample labware IDs",
                             value = 1),
@@ -66,23 +73,29 @@ shinyUI(fluidPage(
                             value = 2),
                numericInput('conc',
                             label = "Column containing the sample concentrations",
-                            value = 3)
-        ),
-        column(4,
+                            value = 3),
                textInput('rows',
                          label = 'Which rows (not including header) of the column file to use ("all"=all rows; "1-48"=rows 1-48)',
                          value = 'all')
         )
+      ),
+      fluidRow(
+        column(12, br(), hr(), h4('Concentration File format example:'))
+      ),
+      fluidRow(
+        column(12, DT::dataTableOutput('example_tbl'))
       )
     ),
     tabPanel("Dilution", 
        fluidRow(
          column(4,
+                br(),
                 numericInput('dilution',
                              label = "Target dilution concentration (ng/ul)",
                              value = 1.0)
         ),
         column(4,
+               br(),
                numericInput('minvolumne',
                             label = "Minimum sample volume to use",
                             value = 2.0),
@@ -91,6 +104,7 @@ shinyUI(fluidPage(
                             value = 30.0)
         ),
         column(4,
+               br(),
                numericInput('mintotal',
                             label = "Minimum post-dilution total volume",
                             value = 10.0),
@@ -100,14 +114,16 @@ shinyUI(fluidPage(
         )
       )
     ),
-    tabPanel("Destination plate", 
+    tabPanel("Destination Plate", 
       fluidRow(
         column(4,
+               br(),
                textInput('dest',
                          label = "Destination plate labware ID on TECAN worktable",
                          value = "96 Well[001]")
         ),
         column(4,
+               br(),
                selectInput('desttype',
                             label = "Destination plate labware type (# of wells)",
                             choices = c('96-well' = 96,
@@ -115,6 +131,7 @@ shinyUI(fluidPage(
                             selected = 96)
         ),
         column(4,
+               br(),
                numericInput('deststart',
                             label = "Start well number on destination plate",
                             value = 1)

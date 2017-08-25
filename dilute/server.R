@@ -6,21 +6,19 @@ as.Num = function(x){
   x %>% as.character %>% as.numeric
 }
 
-call_help = function(script_path, subcommand, input){
-  # command
-  options = c(
-    input$ConcFile,
-    c('--prefix', input$prefix)
-  )
-  # call with options
-  options = paste(c(subcommand, options), collapse=' ')
-  ret = system2(script_path, options, stdout=TRUE, stderr=TRUE)
-  # return output
-  paste(ret, collapse='\n') 
-} 
-
+#' adding quotes to string 
 add_quotes = function(x){
   paste0('"', x, '"')
+}
+
+#' making data.frame of example input table
+make_example_data = function(){
+  conc = c(10.1, 6.3, 21, 2.2, 3.1, 8.5)
+  data.frame(
+    Labware = rep('96 Well[001]', length(conc)),
+    Location = 1:length(conc),
+    Conc = conc
+  )
 }
 
 # remaming temp file produced by fileInput (adding back file extension)
@@ -31,10 +29,8 @@ rename_tmp_file = function(select_input_obj){
   return(new_file)
 }
 
-# calling 'dilute' subcommand
+#' calling 'dilute' subcommand
 call_dilute = function(script_path, subcommand,input){
-  #print(input$prefix)
-  #print(input$ConcFile)
   # command
   if(is.null(input$ConcFile)){
     options = c('-h')
@@ -76,7 +72,7 @@ call_dilute = function(script_path, subcommand,input){
   system2(script_path, options, stdout=TRUE, stderr=TRUE)
 }
 
-# get files created by the command
+#' get files created by the command
 get_files_created = function(x){
   x = gsub('File written: +', '', x)
   x[sapply(x, file.exists)]
@@ -115,9 +111,19 @@ shinyServer(function(input, output, session) {
     filename = function() { paste0(input$prefix, '.zip') },
     content = function(file_name) {
       files = get_files_created(script_out())
-      print(files)
       zip(file_name, files, flags='-r9Xj')
     }
+  )
+  
+  # test data table
+  output$example_tbl = output$raw_tbl = DT::renderDataTable(
+    make_example_data(),
+    extensions = c('Buttons'),
+    options = list(
+      pageLength = 40,
+      dom = 'Brt',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    )
   )
 })
 
