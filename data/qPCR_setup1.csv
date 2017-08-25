@@ -1,0 +1,127 @@
+Row;Column;Sample Type;Replicate #;*Target Name;*Sample Name;*Biological Set Name;*Well Note;Starting Quantity;Units;Sample labware;Sample location;Sample volume;MM name;MM volume;Water volume
+M;1;NTC;;;;;;N/A;nanograms;;;;A;10;5
+M;2;NTC;;;;;;N/A;nanograms;;;;A;10;5
+M;3;NTC;;;;;;N/A;nanograms;;;;A;10;5
+L;1;Std;12;;;;;"1;28E-07";nanograms;Tubes[003];12;1;A;10;5
+L;2;Std;12;;;;;"1;28E-07";nanograms;Tubes[003];12;1;A;10;5
+L;3;Std;12;;;;;"1;28E-07";nanograms;Tubes[003];12;1;A;10;5
+K;1;Std;11;;;;;"6;40E-07";nanograms;Tubes[003];11;1;A;10;5
+K;2;Std;11;;;;;"6;40E-07";nanograms;Tubes[003];11;1;A;10;5
+K;3;Std;11;;;;;"6;40E-07";nanograms;Tubes[003];11;1;A;10;5
+J;3;Std;10;;;;;"3;20E-06";nanograms;Tubes[003];10;1;A;10;5
+J;2;Std;10;;;;;"3;20E-06";nanograms;Tubes[003];10;1;A;10;5
+J;1;Std;10;;;;;"3;20E-06";nanograms;Tubes[003];10;1;A;10;5
+I;3;Std;9;;;;;"1;60E-05";nanograms;Tubes[003];9;1;A;10;5
+I;2;Std;9;;;;;"1;60E-05";nanograms;Tubes[003];9;1;A;10;5
+I;1;Std;9;;;;;"1;60E-05";nanograms;Tubes[003];9;1;A;10;5
+H;3;Std;8;;;;;"8;00E-05";nanograms;Tubes[003];8;1;A;10;5
+H;2;Std;8;;;;;"8;00E-05";nanograms;Tubes[003];8;1;A;10;5
+H;1;Std;8;;;;;"8;00E-05";nanograms;Tubes[003];8;1;A;10;5
+G;3;Std;7;;;;;"4;00E-04";nanograms;Tubes[003];7;1;A;10;5
+G;2;Std;7;;;;;"4;00E-04";nanograms;Tubes[003];7;1;A;10;5
+G;1;Std;7;;;;;"4;00E-04";nanograms;Tubes[003];7;1;A;10;5
+F;3;Std;6;;;;;"2;00E-03";nanograms;Tubes[003];6;1;A;10;5
+F;2;Std;6;;;;;"2;00E-03";nanograms;Tubes[003];6;1;A;10;5
+F;1;Std;6;;;;;"2;00E-03";nanograms;Tubes[003];6;1;A;10;5
+E;3;Std;5;;;;;"1;00E-02";nanograms;Tubes[003];5;1;A;10;5
+E;2;Std;5;;;;;"1;00E-02";nanograms;Tubes[003];5;1;A;10;5
+E;1;Std;5;;;;;"1;00E-02";nanograms;Tubes[003];5;1;A;10;5
+D;3;Std;4;;;;;"5;00E-02";nanograms;Tubes[003];4;1;A;10;5
+D;2;Std;4;;;;;"5;00E-02";nanograms;Tubes[003];4;1;A;10;5
+D;1;Std;4;;;;;"5;00E-02";nanograms;Tubes[003];4;1;A;10;5
+C;3;Std;3;;;;;"2;50E-01";nanograms;Tubes[003];3;1;A;10;5
+C;2;Std;3;;;;;"2;50E-01";nanograms;Tubes[003];3;1;A;10;5
+C;1;Std;3;;;;;"2;50E-01";nanograms;Tubes[003];3;1;A;10;5
+B;3;Std;2;;;;;"1;25E+00";nanograms;Tubes[003];2;1;A;10;5
+B;2;Std;2;;;;;"1;25E+00";nanograms;Tubes[003];2;1;A;10;5
+B;1;Std;2;;;;;"1;25E+00";nanograms;Tubes[003];2;1;A;10;5
+A;3;Std;1;;;;;"6;25E+00";nanograms;Tubes[003];1;1;A;10;5
+A;2;Std;1;;;;;"6;25E+00";nanograms;Tubes[003];1;1;A;10;5
+A;1;Std;1;;;;;"6;25E+00";nanograms;Tubes[003];1;1;A;10;5
+M;10;Unkn;;;;;;N/A;nanograms;96 Well[004];1;1;A;10;5
+M;11;Unkn;;;;;;N/A;nanograms;96 Well[004];1;1;A;10;5
+M;12;Unkn;;;;;;N/A;nanograms;96 Well[004];1;1;A;10;5
+L;10;Unkn;;;;;;N/A;nanograms;96 Well[004];2;1;A;10;5
+L;11;Unkn;;;;;;N/A;nanograms;96 Well[004];2;1;A;10;5
+L;12;Unkn;;;;;;N/A;nanograms;96 Well[004];2;1;A;10;5
+K;10;Unkn;;;;;;N/A;nanograms;96 Well[004];3;1;A;10;5
+K;11;Unkn;;;;;;N/A;nanograms;96 Well[004];3;1;A;10;5
+K;12;Unkn;;;;;;N/A;nanograms;96 Well[004];3;1;A;10;5
+J;12;Unkn;;;;;;N/A;nanograms;96 Well[004];4;1;A;10;5
+J;11;Unkn;;;;;;N/A;nanograms;96 Well[004];4;1;A;10;5
+J;10;Unkn;;;;;;N/A;nanograms;96 Well[004];4;1;A;10;5
+J;15;Unkn;;;;;;N/A;nanograms;96 Well[004];5;1;A;10;5
+J;14;Unkn;;;;;;N/A;nanograms;96 Well[004];5;1;A;10;5
+J;13;Unkn;;;;;;N/A;nanograms;96 Well[004];5;1;A;10;5
+J;6;Unkn;10;;;;;N/A;nanograms;96 Well[004];6;1;A;10;5
+J;5;Unkn;10;;;;;N/A;nanograms;96 Well[004];6;1;A;10;5
+J;4;Unkn;10;;;;;N/A;nanograms;96 Well[004];6;1;A;10;5
+I;12;Unkn;;;;;;N/A;nanograms;96 Well[004];7;1;A;10;5
+I;11;Unkn;;;;;;N/A;nanograms;96 Well[004];7;1;A;10;5
+I;10;Unkn;;;;;;N/A;nanograms;96 Well[004];7;1;A;10;5
+I;15;Unkn;;;;;;N/A;nanograms;96 Well[004];8;1;A;10;5
+I;14;Unkn;;;;;;N/A;nanograms;96 Well[004];8;1;A;10;5
+I;13;Unkn;;;;;;N/A;nanograms;96 Well[004];8;1;A;10;5
+I;6;Unkn;9;;;;;N/A;nanograms;96 Well[004];9;1;A;10;5
+I;5;Unkn;9;;;;;N/A;nanograms;96 Well[004];9;1;A;10;5
+I;4;Unkn;9;;;;;N/A;nanograms;96 Well[004];9;1;A;10;5
+H;12;Unkn;;;;;;N/A;nanograms;96 Well[004];10;1;A;10;5
+H;11;Unkn;;;;;;N/A;nanograms;96 Well[004];10;1;A;10;5
+H;10;Unkn;;;;;;N/A;nanograms;96 Well[004];10;1;A;10;5
+H;15;Unkn;;;;;;N/A;nanograms;96 Well[004];11;1;A;10;5
+H;14;Unkn;;;;;;N/A;nanograms;96 Well[004];11;1;A;10;5
+H;13;Unkn;;;;;;N/A;nanograms;96 Well[004];11;1;A;10;5
+H;6;Unkn;8;;;;;N/A;nanograms;96 Well[004];12;1;A;10;5
+H;5;Unkn;8;;;;;N/A;nanograms;96 Well[004];12;1;A;10;5
+H;4;Unkn;8;;;;;N/A;nanograms;96 Well[004];12;1;A;10;5
+G;12;Unkn;;;;;;N/A;nanograms;96 Well[004];13;1;A;10;5
+G;11;Unkn;;;;;;N/A;nanograms;96 Well[004];13;1;A;10;5
+G;10;Unkn;;;;;;N/A;nanograms;96 Well[004];13;1;A;10;5
+G;15;Unkn;;;;;;N/A;nanograms;96 Well[004];14;1;A;10;5
+G;14;Unkn;;;;;;N/A;nanograms;96 Well[004];14;1;A;10;5
+G;13;Unkn;;;;;;N/A;nanograms;96 Well[004];14;1;A;10;5
+G;6;Unkn;7;;;;;N/A;nanograms;96 Well[004];15;1;A;10;5
+G;5;Unkn;7;;;;;N/A;nanograms;96 Well[004];15;1;A;10;5
+G;4;Unkn;7;;;;;N/A;nanograms;96 Well[004];15;1;A;10;5
+F;12;Unkn;;;;;;N/A;nanograms;96 Well[004];16;1;A;10;5
+F;11;Unkn;;;;;;N/A;nanograms;96 Well[004];16;1;A;10;5
+F;10;Unkn;;;;;;N/A;nanograms;96 Well[004];16;1;A;10;5
+F;15;Unkn;;;;;;N/A;nanograms;96 Well[004];17;1;A;10;5
+F;14;Unkn;;;;;;N/A;nanograms;96 Well[004];17;1;A;10;5
+F;13;Unkn;;;;;;N/A;nanograms;96 Well[004];17;1;A;10;5
+F;6;Unkn;6;;;;;N/A;nanograms;96 Well[004];18;1;A;10;5
+F;5;Unkn;6;;;;;N/A;nanograms;96 Well[004];18;1;A;10;5
+F;4;Unkn;6;;;;;N/A;nanograms;96 Well[004];18;1;A;10;5
+E;12;Unkn;;;;;;N/A;nanograms;96 Well[004];19;1;A;10;5
+E;11;Unkn;;;;;;N/A;nanograms;96 Well[004];19;1;A;10;5
+E;10;Unkn;;;;;;N/A;nanograms;96 Well[004];19;1;A;10;5
+E;15;Unkn;;;;;;N/A;nanograms;96 Well[004];20;1;A;10;5
+E;14;Unkn;;;;;;N/A;nanograms;96 Well[004];20;1;A;10;5
+E;13;Unkn;;;;;;N/A;nanograms;96 Well[004];20;1;A;10;5
+E;6;Unkn;5;;;;;N/A;nanograms;96 Well[004];21;1;A;10;5
+E;5;Unkn;5;;;;;N/A;nanograms;96 Well[004];21;1;A;10;5
+E;4;Unkn;5;;;;;N/A;nanograms;96 Well[004];21;1;A;10;5
+D;12;Unkn;;;;;;N/A;nanograms;96 Well[004];22;1;A;10;5
+D;11;Unkn;;;;;;N/A;nanograms;96 Well[004];22;1;A;10;5
+D;10;Unkn;;;;;;N/A;nanograms;96 Well[004];22;1;A;10;5
+D;15;Unkn;;;;;;N/A;nanograms;96 Well[004];23;1;A;10;5
+D;14;Unkn;;;;;;N/A;nanograms;96 Well[004];23;1;A;10;5
+D;13;Unkn;;;;;;N/A;nanograms;96 Well[004];23;1;A;10;5
+D;6;Unkn;4;;;;;N/A;nanograms;96 Well[004];24;1;A;10;5
+D;5;Unkn;4;;;;;N/A;nanograms;96 Well[004];24;1;A;10;5
+D;4;Unkn;4;;;;;N/A;nanograms;96 Well[004];24;1;A;10;5
+C;12;Unkn;;;;;;N/A;nanograms;96 Well[004];25;1;A;10;5
+C;11;Unkn;;;;;;N/A;nanograms;96 Well[004];25;1;A;10;5
+C;10;Unkn;;;;;;N/A;nanograms;96 Well[004];25;1;A;10;5
+C;15;Unkn;;;;;;N/A;nanograms;96 Well[004];26;1;A;10;5
+C;14;Unkn;;;;;;N/A;nanograms;96 Well[004];26;1;A;10;5
+C;13;Unkn;;;;;;N/A;nanograms;96 Well[004];26;1;A;10;5
+C;6;Unkn;3;;;;;N/A;nanograms;96 Well[004];27;1;A;10;5
+C;5;Unkn;3;;;;;N/A;nanograms;96 Well[004];27;1;A;10;5
+C;4;Unkn;3;;;;;N/A;nanograms;96 Well[004];27;1;A;10;5
+B;12;Unkn;;;;;;N/A;nanograms;96 Well[004];28;1;A;10;5
+B;11;Unkn;;;;;;N/A;nanograms;96 Well[004];28;1;A;10;5
+B;10;Unkn;;;;;;N/A;nanograms;96 Well[004];28;1;A;10;5
+B;15;Unkn;;;;;;N/A;nanograms;96 Well[004];29;1;A;10;5
+B;14;Unkn;;;;;;N/A;nanograms;96 Well[004];29;1;A;10;5
+B;13;Unkn;;;;;;N/A;nanograms;96 Well[004];29;1;A;10;5
