@@ -4,7 +4,7 @@ library(shiny)
 #-- UI --#
 shinyUI(fluidPage(
   
-  titlePanel("Map2Robot"),
+  titlePanel("qPCR"),
   fluidRow(
     column(12,
       h5('Convert a qPCR setup table file into a Tecan worklist file for barcoded PCR setup')
