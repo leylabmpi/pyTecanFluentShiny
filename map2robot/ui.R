@@ -36,24 +36,32 @@ shinyUI(fluidPage(
                h6('Convert a QIIME-formatted mapping file to a GWL file, which is used by the TECAN robot to conduct the NGS amplicon PCR prep (ie., combining MasterMix, primers, samples, etc)'),
                h6('The extra columns in the mapping file designate the SOURCE of samples and primers; the DESTINATION (plate & well) is set by this script.'),
                br(),
-               h5('EXTRA COLUMNS in MAPPING FILE:'),
-               h6('* "TECAN_sample_labware" = The sample labware name on the robot worktable'),
-               h6('* "TECAN_sample_location" = The well or tube location (a number)'),
-               h6('* "TECAN_primer_labware" = The primer plate labware name on the robot worktable'),
-               h6('* "TECAN_primer_location" = The well location (1-96 or 1-384)'),
-               h6('* "TECAN_sample_rxn_volume" = The volume of sample to use per PCR (ul)'),
+               h5('Extra columns needed in mapping file:'),
+               tags$ul(
+                 tags$li('"TECAN_sample_labware" = The sample labware name on the robot worktable'),
+                 tags$li('"TECAN_sample_location" = The well or tube location (a number)'),
+                 tags$li('"TECAN_primer_labware" = The primer plate labware name on the robot worktable'),
+                 tags$li('"TECAN_primer_location" = The well location (1-96 or 1-384)'),
+                 tags$li('"TECAN_sample_rxn_volume" = The volume of sample to use per PCR (ul)')
+               ),
                br(),
-               h5('CONTROLS:'),
-               h6('* For the positive & negative controls, include them in the mapping file'),
-               h6('* If the controls (or samples) are provided in a tube, use "micro15[XXX]" for the "TECAN_sample_labware" column, but change "XXX" to the tube number that you want to use (eg., micro15[003] for tube position 3)'),
+               h5('Controls:'),
+               tags$ul(
+                 tags$li('For the positive & negative controls, include them in the mapping file'),
+                 tags$li('If the controls (or samples) are provided in a tube, use "micro15[XXX]" for the "TECAN_sample_labware" column, but change "XXX" to the tube number that you want to use (eg., micro15[003] for tube position 3)')
+               ),
                br(),
-               h5('OUTPUT FILES:'),
-               h6('* The output files ending in "_win" have Windows line breads (needed for the robot)'),
+               h5('Output files:'),
+               tags$ul(
+                 tags$li('The output files ending in "_win" have Windows line breads (needed for the robot)')
+               ),
                br(),
-               h5('MISC NOTES:'),
-               h6('* All volumes are in ul'),
-               h6('* Plate well locations are 1 to n-wells; numbering by column'),
-               h6('* PicoGreen should be added to the MasterMix *prior* to loading on robot')
+               h5('Misc notes:'),
+               tags$ul(
+                 tags$li('All volumes are in ul'),
+                 tags$li('Plate well locations are 1 to n-wells; numbering by column'),
+                 tags$li('PicoGreen should be added to the MasterMix *prior* to loading on robot')
+               )
         ),
         column(5,
                br(),

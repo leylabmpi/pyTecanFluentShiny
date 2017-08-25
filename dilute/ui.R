@@ -34,14 +34,18 @@ shinyUI(fluidPage(
                br(),
                h4('Description'),
                h5('The input is an Excel or tab-delimited file with columns:'),
-               h6('* Sample labware  (eg., "96 Well[001]")'),
-               h6('* Sample location (numeric value; minimum of 1)'),
-               h6('* Sample concentration (numeric value; units=ng/ul)'),
+               tags$ul(
+                 tags$li('Sample labware  (eg., "96 Well[001]")'),
+                 tags$li('Sample location (numeric value; minimum of 1)'),
+                 tags$li('Sample concentration (numeric value; units=ng/ul)')
+               ),
                br(),
                h5('Notes:'),
-               h6('* You can designate the input table columns for each value (see options)'),
-               h6('* Sample locations in plates numbered are column-wise'),
-               h6('* All volumes are in ul')
+               tags$ul(
+                 tags$li('You can designate the input table columns for each value (see options)'),
+                 tags$li('Sample locations in plates numbered are column-wise'),
+                 tags$li('All volumes are in ul')
+               )
         ),
         column(4,
                br(),
