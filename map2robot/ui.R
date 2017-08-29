@@ -30,19 +30,30 @@ shinyUI(fluidPage(
   tabsetPanel(
     tabPanel("Input/Output", 
       fluidRow(
-        column(7,
+        column(8,
                br(),
                h4('Description'),
                h6('Convert a QIIME-formatted mapping file to a GWL file, which is used by the TECAN robot to conduct the NGS amplicon PCR prep (ie., combining MasterMix, primers, samples, etc)'),
                h6('The extra columns in the mapping file designate the SOURCE of samples and primers; the DESTINATION (plate & well) is set by this script.'),
                br(),
                h5('Extra columns needed in mapping file:'),
+               h6(br('If no barcoding, single barcoding, or dual barcodes already combined:')),
+               tags$ul(
+                  tags$li('"TECAN_sample_labware" = The sample labware name on the robot worktable'),
+                  tags$li('"TECAN_sample_location" = The well or tube location (a number)'),
+                  tags$li('"TECAN_sample_rxn_volume" = The volume of sample to use per PCR (ul)'),
+                  tags$li('"TECAN_primer_labware" = The primer plate labware name on the robot worktable'),
+                  tags$li('"TECAN_primer_location" = The well location (1-96 or 1-384)')
+               ),
+               h6(br('If dual barcoding with separate primer plates:')),
                tags$ul(
                  tags$li('"TECAN_sample_labware" = The sample labware name on the robot worktable'),
                  tags$li('"TECAN_sample_location" = The well or tube location (a number)'),
-                 tags$li('"TECAN_primer_labware" = The primer plate labware name on the robot worktable'),
-                 tags$li('"TECAN_primer_location" = The well location (1-96 or 1-384)'),
-                 tags$li('"TECAN_sample_rxn_volume" = The volume of sample to use per PCR (ul)')
+                 tags$li('"TECAN_sample_rxn_volume" = The volume of sample to use per PCR (ul)'),
+                 tags$li('"TECAN_primer_labware_F" = The primer plate labware name on the robot worktable'),
+                 tags$li('"TECAN_primer_location_F" = The well location (1-96 or 1-384)'),
+                 tags$li('"TECAN_primer_labware_R" = The primer plate labware name on the robot worktable'),
+                 tags$li('"TECAN_primer_location_R" = The well location (1-96 or 1-384)')
                ),
                br(),
                h5('Controls:'),
@@ -63,7 +74,7 @@ shinyUI(fluidPage(
                  tags$li('PicoGreen should be added to the MasterMix *prior* to loading on robot')
                )
         ),
-        column(5,
+        column(4,
                br(),
                h4('Input & Output'),
                fileInput("MapFile", "A QIIME-formatted mapping file with extra columns (see Description)"),
