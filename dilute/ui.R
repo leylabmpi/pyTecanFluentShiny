@@ -98,7 +98,7 @@ shinyUI(fluidPage(
                 br(),
                 numericInput('dilution',
                              label = "Target dilution concentration (ng/ul)",
-                             value = 1.0)
+                             value = 5.0)
         ),
         column(4,
                br(),
