@@ -66,7 +66,8 @@ shinyServer(function(input, output, session) {
   # script path & subcommand
   #script_path = '/Users/nyoungblut/anaconda2/bin/pyTecanFluent'
   #script_path = '/Users/nick/anaconda3/envs/py3_dev/bin/pyTecanFluent'
-  script_path = '/usr/local/bin/pyTecanFluent'
+  #script_path = '/usr/local/bin/pyTecanFluent'
+  script_path = '/home/shiny/miniconda3/envs/py3/bin/pyTecanFluent'
   subcommand = 'map2robot'
   
   # calling script
