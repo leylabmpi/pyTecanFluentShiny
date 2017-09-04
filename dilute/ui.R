@@ -7,7 +7,7 @@ shinyUI(fluidPage(
   titlePanel("Dilution"),
   fluidRow(
     column(6,
-      h5('Create a Tecan worklist file for diluting samples')
+      h5('Create Tecan worklist & labware files for diluting samples')
     )
   ),
   fluidRow(
@@ -32,16 +32,22 @@ shinyUI(fluidPage(
       fluidRow(
         column(12,
                br(),
-               h4('Description'),
-               h5('The input is an Excel or tab-delimited file with columns:'),
+               h3('Input'),
+               h4('The input is an Excel or tab-delimited file with columns:'),
+               h5('"TECAN_labware_name"'),
+               h6('Name of the labware containing samples (eg., "96 Well Eppendorf TwinTec PCR")'),
                tags$ul(
-                        tags$li('"TECAN_labware_name"  (eg., "96 Well Eppendorf TwinTec PCR")'),
-                        tags$li('"TECAN_labware_type" (numeric value; minimum of 1)'),
-                        tags$li('"TECAN_target_position" = The location of your samples in your labware (plate)'),
-                        tags$li('"TECAN_sample_conc" (numeric value; units=ng/ul)')
+                 tags$li('"TECAN_labware_name" = name of the labware (eg., "96 Well Eppendorf TwinTec PCR")'),
+                 tags$li('"TECAN_labware_type" (numeric value; minimum of 1)'),
+                 tags$li('"TECAN_target_position" = The location of your samples in your labware (plate)'),
+                 tags$li('"TECAN_sample_conc" (numeric value; units=ng/ul)')
                ),
-               br(),
-               h5('Notes:'),
+               h4('Output'),
+               h5('The output files consist of:'),
+               tags$ul(
+                 tags$li('"*_conc.txt"')
+               ),
+               h4('Notes:'),
                tags$ul(
                         tags$li('Sample locations in plates numbered are column-wise'),
                         tags$li('All volumes are in ul')
