@@ -31,23 +31,27 @@ shinyUI(fluidPage(
     tabPanel("Description",
       fluidRow(
         column(12,
-               br(),
                h3('Input'),
                h4('The input is an Excel or tab-delimited file with columns:'),
                h5('"TECAN_labware_name"'),
-               h6('Name of the labware containing samples (eg., "96 Well Eppendorf TwinTec PCR")'),
-               tags$ul(
-                 tags$li('"TECAN_labware_name" = name of the labware (eg., "96 Well Eppendorf TwinTec PCR")'),
-                 tags$li('"TECAN_labware_type" (numeric value; minimum of 1)'),
-                 tags$li('"TECAN_target_position" = The location of your samples in your labware (plate)'),
-                 tags$li('"TECAN_sample_conc" (numeric value; units=ng/ul)')
-               ),
-               h4('Output'),
-               h5('The output files consist of:'),
-               tags$ul(
-                 tags$li('"*_conc.txt"')
-               ),
-               h4('Notes:'),
+               h6('Name of the labware containing samples (eg., "Sample plate 1")'),
+               h5('"TECAN_labware_type"'),
+               h6('Type of the labware containing samples (eg., "96 Well Eppendorf TwinTec PCR")'),
+               h5('"TECAN_target_position"'),
+               h6('The position (well) of your samples in your labware (numeric values; column-wise ordering'),
+               h5('"TECAN_sample_conc"'),
+               h6('The concentration of your samples (units = ng/ul)'),
+               hr(),
+               h3('Output'),
+               h4('The output files consist of the following files:'),
+               h5('*_conc.txt'),
+               h6('A table with the post-dilution concentrations (ng/ul)'),
+               h5('*_labware.txt'),
+               h6('A table listing the labware to be placed on the robot worktable'),
+               h5('*.gwl'),
+               h6('A "worklist" file with instructions for the robot'),
+               hr(),
+               h3('Notes'),
                tags$ul(
                         tags$li('Sample locations in plates numbered are column-wise'),
                         tags$li('All volumes are in ul')
@@ -57,9 +61,12 @@ shinyUI(fluidPage(
     ),
     tabPanel("Input/Output", 
       fluidRow(
+        column(12,
+               h4('Input & Output')
+        )
+      ),
+      fluidRow(
         column(4,
-               br(),
-               h4('Input & Output'),
                fileInput("ConcFile", "Concentration File: Excel or tab-delim file of sample concentrations"),
                selectInput('format',
                            label = "File  excel or tab-delimited. If blank, the format will be guessed",
@@ -84,6 +91,11 @@ shinyUI(fluidPage(
       )
     ),
     tabPanel("Dilution", 
+      fluidRow(
+        column(12,
+          h4('Dilution parameters')
+        )
+      ),
        fluidRow(
          column(4,
                 br(),
@@ -120,6 +132,11 @@ shinyUI(fluidPage(
     ),
     tabPanel("Destination Plate", 
       fluidRow(
+        column(12,
+               h4('Destination plate parameters')
+        )
+      ),             
+      fluidRow(
         column(4,
                br(),
                textInput('destname',
@@ -144,7 +161,10 @@ shinyUI(fluidPage(
     ),
     tabPanel("Example Input",
       fluidRow(
-        column(12, br(), h4('Concentration File format example:'))
+        column(12, 
+               h4('Concentration File format example'),
+               h5('Note: the table can include more columns')
+          )
         ),
       fluidRow(
         column(12, DT::dataTableOutput('example_tbl'))
