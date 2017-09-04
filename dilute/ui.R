@@ -28,26 +28,30 @@ shinyUI(fluidPage(
     )
   ),
   tabsetPanel(
-    tabPanel("Input/Output", 
+    tabPanel("Description",
       fluidRow(
-        column(7,
+        column(12,
                br(),
                h4('Description'),
                h5('The input is an Excel or tab-delimited file with columns:'),
                tags$ul(
-                 tags$li('"TECAN_labware_name"  (eg., "96 Well Eppendorf TwinTec PCR")'),
-                 tags$li('"TECAN_labware_type" (numeric value; minimum of 1)'),
-                 tags$li('"TECAN_target_position" = The location of your samples in your labware (plate)'),
-                 tags$li('"TECAN_sample_conc" (numeric value; units=ng/ul)')
+                        tags$li('"TECAN_labware_name"  (eg., "96 Well Eppendorf TwinTec PCR")'),
+                        tags$li('"TECAN_labware_type" (numeric value; minimum of 1)'),
+                        tags$li('"TECAN_target_position" = The location of your samples in your labware (plate)'),
+                        tags$li('"TECAN_sample_conc" (numeric value; units=ng/ul)')
                ),
                br(),
                h5('Notes:'),
                tags$ul(
-                 tags$li('Sample locations in plates numbered are column-wise'),
-                 tags$li('All volumes are in ul')
-               )
-        ),
-        column(5,
+                        tags$li('Sample locations in plates numbered are column-wise'),
+                        tags$li('All volumes are in ul')
+          )
+        )    
+      )
+    ),
+    tabPanel("Input/Output", 
+      fluidRow(
+        column(4,
                br(),
                h4('Input & Output'),
                fileInput("ConcFile", "Concentration File: Excel or tab-delim file of sample concentrations"),
@@ -56,12 +60,17 @@ shinyUI(fluidPage(
                            choices = c(' ' = 'blank',
                                        'Excel' = 'excel',
                                        'Tab-delimited' = 'tab'),
-                           selected = 'blank'),
+                           selected = 'blank')
+        ),
+        column(4,
                checkboxInput("header", 
                              label = "Header in the file?",
                              value = TRUE),
-               br(),
-               br(),
+               textInput('rows', 
+                         label = 'Which rows (not including header) of the column file to use ("all"=all rows; "1-48"=rows 1-48)', 
+                         value = 'all')
+        ),
+        column(4,
                textInput("prefix", 
                          label = "Output file name prefix", 
                          value = "TECAN_dilute")
