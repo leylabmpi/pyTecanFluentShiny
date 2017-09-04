@@ -8,9 +8,10 @@ source("../utils/format.R")
 make_example_data = function(){
   conc = c(10.1, 6.3, 21, 2.2, 3.1, 8.5)
   data.frame(
-    Labware = rep('96 Well[001]', length(conc)),
-    Location = 1:length(conc),
-    Conc = conc
+    TECAN_labware_name = rep('Sample DNA', length(conc)),
+    TECAN_labware_type = rep('96 Well Eppendorf TwinTec PCR'),
+    TECAN_target_position = 1:length(conc),
+    TECAN_sample_conc = conc
   )
 }
 
@@ -29,26 +30,27 @@ call_dilute = function(script_path, subcommand,input){
       # I/O
       rename_tmp_file(input$ConcFile),
       c('--prefix', add_quotes(prefix)),
-      #c('--format', input$format)
       # Concentration file
-      c('--labware', input$labware),
-      c('--location', input$location),
-      c('--conc', input$conc),
+      # --format <see below>
+      # --header <see below>
       c('--rows', add_quotes(input$rows)),
       # Dilution
       c('--dilution', input$dilution),
       c('--minvolume', input$minvolumne),
       c('--maxvolume', input$maxvolumne),
       c('--mintotal', input$mintotal),
-      c('--dlabware', add_quotes(input$dlabware)),
+      c('--dlabware_name', add_quotes(input$dlabware_name)),
+      c('--dlabware_type', add_quotes(input$dlabware_type)),
       # Destination plate
-      c('--dest', add_quotes(input$dest)),
+      c('--destname', add_quotes(input$destname)),
       c('--desttype', add_quotes(input$desttype)),
       c('--deststart', input$deststart)
     ) 
+    # format
     if(input$format != 'blank'){
       c('--format', add_quotes(input$format))
     }
+    # header
     if(input$header == FALSE){   # no header
       options = c(options, c('--header'))
     }
