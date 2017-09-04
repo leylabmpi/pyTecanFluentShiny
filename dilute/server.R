@@ -6,7 +6,7 @@ source("../utils/format.R")
 
 #' making data.frame of example input table
 make_example_data = function(){
-  conc = c(10.1, 6.3, 21, 2.2, 3.1, 8.5)
+  conc = c(10.1, 6.3, 1, 2.2, 3.1, 8.5)
   data.frame(
     TECAN_labware_name = rep('Sample DNA', length(conc)),
     TECAN_labware_type = rep('96 Well Eppendorf TwinTec PCR'),
@@ -107,6 +107,7 @@ shinyServer(function(input, output, session) {
   # example data table
   output$example_tbl = DT::renderDataTable(
     make_example_data(),
+    rownames= FALSE,
     extensions = c('Buttons'),
     options = list(
       pageLength = 40,
