@@ -38,7 +38,7 @@ shinyUI(fluidPage(
                h5('"TECAN_labware_type"'),
                h6('Type of the labware containing samples (eg., "96 Well Eppendorf TwinTec PCR")'),
                h5('"TECAN_target_position"'),
-               h6('The position (well) of your samples in your labware (numeric values; column-wise ordering'),
+               h6('The position (well) of your samples in your labware (numeric values; column-wise ordering)'),
                h5('"TECAN_sample_conc"'),
                h6('The concentration of your samples (units = ng/ul)'),
                hr(),
@@ -54,7 +54,8 @@ shinyUI(fluidPage(
                h3('Notes'),
                tags$ul(
                         tags$li('Sample locations in plates numbered are column-wise'),
-                        tags$li('All volumes are in ul')
+                        tags$li('All volumes are in ul'),
+                        tags$li('The output files ending in "_win" have Windows line breaks (for viewing on a PC)')
           )
         )    
       )
@@ -62,7 +63,7 @@ shinyUI(fluidPage(
     tabPanel("Input/Output", 
       fluidRow(
         column(12,
-               h4('Input & Output')
+               h4('Input & output')
         )
       ),
       fluidRow(

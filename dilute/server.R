@@ -107,7 +107,7 @@ shinyServer(function(input, output, session) {
   # example data table
   output$example_tbl = DT::renderDataTable(
     make_example_data(),
-    rownames= FALSE,
+    rownames = FALSE,
     extensions = c('Buttons'),
     options = list(
       pageLength = 40,

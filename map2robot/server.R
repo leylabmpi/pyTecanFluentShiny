@@ -21,9 +21,10 @@ call_map2robot = function(script_path, subcommand,input){
       c('--rows', add_quotes(input$rows)),
       c('--prefix', add_quotes(prefix)),
       # Destination plate
-      c('--dest', add_quotes(input$dest)),
+      c('--destname', add_quotes(input$dest)),
       c('--desttype', add_quotes(input$desttype)),
       c('--deststart', input$deststart),
+      c('--rxns', input$rxns),
       # Master mix
       c('--mmtube', input$mmtube),
       c('--mmvolume', input$mmvolume),
@@ -103,6 +104,7 @@ shinyServer(function(input, output, session) {
   output$example_tbl = DT::renderDataTable(
     load_ex_map_file(),
     extensions = c('Buttons'),
+    rownames = FALSE,
     options = list(
       pageLength = 40,
       dom = 'Brt',

@@ -28,89 +28,91 @@ shinyUI(fluidPage(
     )
   ),
   tabsetPanel(
-    tabPanel("Input/Output", 
+    tabPanel("Description", 
       fluidRow(
-        column(8,
-               br(),
-               h4('Description'),
-               h6('Convert a QIIME-formatted mapping file to a GWL file, which is used by the TECAN robot to conduct the NGS amplicon PCR prep (ie., combining MasterMix, primers, samples, etc)'),
-               h6('The extra columns in the mapping file designate the SOURCE of samples and primers; the DESTINATION (plate & well) is set by this script.'),
-               br(),
-               h5('Extra columns needed in mapping file:'),
+        column(12,
+               h5('Convert a QIIME-formatted mapping file to a GWL file, which is used by the TECAN robot to conduct the NGS amplicon PCR prep (ie., combining MasterMix, primers, samples, etc)'),
+               h5('The mapping file must contain some extra columns that will tell the robot where the samples are.'),
+               h3('Input'),
+               h4('Extra columns needed in the mapping file:'),
                h6(br('If no barcoding, single barcoding, or dual barcodes already combined:')),
-               tags$ul(
-                  tags$li('"TECAN_sample_labware" = The sample labware name on the robot worktable'),
-                  tags$li('"TECAN_sample_location" = The well or tube location (a number)'),
-                  tags$li('"TECAN_sample_rxn_volume" = The volume of sample to use per PCR (ul)'),
-                  tags$li('"TECAN_primer_labware" = The primer plate labware name on the robot worktable'),
-                  tags$li('"TECAN_primer_location" = The well location (1-96 or 1-384)')
-               ),
-               h6(br('If dual barcoding with separate primer plates:')),
-               tags$ul(
-                 tags$li('"TECAN_sample_labware" = The sample labware name on the robot worktable'),
-                 tags$li('"TECAN_sample_location" = The well or tube location (a number)'),
-                 tags$li('"TECAN_sample_rxn_volume" = The volume of sample to use per PCR (ul)'),
-                 tags$li('"TECAN_primer_labware_F" = The primer plate labware name on the robot worktable'),
-                 tags$li('"TECAN_primer_location_F" = The well location (1-96 or 1-384)'),
-                 tags$li('"TECAN_primer_labware_R" = The primer plate labware name on the robot worktable'),
-                 tags$li('"TECAN_primer_location_R" = The well location (1-96 or 1-384)')
-               ),
+               h5('"TECAN_sample_labware_name"'),
+               h6('The sample labware name on the robot worktable'),
+               h5('"TECAN_sample_labware_type"'),
+               h6('The type of labware containing samples (eg., "96 Well Eppendorf TwinTec PCR")'),
+               h5('"TECAN_sample_target_position"'),
+               h6('The well or tube location (a number)'),
+               h5('"TECAN_sample_rxn_volume"'),
+               h6('The volume of sample to use per PCR (ul)'),
+               h5('"TECAN_primer_labware_name"'),
+               h6('The primer plate labware name on the robot worktable (eg., "515F-806R")'),
+               h5('"TECAN_primer_labware_type"'),
+               h6('The primer plate labware type on the robot worktable (eg., "96 Well Eppendorf TwinTec PCR"'),
+               h5('"TECAN_primer_target_position"'),
+               h6('The position (well) of your samples in your labware (numeric values; column-wise ordering)'),
                br(),
-               h5('Controls:'),
+               h4('Controls:'),
                tags$ul(
                  tags$li('For the positive & negative controls, include them in the mapping file'),
-                 tags$li('If the controls (or samples) are provided in a tube, use "micro15[XXX]" for the "TECAN_sample_labware" column, but change "XXX" to the tube number that you want to use (eg., micro15[003] for tube position 3)')
+                 tags$li('If the controls (or samples) are provided in a tube, include them in the mapping file and use either "1.5ml Eppendorf" or "2.0ml Eppendorf" for the labware type'),
+                 tags$li('See the example input table (under the "Example Input" tab)')
                ),
                br(),
-               h5('Output files:'),
-               tags$ul(
-                 tags$li('The output files ending in "_win" have Windows line breads (needed for the robot)')
-               ),
-               br(),
-               h5('Misc notes:'),
+               h4('Output files:'),
+               h5('*_report.txt'),
+               h6('A summary of the PCR assay setup'),
+               h5('*_map.txt'),
+               h6('A mapping file with added PCR assay information'),
+               h5('*_labware.txt'),
+               h6('A table listing the labware to be placed on the robot worktable'),
+               h5('*.gwl'),
+               h6('A "worklist" file with instructions for the robot'),
+               h3('Notes'),
                tags$ul(
                  tags$li('All volumes are in ul'),
                  tags$li('Plate well locations are 1 to n-wells; numbering by column'),
-                 tags$li('PicoGreen should be added to the MasterMix *prior* to loading on robot')
+                 tags$li('PicoGreen should be added to the MasterMix *prior* to loading on robot'),
+                 tags$li('The output files ending in "_win" have Windows line breaks (for viewing on a PC)')
                )
-        ),
+        )
+      )
+    ),
+    tabPanel('Input & Output',
+      fluidRow(
+        column(12,
+              h3('Input & output')
+        )
+      ),
+      fluidRow(
         column(4,
-               br(),
-               h4('Input & Output'),
+               h4('Input file'),
                fileInput("MapFile", "A QIIME-formatted mapping file with extra columns (see Description)"),
                textInput('rows',
                             label = 'Which rows of the mapping file to use (eg., "all"=all rows; "1-48"=rows1-48; "1,3,5-6"=rows1+3+5+6)?',
-                            value = 'all'),
-               br(),
-               br(),
+                            value = 'all')
+        ),
+        column(4,
+               h4('Output'),
                textInput("prefix", 
                          label = "Output file name prefix", 
                          value = "TECAN_NGS_amplicon")
         )
       )
     ),
-    tabPanel("Example Input",
-      fluidRow(
-        column(12, h4('Mapping File format example:'))
-      ),
-      fluidRow(
-        column(12, DT::dataTableOutput('example_tbl'))
-      )
-    ),
     tabPanel("Destination Plate", 
       fluidRow(
-        column(12, br())
+        column(12, h4('Destination labware parameters'))
       ),
       fluidRow(
         column(4,
-               textInput('dest',
-                         label = "Destination plate labware ID on TECAN worktable",
-                         value = "96 Well[001]"),
+               textInput('destname',
+                         label = "Destination labware name",
+                         value = "Destination plate"),
                selectInput('desttype',
                            label = "Destination plate labware type (# of wells)",
-                           choices = c('96-well' = 96,
-                                       '384-well' = 384),
-                           selected = 96)
+                           choices = c('96-well' = '96 Well Eppendorf TwinTec PCR',
+                                       '384-well' = '384 Well Biorad PCR'),
+                           selected = '96-well')
         ),
         column(4,
                numericInput('deststart',
@@ -126,7 +128,7 @@ shinyUI(fluidPage(
     ),
     tabPanel("Reagents", 
       fluidRow(
-        column(12, br()),
+        column(12, h4('PCR reagent parameters')),
         column(12, h5('Note: "tube number" is the location in the tube runner, starting from the "top" of the runner'))
       ),
       fluidRow(
@@ -167,18 +169,29 @@ shinyUI(fluidPage(
                h4('Liquid classes'),
                textInput('mm_liq',
                          label = "Mastermix liquid class",
-                         value = "MasterMix Free Multi"),
+                         value = "MasterMix Free Multi No-cLLD"),
                textInput('primer_liq',
                          label = "Primer liquid class",
-                         value = "Water Contact Wet Single"),
+                         value = "Water Contact Wet Single No-cLLD"),
                textInput('sample_liq',
                          label = "Sample liquid class",
-                         value = "Water Contact Wet Single"),
+                         value = "Water Contact Wet Single No-cLLD"),
                textInput('water_liq',
                          label = "Water liquid class",
-                         value = "Water Contact Wet Single")
+                         value = "Water Contact Wet Single No-cLLD")
         )
       )
+    ),
+    tabPanel("Example Input",
+             fluidRow(
+               column(12, 
+                      h4('Mapping File format example'),
+                      h5('Note: the table can contain other columns')
+               )
+             ),
+             fluidRow(
+               column(12, DT::dataTableOutput('example_tbl'))
+             )
     )
   )
 ))
