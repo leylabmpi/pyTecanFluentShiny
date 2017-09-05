@@ -61,6 +61,8 @@ shinyUI(fluidPage(
                h4('Output files:'),
                h5('*_report.txt'),
                h6('A summary of the PCR assay setup'),
+               h5('*_BIORAD-*.txt'),
+               h6('>=1 file for importing into the BIORAD PrimePCR software for sample labeling'),
                h5('*_map.txt'),
                h6('A mapping file with added PCR assay information'),
                h5('*_labware.txt'),
