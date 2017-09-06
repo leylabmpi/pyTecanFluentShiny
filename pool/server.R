@@ -4,55 +4,75 @@ source("../utils/io.R")
 source("../utils/format.R")
 
 
-#' making data.frame of example input table
-make_example_data = function(){
-  conc = c(10.1, 6.3, 1, 2.2, 3.1, 8.5)
-  data.frame(
-    TECAN_labware_name = rep('Sample DNA', length(conc)),
-    TECAN_labware_type = rep('96 Well Eppendorf TwinTec PCR'),
-    TECAN_target_position = 1:length(conc),
-    TECAN_sample_conc = conc
-  )
-}
-
 
 #' calling 'dilute' subcommand
-call_dilute = function(script_path, subcommand,input){
+call_pool = function(script_path, subcommand, input){
+  print(input$sample_file)
   # command
-  if(is.null(input$ConcFile)){
+  if(is.null(input$sample_file)){
     options = c('-h')
   } else {
     # dealing with --prefix
     prefix = file.path(tempdir(), gsub('^.+/', '', input$prefix))
+    # sample file paths
+    file_paths = c()
+    for(i in 1:nrow(input$sample_file)){
+      x = input$sample_file
+      file_paths = c(file_paths, x[i,])
+    }
+    file_paths = paste(file_paths, collapse=' ')
     
     # compiling options
     options = c(
       # I/O
-      rename_tmp_file(input$ConcFile),
+      #rename_tmp_file(input$sample_file),
       c('--prefix', add_quotes(prefix)),
-      # Concentration file
-      # --format <see below>
-      # --header <see below>
+      # Sample file
+      # --sample_format <see below>
+      # --sample_header <see below>
       c('--rows', add_quotes(input$rows)),
-      # Dilution
+      c('--sample_col', add_quotes(input$sample_col)),
+      c('--include_col', add_quotes(input$include_col)),
+      c('--sample_labware_name', add_quotes(input$sample_labware_name)),
+      c('--sample_labware_type', add_quotes(input$sample_labware_type)),
+      c('--position_col', add_quotes(input$position_col)),
+      # Mapping file
+      c('--mapfile', rename_tmp_file(input$map_file)),
+      # --map_format <see below>
+      # --map_header <see below>
       c('--dilution', input$dilution),
-      c('--minvolume', input$minvolumne),
-      c('--maxvolume', input$maxvolumne),
-      c('--mintotal', input$mintotal),
-      c('--dlabware_name', add_quotes(input$dlabware_name)),
-      c('--dlabware_type', add_quotes(input$dlabware_type)),
+      # Pooling
+      c('--volume', input$volume),
+      c('--liqcls', add_quotes(input$liqcls)),
+      # --new_tips <see below>
       # Destination plate
       c('--destname', add_quotes(input$destname)),
       c('--desttype', add_quotes(input$desttype)),
-      c('--deststart', input$deststart)
+      c('--deststart', input$deststart),
+      # sample files
+      file_paths
     ) 
     # format
-    if(input$format != 'blank'){
-      c('--format', add_quotes(input$format))
+    ## sample
+    if(input$sample_format != 'blank'){
+      c('--sample_format', add_quotes(input$sample_format))
+    }
+    ## mapping 
+    if(input$map_format != 'blank'){
+      c('--mpa_format', add_quotes(input$map_format))
     }
     # header
-    if(input$header == FALSE){   # no header
-      options = c(options, c('--header'))
+    ## sample
+    if(input$sample_header == FALSE){   # no header
+      options = c(options, c('--sample_header'))
+    }
+    ## mapping
+    if(input$map_header == FALSE){   # no header
+      options = c(options, c('--map_header'))
+    }
+    # tips
+    if(input$new_tips == TRUE){  
+      options = c(options, c('--new_tips'))
     }
   }
   # call with options
@@ -66,19 +86,36 @@ get_files_created = function(x){
   x[sapply(x, file.exists)]
 }
 
+
+#' Loading example sample file
+load_ex_sample_file = function(){
+  df = read_excel('../data/PCR-run1.xlsx', sheet='SYBR')
+  #colnames(df)[1] = '#SampleID'
+  return(df)
+}
+
+#' loading example mapping file
+load_ex_map_file = function(){
+  df = read.delim('../data/basic_96well.txt', sep='\t')
+  colnames(df)[1] = '#SampleID'
+  return(df)
+}
+
+
 #-- server --#
 shinyServer(function(input, output, session) {
   # script path & subcommand
   #script_path = '/Users/nyoungblut/anaconda2/bin/pyTecanFluent'
+  script_path = '/Users/nyoungblut/anaconda2/envs/py35/bin/pyTecanFluent'
   #script_path = '/Users/nick/anaconda3/envs/py3_dev/bin/pyTecanFluent'
   #script_path = '/usr/local/bin/pyTecanFluent'
-  script_path = '/home/shiny/miniconda3/envs/py3/bin/pyTecanFluent'
+  #script_path = '/home/shiny/miniconda3/envs/py3/bin/pyTecanFluent'
   subcommand = 'pool'
   
   # calling script
   script_out = eventReactive(input$runBtn, {
     # run command 
-    call_dilute(script_path, subcommand, input)
+    call_pool(script_path, subcommand, input)
   })
   
   # adding script output to output
@@ -104,11 +141,22 @@ shinyServer(function(input, output, session) {
     }
   )
   
-  # example data table
-  output$example_tbl = DT::renderDataTable(
-    make_example_data(),
+  # example sample data table
+  output$example_sample_tbl = DT::renderDataTable(
+    load_ex_sample_file(),
     rownames = FALSE,
     extensions = c('Buttons'),
+    options = list(
+      pageLength = 40,
+      dom = 'Brt',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    )
+  )
+  # sample mapping table
+  output$example_map_tbl = DT::renderDataTable(
+    load_ex_map_file(),
+    extensions = c('Buttons'),
+    rownames = FALSE,
     options = list(
       pageLength = 40,
       dom = 'Brt',
