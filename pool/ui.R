@@ -84,7 +84,7 @@ shinyUI(fluidPage(
                checkboxInput("sample_header", 
                              label = "Header in the file?",
                              value = TRUE),
-               textInput('rows', 
+               textInput('sample_rows', 
                          label = 'Which rows (not including header) of the column file to use ("all"=all rows; "1-48"=rows 1-48)', 
                          value = 'all')
         ),

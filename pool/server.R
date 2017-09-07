@@ -7,7 +7,8 @@ source("../utils/format.R")
 
 #' calling 'dilute' subcommand
 call_pool = function(script_path, subcommand, input){
-  print(input$sample_file)
+  print(input$map_file)
+  
   # command
   if(is.null(input$sample_file)){
     options = c('-h')
@@ -18,7 +19,7 @@ call_pool = function(script_path, subcommand, input){
     file_paths = c()
     for(i in 1:nrow(input$sample_file)){
       x = input$sample_file
-      file_paths = c(file_paths, x[i,])
+      file_paths = c(file_paths, rename_tmp_file(x[i,]))
     }
     file_paths = paste(file_paths, collapse=' ')
     
@@ -30,17 +31,16 @@ call_pool = function(script_path, subcommand, input){
       # Sample file
       # --sample_format <see below>
       # --sample_header <see below>
-      c('--rows', add_quotes(input$rows)),
+      c('--sample_rows', add_quotes(input$sample_rows)),
       c('--sample_col', add_quotes(input$sample_col)),
       c('--include_col', add_quotes(input$include_col)),
       c('--sample_labware_name', add_quotes(input$sample_labware_name)),
       c('--sample_labware_type', add_quotes(input$sample_labware_type)),
       c('--position_col', add_quotes(input$position_col)),
       # Mapping file
-      c('--mapfile', rename_tmp_file(input$map_file)),
+      # --mapfile <see below>
       # --map_format <see below>
       # --map_header <see below>
-      c('--dilution', input$dilution),
       # Pooling
       c('--volume', input$volume),
       c('--liqcls', add_quotes(input$liqcls)),
@@ -52,14 +52,18 @@ call_pool = function(script_path, subcommand, input){
       # sample files
       file_paths
     ) 
+    # mapfile
+    if(!is.null(input$map_file)){
+      options = c(options, c('--mapfile', rename_tmp_file(input$map_file)))
+    }
     # format
     ## sample
     if(input$sample_format != 'blank'){
-      c('--sample_format', add_quotes(input$sample_format))
+      options = c(options, c('--sample_format', add_quotes(input$sample_format)))
     }
     ## mapping 
     if(input$map_format != 'blank'){
-      c('--mpa_format', add_quotes(input$map_format))
+      options = c(options, c('--map_format', add_quotes(input$map_format)))
     }
     # header
     ## sample
@@ -89,14 +93,14 @@ get_files_created = function(x){
 
 #' Loading example sample file
 load_ex_sample_file = function(){
-  df = read_excel('../data/PCR-run1.xlsx', sheet='SYBR')
+  df = read_excel('../data/pool_PCR-run1.xlsx', sheet='SYBR')
   #colnames(df)[1] = '#SampleID'
   return(df)
 }
 
 #' loading example mapping file
 load_ex_map_file = function(){
-  df = read.delim('../data/basic_96well.txt', sep='\t')
+  df = read_excel('../data/pool_map.xlsx', sheet='Sheet1')
   colnames(df)[1] = '#SampleID'
   return(df)
 }
