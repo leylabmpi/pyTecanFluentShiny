@@ -1,5 +1,6 @@
 # Shiny server
 library(shiny)
+library(readxl)
 source("../utils/io.R")
 source("../utils/format.R")
 
