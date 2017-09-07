@@ -89,6 +89,7 @@ shinyUI(fluidPage(
                          value = 'all')
         ),
         column(4,
+               br(),
                h4('Sample file columns'),
                textInput('sample_col', 
                          label = 'Column containing the samples',
@@ -179,7 +180,6 @@ shinyUI(fluidPage(
     tabPanel("Example Input: mapping",
      fluidRow(
        column(12,
-              hr(),
               h4('Mapping File format example'),
               h5('Note: the table can include more columns')
               )
