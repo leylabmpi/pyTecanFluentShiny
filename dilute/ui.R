@@ -171,39 +171,39 @@ shinyUI(fluidPage(
                br(),
                selectInput('tip1000_type',
                            label = '1000 ul tip type to use',
-                           choices = c('FCA, 1000ul SBS High' = 
-                                        'FCA, 1000ul SBS High',
-                                      'FCA, 1000ul Filtered SBS High' = 
-                                        'FCA, 1000ul Filtered SBS High',
+                           choices = c('FCA, 1000ul SBS' = 
+                                        'FCA, 1000ul SBS',
+                                      'FCA, 1000ul Filtered SBS' = 
+                                        'FCA, 1000ul Filtered SBS',
                                       'None' = 'None'),
-                          selected = 'FCA, 1000ul SBS High'),
+                          selected = 'FCA, 1000ul SBS'),
                selectInput('tip200_type',
                            label = '200 ul tip type to use',
-                           choices = c('FCA, 200ul SBS High' = 
-                                         'FCA, 200ul SBS High',
-                                       'FCA, 200ul Filtered SBS High' = 
-                                         'FCA, 200ul Filtered SBS High',
+                           choices = c('FCA, 200ul SBS' = 
+                                         'FCA, 200ul SBS',
+                                       'FCA, 200ul Filtered SBS' = 
+                                         'FCA, 200ul Filtered SBS',
                                        'None' = 'None'),
-                           selected = 'FCA, 200ul SBS High')
+                           selected = 'FCA, 200ul SBS')
         ),
         column(4,
                br(),
                selectInput('tip50_type',
                            label = '50 ul tip type to use',
-                           choices = c('FCA, 50ul SBS High' = 
-                                       'FCA, 50ul SBS High',
-                                     'FCA, 50ul Filtered SBS High' = 
-                                       'FCA, 50ul Filtered SBS High',
+                           choices = c('FCA, 50ul SBS' = 
+                                       'FCA, 50ul SBS',
+                                     'FCA, 50ul Filtered SBS' = 
+                                       'FCA, 50ul Filtered SBS',
                                      'None' = 'None'),
-                           selected = 'FCA, 50ul SBS High'),
+                           selected = 'FCA, 50ul SBS'),
                selectInput('tip10_type',
                            label = '10 ul tip type to use',
-                           choices = c('FCA, 10ul SBS High' = 
-                                       'FCA, 10ul SBS High',
-                                     'FCA, 10ul Filtered SBS High' = 
-                                       'FCA, 10ul Filtered SBS High',
+                           choices = c('FCA, 10ul SBS' = 
+                                       'FCA, 10ul SBS',
+                                     'FCA, 10ul Filtered SBS' = 
+                                       'FCA, 10ul Filtered SBS',
                                      'None' = 'None'),
-                           selected = 'FCA, 10ul SBS High')
+                           selected = 'FCA, 10ul SBS')
         )
       )
     ),
