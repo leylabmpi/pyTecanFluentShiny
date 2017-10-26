@@ -37,7 +37,7 @@ shinyUI(fluidPage(
                h5('The input is >=1 Excel or tab-delimited file containing the following columns:'),
                tags$ul(
                  tags$li("A column of sample names (samples with the same name will be pooled)"),
-                 tags$li("A column designating whether to include or skip the samplles (include = 'Success/Pass/Include'; skip = 'Fail/Skip')')"),
+                 tags$li("A column designating whether to include or skip the samplles (include = 'Success/Pass/Include'; skip = 'Fail/Skip')"),
                  tags$li("A column designating the sample labware name"),
                  tags$li("A column designating the sample labware type (eg., '96 Well Eppendorf TwinTec PCR')"),
                  tags$li("A column designating the sample position (well)")
@@ -71,108 +71,122 @@ shinyUI(fluidPage(
       ),
       fluidRow(
         column(4,
-               fileInput("ConcFile", "Concentration File: Excel or tab-delim file of sample concentrations"),
-               selectInput('format',
+               h4('Sample file'),
+               fileInput("sample_file", 
+                         label = "Sample File: excel or tab-delim file of samples to pool",
+                         multiple = TRUE),
+               selectInput('sample_format',
                            label = "File  excel or tab-delimited. If blank, the format will be guessed",
                            choices = c(' ' = 'blank',
                                        'Excel' = 'excel',
                                        'Tab-delimited' = 'tab'),
-                           selected = 'blank')
-        ),
-        column(4,
-               checkboxInput("header", 
+                           selected = 'blank'),
+               checkboxInput("sample_header", 
                              label = "Header in the file?",
                              value = TRUE),
-               textInput('rows', 
+               textInput('sample_rows', 
                          label = 'Which rows (not including header) of the column file to use ("all"=all rows; "1-48"=rows 1-48)', 
                          value = 'all')
         ),
         column(4,
+               br(),
+               h4('Sample file columns'),
+               textInput('sample_col', 
+                         label = 'Column containing the samples',
+                         value = 'Sample'),
+               textInput('include_col', 
+                         label = 'Name of column designating sample include/skip the sample',
+                         value = 'Call'),
+               textInput('sample_labware_name', 
+                         label = 'Name of column designating the sample labware name',
+                         value = 'labware_name'),
+               textInput('sample_labware_name', 
+                         label = 'Name of column designating the sample labware name',
+                         value = 'labware_name'),
+               textInput('sample_labware_type', 
+                         label = 'Name of column designating the sample labware type',
+                         value = 'labware_type'),
+               textInput('position_col', 
+                         label = 'Column designating sample location in the plate',
+                         value = 'Well')
+        ),
+        column(4,
+               h4('Mapping file'),
+               fileInput("map_file", 
+                         label = "Map File: a QIIME-formatted mapping file"),
+               selectInput('map_format',
+                           label = "File  excel or tab-delimited. If blank, the format will be guessed",
+                           choices = c(' ' = 'blank',
+                                       'Excel' = 'excel',
+                                       'Tab-delimited' = 'tab'),
+                           selected = 'blank'),
+               checkboxInput("map_header", 
+                             label = "Header in the file?",
+                             value = TRUE),
+               hr(),
+               h4('Output files'),
                textInput("prefix", 
                          label = "Output file name prefix", 
-                         value = "TECAN_dilute")
+                         value = "TECAN_pool")
         )
       )
     ),
-    tabPanel("Dilution", 
+    tabPanel("Pooling", 
       fluidRow(
         column(12,
-          h4('Dilution parameters')
+          h3('Pooling parameters')
         )
       ),
        fluidRow(
          column(4,
-                br(),
-                numericInput('dilution',
-                             label = "Target dilution concentration (ng/ul)",
-                             value = 5.0)
+                h4('Aspiration/Dispense'),
+                numericInput('volume',
+                             label = 'Per-sample volume to pool (ng/ul)',
+                             value = 30.0),
+                textInput('liqcls',
+                          label = 'Liquid class for pooling',
+                          value = 'Water Free Multi No-cLLD'),
+                checkboxInput("new_tips", 
+                              label = "New tips for each sample replicate?",
+                              value = FALSE)
         ),
         column(4,
-               br(),
-               numericInput('minvolumne',
-                            label = "Minimum sample volume to use",
-                            value = 2.0),
-               numericInput('maxvolumne',
-                            label = "Maximum sample volume to use",
-                            value = 30.0)
-        ),
-        column(4,
-               br(),
-               numericInput('mintotal',
-                            label = "Minimum post-dilution total volume",
-                            value = 10.0),
-               textInput('dlabware_name',
-                            label = "Name of labware containing the dilutant",
-                            value = "100ml_1"),
-               selectInput('dlabware_type',
-                           label = "Name of labware containing the dilutant",
-                           choices = c('100ml trough' = '100ml_1',
-                                       '1.5ml Eppendorf' = '1.5ml Eppendorf',
-                                       '2.0ml Eppendorf' = '2.0ml Eppendorf',
-                                       '96 well plate' = '96 Well Eppendorf TwinTec PCR'),
-                           selected = "100ml trough")
-        )
-      )
-    ),
-    tabPanel("Destination Plate", 
-      fluidRow(
-        column(12,
-               h4('Destination plate parameters')
-        )
-      ),             
-      fluidRow(
-        column(4,
-               br(),
+               h4('Destination labware'),
                textInput('destname',
-                         label = "Destination plate labware name",
-                         value = "Diluted DNA plate")
-        ),
-        column(4,
-               br(),
+                         label = "Destination labware name",
+                         value = "Pooled DNA plate"),
                selectInput('desttype',
-                            label = "Destination labware type",
-                            choices = c('96-well' = '96 Well Eppendorf TwinTec PCR',
-                                        '384-well' = '384 Well Biorad PCR'),
-                            selected = '96-well')
-        ),
-        column(4,
-               br(),
+                           label = "Destination labware type",
+                           choices = c('96 well plate' = '96 Well Eppendorf TwinTec PCR',
+                                       '384 well plate' = '384 Well Biorad PCR'),
+                           selected = '96 Well Eppendorf TwinTec PCR'),
                numericInput('deststart',
-                            label = "Starting position (well) number on destination plate",
+                            label = "Starting position (well) on the destination labware",
                             value = 1)
         )
       )
     ),
-    tabPanel("Example Input",
+    tabPanel("Example Input: samples",
       fluidRow(
         column(12, 
-               h4('Concentration File format example'),
+               h4('Sample File format example'),
                h5('Note: the table can include more columns')
-          )
-        ),
-      fluidRow(
-        column(12, DT::dataTableOutput('example_tbl'))
         )
+      ),
+      fluidRow(
+        column(12, DT::dataTableOutput('example_sample_tbl'))
+      )
+    ),
+    tabPanel("Example Input: mapping",
+     fluidRow(
+       column(12,
+              h4('Mapping File format example'),
+              h5('Note: the table can include more columns')
+              )
+     ),
+     fluidRow(
+       column(12, DT::dataTableOutput('example_map_tbl'))
      )
-  )
+    )
+   )
 ))

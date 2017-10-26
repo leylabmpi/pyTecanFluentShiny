@@ -1,5 +1,6 @@
 # Shiny server
 library(shiny)
+library(readxl)
 source("../utils/io.R")
 source("../utils/format.R")
 
@@ -48,7 +49,7 @@ call_dilute = function(script_path, subcommand,input){
     ) 
     # format
     if(input$format != 'blank'){
-      c('--format', add_quotes(input$format))
+      options = c(options, c('--format', add_quotes(input$format)))
     }
     # header
     if(input$header == FALSE){   # no header
