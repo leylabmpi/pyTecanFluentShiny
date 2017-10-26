@@ -127,7 +127,7 @@ shinyUI(fluidPage(
                                        '1.5ml Eppendorf' = '1.5ml Eppendorf',
                                        '2.0ml Eppendorf' = '2.0ml Eppendorf',
                                        '96 well plate' = '96 Well Eppendorf TwinTec PCR'),
-                           selected = "100ml trough")
+                           selected = "100ml_1")
         )
       )
     ),
@@ -150,7 +150,7 @@ shinyUI(fluidPage(
                             label = "Destination labware type",
                             choices = c('96-well' = '96 Well Eppendorf TwinTec PCR',
                                         '384-well' = '384 Well Biorad PCR'),
-                            selected = '96-well')
+                            selected = '96 Well Eppendorf TwinTec PCR')
         ),
         column(4,
                br(),
@@ -160,7 +160,7 @@ shinyUI(fluidPage(
         )
       )
     ),
-    tabPanel("Tip type", 
+    tabPanel("Tips", 
       fluidRow(
         column(12,
                h4('Destination plate parameters')
@@ -174,14 +174,16 @@ shinyUI(fluidPage(
                            choices = c('FCA, 1000ul SBS High' = 
                                         'FCA, 1000ul SBS High',
                                       'FCA, 1000ul Filtered SBS High' = 
-                                        'FCA, 1000ul Filtered SBS High'),
+                                        'FCA, 1000ul Filtered SBS High',
+                                      'None' = 'None'),
                           selected = 'FCA, 1000ul SBS High'),
                selectInput('tip200_type',
                            label = '200 ul tip type to use',
                            choices = c('FCA, 200ul SBS High' = 
                                          'FCA, 200ul SBS High',
                                        'FCA, 200ul Filtered SBS High' = 
-                                         'FCA, 200ul Filtered SBS High'),
+                                         'FCA, 200ul Filtered SBS High',
+                                       'None' = 'None'),
                            selected = 'FCA, 200ul SBS High')
         ),
         column(4,
@@ -191,14 +193,16 @@ shinyUI(fluidPage(
                            choices = c('FCA, 50ul SBS High' = 
                                        'FCA, 50ul SBS High',
                                      'FCA, 50ul Filtered SBS High' = 
-                                       'FCA, 50ul Filtered SBS High'),
+                                       'FCA, 50ul Filtered SBS High',
+                                     'None' = 'None'),
                            selected = 'FCA, 50ul SBS High'),
                selectInput('tip10_type',
                            label = '10 ul tip type to use',
                            choices = c('FCA, 10ul SBS High' = 
                                        'FCA, 10ul SBS High',
                                      'FCA, 10ul Filtered SBS High' = 
-                                       'FCA, 10ul Filtered SBS High'),
+                                       'FCA, 10ul Filtered SBS High',
+                                     'None' = 'None'),
                            selected = 'FCA, 10ul SBS High')
         )
       )
