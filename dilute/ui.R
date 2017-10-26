@@ -160,6 +160,49 @@ shinyUI(fluidPage(
         )
       )
     ),
+    tabPanel("Tip type", 
+      fluidRow(
+        column(12,
+               h4('Destination plate parameters')
+        )
+      ),             
+      fluidRow(
+        column(4,
+               br(),
+               selectInput('tip1000_type',
+                           label = '1000 ul tip type to use',
+                           choices = c('FCA, 1000ul SBS High' = 
+                                        'FCA, 1000ul SBS High',
+                                      'FCA, 1000ul Filtered SBS High' = 
+                                        'FCA, 1000ul Filtered SBS High'),
+                          selected = 'FCA, 1000ul SBS High'),
+               selectInput('tip200_type',
+                           label = '200 ul tip type to use',
+                           choices = c('FCA, 200ul SBS High' = 
+                                         'FCA, 200ul SBS High',
+                                       'FCA, 200ul Filtered SBS High' = 
+                                         'FCA, 200ul Filtered SBS High'),
+                           selected = 'FCA, 200ul SBS High')
+        ),
+        column(4,
+               br(),
+               selectInput('tip50_type',
+                           label = '50 ul tip type to use',
+                           choices = c('FCA, 50ul SBS High' = 
+                                       'FCA, 50ul SBS High',
+                                     'FCA, 50ul Filtered SBS High' = 
+                                       'FCA, 50ul Filtered SBS High'),
+                           selected = 'FCA, 50ul SBS High'),
+               selectInput('tip10_type',
+                           label = '10 ul tip type to use',
+                           choices = c('FCA, 10ul SBS High' = 
+                                       'FCA, 10ul SBS High',
+                                     'FCA, 10ul Filtered SBS High' = 
+                                       'FCA, 10ul Filtered SBS High'),
+                           selected = 'FCA, 10ul SBS High')
+        )
+      )
+    ),
     tabPanel("Example Input",
       fluidRow(
         column(12, 
