@@ -39,6 +39,11 @@ call_map2robot = function(script_path, subcommand,input){
       c('--primer-liq', add_quotes(input$primer_liq)),
       c('--sample-liq', add_quotes(input$sample_liq)),
       c('--water-liq', add_quotes(input$water_liq)),
+      # Tip type
+      c('--tip1000_type', add_quotes(input$tip1000_type)),
+      c('--tip200_type', add_quotes(input$tip200_type)),
+      c('--tip50_type', add_quotes(input$tip50_type)),
+      c('--tip10_type', add_quotes(input$tip10_type)),
       # Misc
       c('--pcrvolume', add_quotes(input$pcrvolume)),
       c('--errorperc', add_quotes(input$errorperc))
