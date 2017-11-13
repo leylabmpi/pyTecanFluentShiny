@@ -45,7 +45,6 @@ call_dilute = function(script_path, subcommand,input){
       # Destination plate
       c('--destname', add_quotes(input$destname)),
       c('--desttype', add_quotes(input$desttype)),
-      c('--deststart', input$deststart),
       # Tip type
       c('--tip1000_type', add_quotes(input$tip1000_type)),
       c('--tip200_type', add_quotes(input$tip200_type)),

@@ -134,7 +134,8 @@ shinyUI(fluidPage(
     tabPanel("Destination Plate", 
       fluidRow(
         column(12,
-               h4('Destination plate parameters')
+               h4('Destination plate parameters'),
+               h5('Note: if more samples than 1 dest-plate can hold, then multiple dest-plates with the dest-plate name + "[XXX]" will be used')
         )
       ),             
       fluidRow(
@@ -151,12 +152,6 @@ shinyUI(fluidPage(
                             choices = c('96-well' = '96 Well Eppendorf TwinTec PCR',
                                         '384-well' = '384 Well Biorad PCR'),
                             selected = '96 Well Eppendorf TwinTec PCR')
-        ),
-        column(4,
-               br(),
-               numericInput('deststart',
-                            label = "Starting position (well) number on destination plate",
-                            value = 1)
         )
       )
     ),
