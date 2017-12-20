@@ -10,7 +10,6 @@ make_example_data = function(){
   conc = c(10.1, 6.3, 1, 2.2, 3.1, 8.5)
   data.frame(
     TECAN_labware_name = rep('Sample DNA', length(conc)),
-    TECAN_labware_type = rep('96 Well Eppendorf TwinTec PCR'),
     TECAN_target_position = 1:length(conc),
     TECAN_sample_conc = conc
   )
@@ -39,17 +38,7 @@ call_dilute = function(script_path, subcommand,input){
       c('--dilution', input$dilution),
       c('--minvolume', input$minvolumne),
       c('--maxvolume', input$maxvolumne),
-      c('--mintotal', input$mintotal),
-      c('--dlabware_name', add_quotes(input$dlabware_name)),
-      c('--dlabware_type', add_quotes(input$dlabware_type)),
-      # Destination plate
-      c('--destname', add_quotes(input$destname)),
-      c('--desttype', add_quotes(input$desttype)),
-      # Tip type
-      c('--tip1000_type', add_quotes(input$tip1000_type)),
-      c('--tip200_type', add_quotes(input$tip200_type)),
-      c('--tip50_type', add_quotes(input$tip50_type)),
-      c('--tip10_type', add_quotes(input$tip10_type))
+      c('--mintotal', input$mintotal)
     ) 
     # format
     if(input$format != 'blank'){
