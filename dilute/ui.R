@@ -115,7 +115,7 @@ shinyUI(fluidPage(
                br(),
                textInput("dil_labware_name", 
                          label = "Name of labware containing the dilutant", 
-                         value = "100ml_dilutant"),
+                         value = "Dilutant"),
                selectInput("dil_labware_type", 
                            label = "Labware type containing the dilutant",
                            choices = c('100ml_1' = '100ml_1',
@@ -124,6 +124,26 @@ shinyUI(fluidPage(
                            selected = '100ml_1')
         )
       )
+    ),
+    tabPanel("Destination labware", 
+             fluidRow(
+               column(12,
+                      h4('Destination labware')
+               )
+             ),
+             fluidRow(
+               column(4,
+                      br(),
+                      textInput('dest_name',
+                                   label = 'Destination labware name',
+                                   value = 'Diluted sample plate'),
+                      selectInput('dest_type',
+                                label = 'Destination labware type',
+                                choices = c('96 Well Eppendorf TwinTec PCR' = '96 Well Eppendorf TwinTec PCR',
+                                            '384 Well Biorad PCR' = '384 Well Biorad PCR'),
+                                selected = '96 Well Eppendorf TwinTec PCR')
+               )
+             )
     ),
     tabPanel("Example Input",
       fluidRow(

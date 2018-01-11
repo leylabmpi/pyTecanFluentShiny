@@ -36,9 +36,14 @@ call_dilute = function(script_path, subcommand,input){
       c('--rows', add_quotes(input$rows)),
       # Dilution
       c('--dilution', input$dilution),
-      c('--minvolume', input$minvolumne),
-      c('--maxvolume', input$maxvolumne),
-      c('--mintotal', input$mintotal)
+      c('--min-volume', input$minvolumne),
+      c('--max-volume', input$maxvolumne),
+      c('--min-total', input$mintotal),
+      c('--dil-labware-name', add_quotes(input$dil_labware_name)),
+      c('--dil-labware-type', add_quotes(input$dil_labware_type)),
+      # Destination labware
+      c('--dest-name', add_quotes(input$dest_name)),
+      c('--dest-type', add_quotes(input$dest_type))
     ) 
     # format
     if(input$format != 'blank'){
