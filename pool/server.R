@@ -30,31 +30,26 @@ call_pool = function(script_path, subcommand, input){
       #rename_tmp_file(input$sample_file),
       c('--prefix', add_quotes(prefix)),
       # Sample file
-      # --sample_format <see below>
-      # --sample_header <see below>
-      c('--sample_rows', add_quotes(input$sample_rows)),
-      c('--sample_col', add_quotes(input$sample_col)),
-      c('--include_col', add_quotes(input$include_col)),
-      c('--sample_labware_name', add_quotes(input$sample_labware_name)),
-      c('--sample_labware_type', add_quotes(input$sample_labware_type)),
-      c('--position_col', add_quotes(input$position_col)),
+      # --sample-format <see below>
+      # --sample-header <see below>
+      c('--sample-rows', add_quotes(input$sample_rows)),
+      c('--sample-col', add_quotes(input$sample_col)),
+      c('--include-col', add_quotes(input$include_col)),
+      c('--sample-labware-name', add_quotes(input$sample_labware_name)),
+      c('--sample-labware-type', add_quotes(input$sample_labware_type)),
+      c('--position-col', add_quotes(input$position_col)),
       # Mapping file
       # --mapfile <see below>
-      # --map_format <see below>
-      # --map_header <see below>
+      # --map-format <see below>
+      # --map-header <see below>
       # Pooling
       c('--volume', input$volume),
-      c('--liqcls', add_quotes(input$liqcls)),
+      c('--liq-cls', add_quotes(input$liqcls)),
       # --new_tips <see below>
       # Destination plate
-      c('--destname', add_quotes(input$destname)),
-      c('--desttype', add_quotes(input$desttype)),
-      c('--deststart', input$deststart),
-      # Tip type
-      c('--tip1000_type', add_quotes(input$tip1000_type)),
-      c('--tip200_type', add_quotes(input$tip200_type)),
-      c('--tip50_type', add_quotes(input$tip50_type)),
-      c('--tip10_type', add_quotes(input$tip10_type)),
+      c('--dest-name', add_quotes(input$destname)),
+      c('--dest-type', add_quotes(input$desttype)),
+      c('--dest-start', input$deststart),
       # sample files
       file_paths
     ) 
@@ -69,20 +64,20 @@ call_pool = function(script_path, subcommand, input){
     }
     ## mapping 
     if(input$map_format != 'blank'){
-      options = c(options, c('--map_format', add_quotes(input$map_format)))
+      options = c(options, c('--map-format', add_quotes(input$map_format)))
     }
     # header
     ## sample
     if(input$sample_header == FALSE){   # no header
-      options = c(options, c('--sample_header'))
+      options = c(options, c('--sample-header'))
     }
     ## mapping
     if(input$map_header == FALSE){   # no header
-      options = c(options, c('--map_header'))
+      options = c(options, c('--map-header'))
     }
     # tips
     if(input$new_tips == TRUE){  
-      options = c(options, c('--new_tips'))
+      options = c(options, c('--new-tips'))
     }
   }
   # call with options
