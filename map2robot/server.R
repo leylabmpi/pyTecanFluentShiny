@@ -26,27 +26,16 @@ call_map2robot = function(script_path, subcommand,input){
       c('--desttype', add_quotes(input$desttype)),
       c('--deststart', input$deststart),
       c('--rxns', input$rxns),
-      # Master mix
-      c('--mmtube', input$mmtube),
+      # Reagents
       c('--mmvolume', input$mmvolume),
-      # Primers
-      c('--fpvolume', input$fpvolume),
-      c('--rpvolume', input$rpvolume),
-      c('--fptube', input$fptube),
-      c('--rptube', input$rptube),
+      c('--prmvolume', input$prmvolume),
+      c('--pcrvolume', add_quotes(input$pcrvolume)),
+      c('--errorperc', add_quotes(input$errorperc)),
       # Liquid classes
       c('--mm-liq', add_quotes(input$mm_liq)),
       c('--primer-liq', add_quotes(input$primer_liq)),
       c('--sample-liq', add_quotes(input$sample_liq)),
-      c('--water-liq', add_quotes(input$water_liq)),
-      # Tip type
-      c('--tip1000_type', add_quotes(input$tip1000_type)),
-      c('--tip200_type', add_quotes(input$tip200_type)),
-      c('--tip50_type', add_quotes(input$tip50_type)),
-      c('--tip10_type', add_quotes(input$tip10_type)),
-      # Misc
-      c('--pcrvolume', add_quotes(input$pcrvolume)),
-      c('--errorperc', add_quotes(input$errorperc))
+      c('--water-liq', add_quotes(input$water_liq))
     ) 
   }
   # call with options

@@ -3,6 +3,7 @@ pyTecanFluentShiny
 
 Shiny front end for Python interface to TECAN Fluent liquid handling robot
 
+> WARNING: this package is under heavy development and is subject to change at any time.
 
 #### Sections
 

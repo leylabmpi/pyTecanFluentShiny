@@ -51,6 +51,11 @@ shinyUI(fluidPage(
                h5('"TECAN_primer_target_position"'),
                h6('The position (well) of your samples in your labware (numeric values; column-wise ordering)'),
                br(),
+               h4('Primers:'),
+               tags$ul(
+                 tags$li('For single-indexed primers (eg., EMP primers), the non-barcoded primer should be pre-added to either the mastermix (adjust the volume used for this script!) or each of the barcoded primers.')
+               ),
+               br(),
                h4('Controls:'),
                tags$ul(
                  tags$li('For the positive & negative controls, include them in the mapping file'),
@@ -73,8 +78,7 @@ shinyUI(fluidPage(
                tags$ul(
                  tags$li('All volumes are in ul'),
                  tags$li('Plate well locations are 1 to n-wells; numbering by column'),
-                 tags$li('PicoGreen should be added to the MasterMix *prior* to loading on robot'),
-                 tags$li('The output files ending in "_win" have Windows line breaks (for viewing on a PC)')
+                 tags$li('PicoGreen should be added to the MasterMix *prior* to loading on robot (adjust the volume accordingly!)')
                )
         )
       )
@@ -130,8 +134,7 @@ shinyUI(fluidPage(
     ),
     tabPanel("Reagents", 
       fluidRow(
-        column(12, h4('PCR reagent parameters')),
-        column(12, h5('Note: "tube number" is the location in the tube runner, starting from the "top" of the runner'))
+        column(12, h4('PCR reagent parameters'))
       ),
       fluidRow(
         column(4,
@@ -139,95 +142,30 @@ shinyUI(fluidPage(
                numericInput('pcrvolume',
                             label = "Total volume per PCR",
                             value = 25),
-               numericInput('errorperc',
-                            label = "Percent of extra total reagent volume to include",
-                            value = 10),
-               hr(),
-               br(),
-               h4('Master mix'),
-               numericInput('mmtube',
-                            label = "Master Mix tube number (which tube in the tube runner?)",
-                            value = 1),
                numericInput('mmvolume',
                             label = "MasterMix volume per PCR",
-                            value = 13.1)
-        ),
-        column(4,
-               h4('Primers'),
-               numericInput('fpvolume',
-                            label = "Forward primer volume per PCR",
-                            value = 1.0),
-               numericInput('rpvolume',
-                            label = "Reverse primer volume per PCR",
-                            value = 1.0),
-               numericInput('fptube',
-                            label = "Forward non-bacode primer tube number (If 0, then primers assummed to be barcoded primer on a plate)",
-                            value = 0),
-               numericInput('rptube',
-                            label = "Reverse non-bacode primer tube number (If 0, then primers assummed to be barcoded primer on a plate)",
-                            value = 0)
+                            value = 13.1),
+               numericInput('prmvolume',
+                            label = "Primer volume (assuming primers are combined in 1 tube)",
+                            value = 2.0),
+               numericInput('errorperc',
+                            label = "% total volume to include in calculating total reagent needed",
+                            value = 10)
         ),
         column(4,
                h4('Liquid classes'),
                textInput('mm_liq',
                          label = "Mastermix liquid class",
-                         value = "MasterMix Free Multi No-cLLD"),
+                         value = "MasterMix Free Multi"),
                textInput('primer_liq',
                          label = "Primer liquid class",
-                         value = "Water Contact Wet Single No-cLLD"),
+                         value = "Water Contact Wet Single"),
                textInput('sample_liq',
                          label = "Sample liquid class",
                          value = "Water Contact Wet Single No-cLLD"),
                textInput('water_liq',
                          label = "Water liquid class",
-                         value = "Water Contact Wet Single No-cLLD")
-        )
-      )
-    ),
-    tabPanel("Tips", 
-      fluidRow(
-        column(12,
-          h4('Destination plate parameters')
-        )
-      ),             
-      fluidRow(
-        column(4,
-               br(),
-               selectInput('tip1000_type',
-                           label = '1000 ul tip type to use',
-                           choices = c('FCA, 1000ul SBS' = 
-                                         'FCA, 1000ul SBS',
-                                       'FCA, 1000ul Filtered SBS' = 
-                                         'FCA, 1000ul Filtered SBS',
-                                       'None' = 'None'),
-                            selected = 'FCA, 1000ul SBS'),
-               selectInput('tip200_type',
-                           label = '200 ul tip type to use',
-                           choices = c('FCA, 200ul SBS' = 
-                                         'FCA, 200ul SBS',
-                                       'FCA, 200ul Filtered SBS' = 
-                                         'FCA, 200ul Filtered SBS',
-                                       'None' = 'None'),
-                           selected = 'FCA, 200ul SBS')
-               ),
-        column(4,
-               br(),
-               selectInput('tip50_type',
-                           label = '50 ul tip type to use',
-                           choices = c('FCA, 50ul SBS' = 
-                                                'FCA, 50ul SBS',
-                                              'FCA, 50ul Filtered SBS' = 
-                                                'FCA, 50ul Filtered SBS',
-                                              'None' = 'None'),
-                           selected = 'FCA, 50ul SBS'),
-               selectInput('tip10_type',
-                           label = '10 ul tip type to use',
-                           choices = c('FCA, 10ul SBS' = 
-                                                'FCA, 10ul SBS',
-                                              'FCA, 10ul Filtered SBS' = 
-                                                'FCA, 10ul Filtered SBS',
-                                              'None' = 'None'),
-                           selected = 'FCA, 10ul SBS')
+                         value = "Water Contact Wet Single")
         )
       )
     ),
