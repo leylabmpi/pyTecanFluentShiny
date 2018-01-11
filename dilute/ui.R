@@ -110,6 +110,18 @@ shinyUI(fluidPage(
                numericInput('mintotal',
                             label = "Minimum post-dilution total volume",
                             value = 10.0)
+        ),
+        column(4,
+               br(),
+               textInput("dil_labware_name", 
+                         label = "Name of labware containing the dilutant", 
+                         value = "100ml_dilutant"),
+               selectInput("dil_labware_type", 
+                           label = "Labware type containing the dilutant",
+                           choices = c('100ml_1' = '100ml_1',
+                                      '1.5ml Eppendorf' = '1.5ml Eppendorf',
+                                      '2.0ml Eppendorf' = '2.0ml Eppendorf'),
+                           selected = '100ml_1')
         )
       )
     ),
