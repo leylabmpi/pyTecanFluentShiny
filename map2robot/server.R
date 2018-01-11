@@ -22,14 +22,14 @@ call_map2robot = function(script_path, subcommand,input){
       c('--rows', add_quotes(input$rows)),
       c('--prefix', add_quotes(prefix)),
       # Destination plate
-      c('--dest-name', add_quotes(input$dest)),
+      c('--dest-name', add_quotes(input$destname)),
       c('--dest-type', add_quotes(input$desttype)),
       c('--dest-start', input$deststart),
       c('--rxns', input$rxns),
       # Reagents
+      c('--pcr-volume', add_quotes(input$pcrvolume)),
       c('--mm-volume', input$mmvolume),
       c('--prm-volume', input$prmvolume),
-      c('--pcr-volume', add_quotes(input$pcrvolume)),
       c('--error-perc', add_quotes(input$errorperc)),
       # Liquid classes
       c('--mm-liq', add_quotes(input$mm_liq)),
