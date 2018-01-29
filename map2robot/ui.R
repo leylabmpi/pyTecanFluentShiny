@@ -62,6 +62,10 @@ shinyUI(fluidPage(
                  tags$li('If the controls (or samples) are provided in a tube, include them in the mapping file and use either "1.5ml Eppendorf" or "2.0ml Eppendorf" for the labware type'),
                  tags$li('See the example input table (under the "Example Input" tab)')
                ),
+               h4('Labware:'),
+               tags$ul(
+                 tags$li('In order to use a plate adapter, use "PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR"')
+               ),
                br(),
                h4('Output files:'),
                h5('*_report.txt'),
@@ -156,16 +160,16 @@ shinyUI(fluidPage(
                h4('Liquid classes'),
                textInput('mm_liq',
                          label = "Mastermix liquid class",
-                         value = "MasterMix Free Multi"),
+                         value = "MasterMix Free Multi Bottom Disp"),
                textInput('primer_liq',
                          label = "Primer liquid class",
-                         value = "Water Free Single"),
+                         value = "Water Free Single Bottom Disp"),
                textInput('sample_liq',
                          label = "Sample liquid class",
-                         value = "Water Free Single No-cLLD"),
+                         value = "Water Free Single Bottom Disp"),
                textInput('water_liq',
                          label = "Water liquid class",
-                         value = "Water Free Single")
+                         value = "Water Free Single Bottom Disp")
         )
       )
     ),
