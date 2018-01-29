@@ -47,7 +47,7 @@ get_files_created = function(x){
 
 #' loading example mapping file
 load_ex_file = function(){
-  df = read.table('../data/qPCR_setup1.csv', sep=';', 
+  df = read.table('../data/qPCR_setup.txt', sep='\t', 
                   comment.char="~", header=TRUE, check.names=FALSE)
   return(df)
 }
