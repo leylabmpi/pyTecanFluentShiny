@@ -118,10 +118,10 @@ shinyUI(fluidPage(
                          value = "Dilutant"),
                selectInput("dil_labware_type", 
                            label = "Labware type containing the dilutant",
-                           choices = c('100ml_1' = '100ml_1',
-                                      '1.5ml Eppendorf' = '1.5ml Eppendorf',
-                                      '2.0ml Eppendorf' = '2.0ml Eppendorf'),
-                           selected = '100ml_1')
+                           choices = c('100ml_1 waste' = '100ml_1 waste',
+                                      '1.5 ml Eppendorf waste' = '1.5 ml Eppendorf waste',
+                                      '2.0 ml Eppendorf waste' = '2.0 ml Eppendorf waste'),
+                           selected = '100ml_1 waste')
         )
       )
     ),

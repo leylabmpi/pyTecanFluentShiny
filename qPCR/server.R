@@ -19,18 +19,16 @@ call_qPCR = function(script_path, subcommand,input){
       # I/O
       rename_tmp_file(input$SetupFile),
       c('--prefix', add_quotes(prefix)),
+      # Source labware
+      c('--mm-type', add_quotes(input$mm_type)),
+      c('--water-type', input$water_type),
       # Destination plate
       c('--dest', add_quotes(input$dest)),
-      c('--desttype', add_quotes(input$desttype)),
-      # Source labware
-      c('--mm', add_quotes(input$mm)),
-      c('--mmloc', input$mmloc),
-      c('--water', add_quotes(input$water)),
-      c('--waterloc', input$waterloc),
+      c('--dest-type', add_quotes(input$dest_type)),
       # Liquid classes
-      c('--mmliq', add_quotes(input$mmliq)),
-      c('--sampliq', add_quotes(input$sampleliq)),
-      c('--waterliq', add_quotes(input$waterliq))
+      c('--mm-liq', add_quotes(input$mm_liq)),
+      c('--samp-liq', add_quotes(input$sample_liq)),
+      c('--water-liq', add_quotes(input$water_liq))
     ) 
     if(input$format != 'blank'){
       c('--format', add_quotes(input$format))

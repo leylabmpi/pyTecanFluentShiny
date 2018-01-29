@@ -38,19 +38,45 @@ shinyUI(fluidPage(
                h6('The file format should be Excel or CSV.'),
                br(),
                h5('Generating the input table:'),
-               h6('Just create a plate layout for your experimet, then export and add some extra columns:'),
+               h6('Just create a plate layout for your experiment, then export in "long" format and add some extra columns:'),
               tags$ul(
-                tags$li('"Sample labware"  (labware containing sample DNA/RNA; eg., "96-Well[001]")'),
-                tags$li('"Sample location"  (numeric; minimum of 1)'),
-                tags$li('"Sample volume"  (numeric)'),
-                tags$li('"MM name"  (Name of master mix; this allows for multiple mastermixes)'),
-                tags$li('"MM volume"  (Volume of master mix in PCR rxn)'),
-                tags$li('"Water volume"  (Volume of water in PCR rxn)')
+                tags$li('"Sample labware name"'),
+                tags$ul(
+                  tags$li('labware name containing the sample (any name that you want)'),
+                  tags$li('Exmaple: "source plate"')
+                ),
+                tags$li('"Sample labware type"'),
+                tags$ul(
+                  tags$li('labware type (must EXACTLY match an existing labware type)'),
+                  tags$li('Example: "96 Eppendorf TwinTec PCR"')
+                ),
+                tags$li('"Sample location"'),
+                tags$ul(
+                  tags$li('location of sample in the source plate'),
+                  tags$li('numeric; column-wise indexing')
+                ),
+                tags$li('"Sample volume"'),
+                tags$ul(
+                  tags$li('numeric; sample volume in ul')
+                ),
+                tags$li('"MM name"'),
+                tags$ul(
+                  tags$li('Name of master mix for that sample'),
+                  tags$li('This allows for multiple master mixes per assay')
+                ),
+                tags$li('"MM volume"'),
+                tags$ul(
+                  tags$li('Volume of master mix in PCR rxn')
+                ),
+                tags$li('"Water volume"'),
+                tags$ul(
+                  tags$li('Volume of water in PCR rxn')
+                )
                ),
                br(),
                h5('Notes:'),
                tags$ul(
-                tags$li('Sample locations in plates numbered are column-wise'),
+                tags$li('Sample locations in plates numbered are column-wise (left-to-right)'),
                 tags$li('The setup file (input table) MUST have a header (capitalization doesn\'t matter)'),
                 tags$li('All volumes are in ul')
                )
@@ -63,6 +89,7 @@ shinyUI(fluidPage(
                            label = "File  excel or tab-delimited. If blank, the format will be guessed",
                            choices = c(' ' = 'blank',
                                        'Excel' = 'excel',
+                                       'csv' = 'csv',
                                        'Tab-delimited' = 'tab'),
                            selected = 'blank'),
                br(),
@@ -73,58 +100,52 @@ shinyUI(fluidPage(
         )
       )
     ),
-    tabPanel("Example Input",
-      fluidRow(
-        column(12, h4('qPCR Setup File format example:'))
-      ),
-      fluidRow(
-        column(12, DT::dataTableOutput('example_tbl'))
-      )
-    ),
     tabPanel("Other Options", 
       fluidRow(
         column(12, br())
       ),
       fluidRow(
         column(4,
+               h4('Source labware'),
+               textInput('mm_type',
+                         label = "Labware type containing the MasterMix",
+                         value = '1.5ml Eppendorf waste'),
+               textInput('water_type',
+                         label = "Labware type containing the Water",
+                         value = "100ml_1 waste")
+        ),
+        column(4,
                h4("Destination labware"),
                textInput('dest',
                          label = "Destination plate labware ID on TECAN worktable",
-                         value = "96 Well[001]"),
-               selectInput('desttype',
-                           label = "Destination plate labware type (# of wells)",
-                           choices = c('96-well' = 96,
-                                       '384-well' = 384),
-                           selected = 384)
-        ),
-        column(4,
-               h4('Source labware'),
-               textInput('mm',
-                         label = "Mastermix source labware ID on TECAN worktable",
-                         value = "Tubes[001]"),
-               numericInput('mmloc',
-                            label = "Mastermix start position on source labware",
-                            value = 1),
-               textInput('water',
-                         label = "Water source labware ID on TECAN worktable",
-                         value = "100ml[001]"),
-               numericInput('waterloc',
-                            label = "Water start position on source labware",
-                            value = 1)
+                         value = "Destination plate"),
+               selectInput('dest_type',
+                           label = "Destination plate labware name",
+                           choices = c('96 Well Eppendorf TwinTec PCR' = '96 Well Eppendorf TwinTec PCR',
+                                       '384 Well Biorad PCR' = '384 Well Biorad PCR'),
+                           selected = '96 Well Eppendorf TwinTec PC')
         ),
         column(4,
                h4('Liquid classes'),
-               textInput('mmliq',
-                         label = "Mastermix liquid class",
-                         value = "MasterMix Free Multi"),
-               textInput('sampliq',
+               textInput('mm_liq',
+                         label = "MasterMix liquid class",
+                         value = "MasterMix Free Multi Bottom Disp"),
+               textInput('samp_liq',
                          label = "Sample liquid class",
-                         value = "Water Contact Wet Single"),
-               textInput('waterliq',
+                         value = "Water Free Single Bottom Disp"),
+               textInput('water_liq',
                          label = "Water liquid class",
-                         value = "Water Contact Wet Single")
+                         value = "Water Free Single Bottom Disp")
         )
       )
+    ),
+    tabPanel("Example Input",
+             fluidRow(
+               column(12, h4('qPCR Setup File format example:'))
+             ),
+             fluidRow(
+               column(12, DT::dataTableOutput('example_tbl'))
+             )
     )
   )
 ))
