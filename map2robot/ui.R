@@ -160,16 +160,16 @@ shinyUI(fluidPage(
                h4('Liquid classes'),
                textInput('mm_liq',
                          label = "Mastermix liquid class",
-                         value = "MasterMix Free Multi Well Disp"),
+                         value = "MasterMix Free Multi Wall Disp"),
                textInput('primer_liq',
                          label = "Primer liquid class",
-                         value = "Water Free Single Well Disp"),
+                         value = "Water Free Single Wall Disp"),
                textInput('sample_liq',
                          label = "Sample liquid class",
-                         value = "Water Free Single Well Disp"),
+                         value = "Water Free Single Wall Disp"),
                textInput('water_liq',
                          label = "Water liquid class",
-                         value = "Water Free Single Well Disp")
+                         value = "Water Free Single Wall Disp")
         )
       )
     ),
