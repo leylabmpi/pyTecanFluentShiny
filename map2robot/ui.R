@@ -120,8 +120,9 @@ shinyUI(fluidPage(
                          value = "Destination plate"),
                selectInput('desttype',
                            label = "Destination plate labware type (# of wells)",
-                           choices = c('96-well' = '96 Well Eppendorf TwinTec PCR',
-                                       '384-well' = '384 Well Biorad PCR'),
+                           choices = c('96 Well Eppendorf TwinTec PCR' = '96 Well Eppendorf TwinTec PCR',
+                                       'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR' = 'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR',
+                                       '384 Well Biorad PCR' = '384 Well Biorad PCR'),
                            selected = '96-well')
         ),
         column(4,
