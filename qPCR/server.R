@@ -27,7 +27,7 @@ call_qPCR = function(script_path, subcommand,input){
       c('--dest-type', add_quotes(input$dest_type)),
       # Liquid classes
       c('--mm-liq', add_quotes(input$mm_liq)),
-      c('--samp-liq', add_quotes(input$sample_liq)),
+      c('--samp-liq', add_quotes(input$samp_liq)),
       c('--water-liq', add_quotes(input$water_liq))
     ) 
     if(input$format != 'blank'){
