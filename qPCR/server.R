@@ -21,7 +21,7 @@ call_qPCR = function(script_path, subcommand,input){
       c('--prefix', add_quotes(prefix)),
       # Source labware
       c('--mm-type', add_quotes(input$mm_type)),
-      c('--water-type', input$water_type),
+      c('--water-type', add_quotes(input$water_type)),
       # Destination plate
       c('--dest', add_quotes(input$dest)),
       c('--dest-type', add_quotes(input$dest_type)),
