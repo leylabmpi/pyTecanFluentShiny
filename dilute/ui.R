@@ -97,7 +97,14 @@ shinyUI(fluidPage(
                 br(),
                 numericInput('dilution',
                              label = "Target dilution concentration (ng/ul)",
-                             value = 5.0)
+                             value = 5.0),
+                br(),
+                textInput('dil_liq',
+                          label = "Dilutant liquid class",
+                          value = "Water Free Single Wall Disp"),
+                textInput('samp_liq',
+                          label = "Sample liquid class",
+                          value = "Water Free Single Wall Disp")
         ),
         column(4,
                br(),

@@ -41,6 +41,9 @@ call_dilute = function(script_path, subcommand,input){
       c('--min-total', input$mintotal),
       c('--dil-labware-name', add_quotes(input$dil_labware_name)),
       c('--dil-labware-type', add_quotes(input$dil_labware_type)),
+      # Liquid classes
+      c('--dil-liq', add_quotes(input$dil_liq)),
+      c('--samp-liq', add_quotes(input$samp_liq)),
       # Destination labware
       c('--dest-name', add_quotes(input$dest_name)),
       c('--dest-type', add_quotes(input$dest_type))
