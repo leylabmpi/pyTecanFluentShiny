@@ -10,6 +10,8 @@ make_example_data = function(){
   conc = c(10.1, 6.3, 1, 2.2, 3.1, 8.5)
   data.frame(
     TECAN_labware_name = rep('Sample DNA', length(conc)),
+    TECAN_labware_type = rep('PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR',
+                             length(conc)),
     TECAN_target_position = 1:length(conc),
     TECAN_sample_conc = conc
   )

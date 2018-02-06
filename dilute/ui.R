@@ -35,6 +35,8 @@ shinyUI(fluidPage(
                h4('The input is an Excel or tab-delimited file with columns:'),
                h5('"TECAN_labware_name"'),
                h6('Name of the labware containing samples (eg., "Sample plate 1")'),
+               h5('"TECAN_labware_type"'),
+               h6('The labware type (eg., "96 Well Eppendorf TwinTec PCR")'),
                h5('"TECAN_target_position"'),
                h6('The position (well) of your samples in your labware (numeric values; column-wise ordering)'),
                h5('"TECAN_sample_conc"'),
@@ -50,7 +52,8 @@ shinyUI(fluidPage(
                h3('Notes'),
                tags$ul(
                         tags$li('Sample locations in plates numbered are column-wise'),
-                        tags$li('All volumes are in ul')
+                        tags$li('All volumes are in ul'),
+                        tags$li('Labware types with "PCR Adapter 96 Well and ..." or "PCR Adapter 384 Well and ..." will include a plate adapter')
           )
         )    
       )
@@ -125,10 +128,11 @@ shinyUI(fluidPage(
                          value = "Dilutant"),
                selectInput("dil_labware_type", 
                            label = "Labware type containing the dilutant",
-                           choices = c('100ml_1 waste' = '100ml_1 waste',
-                                      '1.5ml Eppendorf waste' = '1.5ml Eppendorf waste',
-                                      '2.0ml Eppendorf waste' = '2.0ml Eppendorf waste'),
-                           selected = '100ml_1 waste')
+                           choices = c('25ml_1 waste' = '25ml_1 waste',
+                                       '100ml_1 waste' = '100ml_1 waste',
+                                       '1.5ml Eppendorf waste' = '1.5ml Eppendorf waste',
+                                       '2.0ml Eppendorf waste' = '2.0ml Eppendorf waste'),
+                           selected = '25ml_1 waste')
         )
       )
     ),
@@ -147,7 +151,9 @@ shinyUI(fluidPage(
                       selectInput('dest_type',
                                 label = 'Destination labware type',
                                 choices = c('96 Well Eppendorf TwinTec PCR' = '96 Well Eppendorf TwinTec PCR',
-                                            '384 Well Biorad PCR' = '384 Well Biorad PCR'),
+                                            'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR' = 'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR',
+                                            '384 Well Biorad PCR' = '384 Well Biorad PCR',
+                                            'PCR Adapter 384 Well and 384 Well Biorad PCR' = 'PCR Adapter 384 Well and 384 Well Biorad PCR'),
                                 selected = '96 Well Eppendorf TwinTec PCR')
                )
              )
