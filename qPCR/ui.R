@@ -112,7 +112,7 @@ shinyUI(fluidPage(
                          value = '1.5ml Eppendorf waste'),
                textInput('water_type',
                          label = "Labware type containing the Water",
-                         value = "100ml_1 waste")
+                         value = "25ml_1 waste")
         ),
         column(4,
                h4("Destination labware"),
@@ -122,7 +122,9 @@ shinyUI(fluidPage(
                selectInput('dest_type',
                            label = "Destination plate labware name",
                            choices = c('96 Well Eppendorf TwinTec PCR' = '96 Well Eppendorf TwinTec PCR',
-                                       '384 Well Biorad PCR' = '384 Well Biorad PCR'),
+                                       'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR' = 'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR',
+                                       '384 Well Biorad PCR' = '384 Well Biorad PCR',
+                                       'PCR Adapter 384 Well and 384 Well Biorad PCR' = 'PCR Adapter 384 Well and 384 Well Biorad PCR'),
                            selected = '96 Well Eppendorf TwinTec PC')
         ),
         column(4,

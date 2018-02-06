@@ -58,7 +58,7 @@ shinyUI(fluidPage(
                tags$ul(
                         tags$li('Sample locations in plates numbered are column-wise'),
                         tags$li('All volumes are in ul'),
-                        tags$li('The output files ending in "_win" have Windows line breaks (for viewing on a PC)')
+                        tags$li('Labware types with "PCR Adapter 96 Well and ..." or "PCR Adapter 384 Well and ..." will include a plate adapter')
           )
         )    
       )
