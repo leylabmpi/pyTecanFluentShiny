@@ -58,6 +58,10 @@ call_dilute = function(script_path, subcommand,input){
     if(input$header == FALSE){   # no header
       options = c(options, c('--header'))
     }
+    # tips
+    if(input$new_tips == TRUE){  
+      options = c(options, c('--new-tips'))
+    }
   }
   # call with options
   options = paste(c(subcommand, options), collapse=' ')
