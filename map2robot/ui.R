@@ -53,7 +53,8 @@ shinyUI(fluidPage(
                br(),
                h4('Primers:'),
                tags$ul(
-                 tags$li('For single-indexed primers (eg., EMP primers), the non-barcoded primer should be pre-added to either the mastermix (adjust the volume used for this script!) or each of the barcoded primers.')
+                 tags$li('For single-indexed primers (eg., EMP primers), the non-barcoded primer should be pre-added to either the mastermix (adjust the volume used for this script!) or each of the barcoded primers.'),
+                 tags$li('If primer volume set to 0, then primers are skipped.')
                ),
                br(),
                h4('Controls:'),
