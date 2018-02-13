@@ -76,9 +76,9 @@ call_pool = function(script_path, subcommand, input){
       options = c(options, c('--map-header'))
     }
     # tips
-    if(input$new_tips == TRUE){  
-      options = c(options, c('--new-tips'))
-    }
+  #  if(input$new_tips == TRUE){  
+  #    options = c(options, c('--new-tips'))
+  #  }
   }
   # call with options
   options = paste(c(subcommand, options), collapse=' ')

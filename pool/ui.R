@@ -40,7 +40,8 @@ shinyUI(fluidPage(
                  tags$li("A column designating whether to include or skip the samplles (include = 'Success/Pass/Include'; skip = 'Fail/Skip')"),
                  tags$li("A column designating the sample labware name"),
                  tags$li("A column designating the sample labware type (eg., '96 Well Eppendorf TwinTec PCR')"),
-                 tags$li("A column designating the sample position (well)")
+                 tags$li("A column designating the sample position (well)"),
+                 tags$li("NOTE: you can select column names in the 'Input/Output' tab")
                ),
                h4('Mapping file'),
                h5("If a mapping file is provided (same names as in the pooling file), then the mapping file will be trimmed to just those pooled, and the final pooled locations will be added to the mapping table."),
@@ -142,10 +143,10 @@ shinyUI(fluidPage(
                              value = 30.0),
                 textInput('liqcls',
                           label = 'Liquid class for pooling',
-                          value = 'Water Free Single No-cLLD'),
-                checkboxInput("new_tips", 
-                              label = "New tips for each sample replicate?",
-                              value = FALSE)
+                          value = 'Water Free Single No-cLLD')#,
+                #checkboxInput("new_tips", 
+                #              label = "New tips for each sample replicate?",
+                #              value = FALSE)
         ),
         column(4,
                h4('Destination labware'),
