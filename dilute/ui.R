@@ -107,7 +107,7 @@ shinyUI(fluidPage(
                           value = "Water Free Single Wall Disp"),
                 textInput('samp_liq',
                           label = "Sample liquid class",
-                          value = "Water Free Single Wall Disp")
+                          value = "Water Free Single Wall Disp Aspirate Anyway")
         ),
         column(4,
                br(),
@@ -119,7 +119,10 @@ shinyUI(fluidPage(
                             value = 30.0),
                numericInput('mintotal',
                             label = "Minimum post-dilution total volume",
-                            value = 10.0)
+                            value = 10.0),
+               checkboxInput('only_dil',
+                             label = "If sample conc. is <=0, only add dilutant?",
+                             value = FALSE)
         ),
         column(4,
                br(),
