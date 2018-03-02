@@ -59,8 +59,8 @@ call_dilute = function(script_path, subcommand,input){
       options = c(options, c('--header'))
     }
     # tips
-    if(input$new_tips == TRUE){    # new tips for each asp-disp
-      options = c(options, c('--new-tips'))
+    if(input$reuse_tips == TRUE){    # new tips for each asp-disp
+      options = c(options, c('--reuse-tips'))
     }
     # only dilutant
     if(input$only_dil == TRUE){    # only use dilutant if sample conc. <=0

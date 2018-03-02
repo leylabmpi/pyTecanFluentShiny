@@ -137,8 +137,8 @@ shinyUI(fluidPage(
                                        '2.0ml Eppendorf waste' = '2.0ml Eppendorf waste'),
                            selected = '25ml_1 waste'),
                br(),
-               checkboxInput('new_tips',
-                             label = "Use new tips for each dispense of the dilutant?",
+               checkboxInput('reuse_tips',
+                             label = "Re-use tips for each dispense of the dilutant?",
                              value = FALSE)
         )
       )
