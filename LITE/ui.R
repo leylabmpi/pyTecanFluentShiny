@@ -4,7 +4,7 @@ library(shiny)
 #-- UI --#
 shinyUI(fluidPage(
   
-  titlePanel("Map2Robot"),
+  titlePanel("LITE"),
   fluidRow(
     column(6,
       h5('Convert a QIIME-formatted mapping file into a Tecan worklist file for LITE (hacked Nextera) library prep')
