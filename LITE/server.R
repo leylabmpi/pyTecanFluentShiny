@@ -40,7 +40,8 @@ call_LITE = function(script_path, subcommand,input){
       c('--pcr-n-tip-reuse', input$pcr_n_tip_reuse),
       c('--pcr-n-multi-disp', input$pcr_n_multi_disp),
       # reagent labware type 
-      c('--mm-labware-type', add_quotes(input$mm_labware_type))
+      c('--tag-mm-labware-type', add_quotes(input$tag_mm_labware_type)),
+      c('--pcr-mm-labware-type', add_quotes(input$pcr_mm_labware_type))
     ) 
   }
   # call with options
