@@ -172,6 +172,23 @@ shinyUI(fluidPage(
                textInput('water_liq',
                          label = "Water liquid class",
                          value = "Water Free Single Wall Disp")
+        ),
+        column(4,
+               h4('Multi-dispense'),
+               numericInput('n_tip_reuse',
+                            label = "Number of tip reuses for multi-dispense",
+                            value = 4),
+               numericInput('n_multi_disp',
+                            label = "Number of multi-dispenses per tip (more multi-disp = more extra volume needed)",
+                            value = 6),
+               br(),
+               h4('Mastermix labware'),
+               selectInput('mm_labware_type',
+                           label = "Labware type for mastermix",
+                           choices = c('25ml_1 waste' = '25ml_1 waste',
+                                       '1.5ml Eppendorf waste' = '1.5ml Eppendorf waste',
+                                       '2.0ml Eppendorf waste' = '2.0ml Eppendorf waste'),
+                           selected = '25ml_1 waste')
         )
       )
     ),

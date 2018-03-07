@@ -35,7 +35,11 @@ call_map2robot = function(script_path, subcommand,input){
       c('--mm-liq', add_quotes(input$mm_liq)),
       c('--primer-liq', add_quotes(input$primer_liq)),
       c('--sample-liq', add_quotes(input$sample_liq)),
-      c('--water-liq', add_quotes(input$water_liq))
+      c('--water-liq', add_quotes(input$water_liq)),
+      c('--n-tip-reuse', add_quotes(input$n_tip_reuse)),
+      c('--n-multi-disp', add_quotes(input$n_multi_disp)),
+      # labware type
+      c('--mm-labware-type', add_quotes(input$mm_labware_type))
     ) 
   }
   # call with options
