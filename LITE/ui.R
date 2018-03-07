@@ -178,7 +178,7 @@ shinyUI(fluidPage(
                numericInput('tag_n_tip_reuse',
                             label = "Tagmentation mastermix: number of tip reuses for multi-dispense",
                             value = 2),
-               numericInput('n_multi_disp',
+               numericInput('tag_n_multi_disp',
                             label = "Tagmentation mastermix: number of multi-dispenses per tip (more multi-disp = more extra volume needed)",
                             value = 6),
                numericInput('pcr_n_tip_reuse',
