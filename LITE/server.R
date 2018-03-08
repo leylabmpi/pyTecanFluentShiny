@@ -32,7 +32,8 @@ call_LITE = function(script_path, subcommand,input){
       c('--primer-volume', input$primer_volume),
       c('--error-perc', add_quotes(input$errorperc)),
       # Liquid classes
-      c('--mm-liq', add_quotes(input$mm_liq)),
+      c('--tag-mm-liq', add_quotes(input$tag_mm_liq)),
+      c('--pcr-mm-liq', add_quotes(input$pcr_mm_liq)),
       c('--sample-liq', add_quotes(input$sample_liq)),
       c('--primer-liq', add_quotes(input$primer_liq)),
       c('--tag-n-tip-reuse', input$tag_n_tip_reuse),
