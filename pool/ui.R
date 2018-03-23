@@ -40,7 +40,7 @@ shinyUI(fluidPage(
                  tags$li("A column designating whether to include or skip the samplles (include = 'Success/Pass/Include'; skip = 'Fail/Skip')"),
                  tags$li("A column designating the sample labware name"),
                  tags$li("A column designating the sample labware type (eg., '96 Well Eppendorf TwinTec PCR')"),
-                 tags$li("A column designating the sample position (well)"),
+                 tags$li("A column designating the sample position (well). This can be column-wise numbering or well indexing (eg., 'A01' or 'C03')"),
                  tags$li("NOTE: you can select column names in the 'Input/Output' tab")
                ),
                h4('Mapping file'),
