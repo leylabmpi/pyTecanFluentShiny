@@ -159,7 +159,7 @@ shinyUI(fluidPage(
                            choices = c('96 well plate' = '96 Well Eppendorf TwinTec PCR',
                                        '384 well plate' = '384 Well Biorad PCR',
                                        '1.5ml Eppendorf' = '1.5ml Eppendorf',
-                                       '2.0ml Eppendorf' = '2.0ml Eppendorf'),
+                                       '2ml Eppendorf' = '2ml Eppendorf'),
                            selected = '96 Well Eppendorf TwinTec PCR'),
                numericInput('deststart',
                             label = "Starting position (eg., well) on the destination labware",
