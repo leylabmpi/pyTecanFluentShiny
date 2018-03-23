@@ -60,7 +60,7 @@ shinyUI(fluidPage(
                h4('Controls:'),
                tags$ul(
                  tags$li('For the positive & negative controls, include them in the mapping file'),
-                 tags$li('If the controls (or samples) are provided in a tube, include them in the mapping file and use either "1.5ml Eppendorf" or "2.0ml Eppendorf" for the labware type'),
+                 tags$li('If the controls (or samples) are provided in a tube, include them in the mapping file and use either "1.5ml Eppendorf" or "2ml Eppendorf" for the labware type'),
                  tags$li('See the example input table (under the "Example Input" tab)')
                ),
                h4('Labware:'),
@@ -187,7 +187,7 @@ shinyUI(fluidPage(
                            label = "Labware type for mastermix",
                            choices = c('25ml_1 waste' = '25ml_1 waste',
                                        '1.5ml Eppendorf waste' = '1.5ml Eppendorf waste',
-                                       '2.0ml Eppendorf waste' = '2.0ml Eppendorf waste'),
+                                       '2ml Eppendorf waste' = '2ml Eppendorf waste'),
                            selected = '25ml_1 waste')
         )
       )
