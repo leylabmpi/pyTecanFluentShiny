@@ -92,8 +92,8 @@ get_files_created = function(x){
 }
 
 
-#' Loading example sample file
-load_ex_sample_file = function(){
+#' Loading example PCR sample file
+load_ex_pcr_sample_file = function(){
   df = read_excel('../data/pool_PCR-run1.xlsx', sheet='SYBR')
   #colnames(df)[1] = '#SampleID'
   return(df)
@@ -103,6 +103,12 @@ load_ex_sample_file = function(){
 load_ex_map_file = function(){
   df = read_excel('../data/pool_map.xlsx', sheet='Sheet1')
   colnames(df)[1] = '#SampleID'
+  return(df)
+}
+
+#' Loading example general pooling sample file
+load_ex_gen_sample_file = function(){
+  df = read_excel('../data/pool_general.xlsx', sheet='Sheet1')
   return(df)
 }
 
@@ -146,9 +152,9 @@ shinyServer(function(input, output, session) {
     }
   )
   
-  # example sample data table
-  output$example_sample_tbl = DT::renderDataTable(
-    load_ex_sample_file(),
+  # example pcr sample data table
+  output$example_pcr_sample_tbl = DT::renderDataTable(
+    load_ex_pcr_sample_file(),
     rownames = FALSE,
     extensions = c('Buttons'),
     options = list(
@@ -168,5 +174,17 @@ shinyServer(function(input, output, session) {
       buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
     )
   )
+  # example general sample data table
+  output$example_gen_sample_tbl = DT::renderDataTable(
+    load_ex_gen_sample_file(),
+    rownames = FALSE,
+    extensions = c('Buttons'),
+    options = list(
+      pageLength = 40,
+      dom = 'Brt',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    )
+  )
+  
 })
 

@@ -59,7 +59,8 @@ shinyUI(fluidPage(
                tags$ul(
                         tags$li('Sample locations in plates numbered are column-wise'),
                         tags$li('All volumes are in ul'),
-                        tags$li('Labware types with "PCR Adapter 96 Well and ..." or "PCR Adapter 384 Well and ..." will include a plate adapter')
+                        tags$li('Labware types with "PCR Adapter 96 Well and ..." or "PCR Adapter 384 Well and ..." will include a plate adapter'),
+                        tags$li('App to convert well index:', tags$a(href='http://shiny-wetlab.eb.local:3838/RTecanFluentShiny/well_index/', 'well index'))
           )
         )    
       )
@@ -156,23 +157,25 @@ shinyUI(fluidPage(
                selectInput('desttype',
                            label = "Destination labware type",
                            choices = c('96 well plate' = '96 Well Eppendorf TwinTec PCR',
-                                       '384 well plate' = '384 Well Biorad PCR'),
+                                       '384 well plate' = '384 Well Biorad PCR',
+                                       '1.5ml Eppendorf' = '1.5ml Eppendorf',
+                                       '2.0ml Eppendorf' = '2.0ml Eppendorf'),
                            selected = '96 Well Eppendorf TwinTec PCR'),
                numericInput('deststart',
-                            label = "Starting position (well) on the destination labware",
+                            label = "Starting position (eg., well) on the destination labware",
                             value = 1)
         )
       )
     ),
-    tabPanel("Example Input: samples",
+    tabPanel("Example Input: PCR samples",
       fluidRow(
         column(12, 
-               h4('Sample File format example'),
+               h4('Sample File format example (pooling replicate PCRs)'),
                h5('Note: the table can include more columns')
         )
       ),
       fluidRow(
-        column(12, DT::dataTableOutput('example_sample_tbl'))
+        column(12, DT::dataTableOutput('example_pcr_sample_tbl'))
       )
     ),
     tabPanel("Example Input: mapping",
@@ -184,6 +187,17 @@ shinyUI(fluidPage(
      ),
      fluidRow(
        column(12, DT::dataTableOutput('example_map_tbl'))
+     )
+    ),
+    tabPanel("Example Input: combine all samples",
+             fluidRow(
+               column(12, 
+                      h4('Sample File format example (pooling all samples)'),
+                      h5('Note: the table can include more columns')
+               )
+             ),
+             fluidRow(
+               column(12, DT::dataTableOutput('example_gen_sample_tbl'))
      )
     )
    )
