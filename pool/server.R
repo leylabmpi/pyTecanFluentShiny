@@ -60,7 +60,7 @@ call_pool = function(script_path, subcommand, input){
     # format
     ## sample
     if(input$sample_format != 'blank'){
-      options = c(options, c('--sample_format', add_quotes(input$sample_format)))
+      options = c(options, c('--sample-format', add_quotes(input$sample_format)))
     }
     ## mapping 
     if(input$map_format != 'blank'){
