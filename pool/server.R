@@ -38,6 +38,7 @@ call_pool = function(script_path, subcommand, input){
       c('--sample-labware-name', add_quotes(input$sample_labware_name)),
       c('--sample-labware-type', add_quotes(input$sample_labware_type)),
       c('--position-col', add_quotes(input$position_col)),
+      c('--volume-col', add_quotes(input$volume_col)),
       # Mapping file
       # --mapfile <see below>
       # --map-format <see below>
