@@ -148,7 +148,7 @@ shinyUI(fluidPage(
                              value = 30.0),
                 textInput('liqcls',
                           label = 'Liquid class for pooling',
-                          value = 'Water Free Single No-cLLD')#,
+                          value = 'Water Free Single')#,
                 #checkboxInput("new_tips", 
                 #              label = "New tips for each sample replicate?",
                 #              value = FALSE)
