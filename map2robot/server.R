@@ -41,6 +41,10 @@ call_map2robot = function(script_path, subcommand,input){
       # labware type
       c('--mm-labware-type', add_quotes(input$mm_labware_type))
     ) 
+    ## mapping
+    if(input$mm_one_source == TRUE){   # one source labare for MM
+      options = c(options, c('--mm-one-source'))
+    }
   }
   # call with options
   options = paste(c(subcommand, options), collapse=' ')
