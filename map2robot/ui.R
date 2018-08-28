@@ -195,15 +195,26 @@ shinyUI(fluidPage(
         )
       )
     ),
-    tabPanel("Example Input",
+    tabPanel("Example Input: Step1 PCR",
              fluidRow(
                column(12, 
-                      h4('Mapping File format example'),
-                      h5('Note: the table can contain other columns')
+                      h4('Mapping File format example for the Step 1 PCR (gene-specific primers)'),
+                      h5('Note: the table can contain other columns, but it must contain the "TECAN_*" columns')
                )
              ),
              fluidRow(
-               column(12, DT::dataTableOutput('example_tbl'))
+               column(12, DT::dataTableOutput('example_tbl_step1'))
+             )
+    ),
+    tabPanel("Example Input: Step2 PCR",
+             fluidRow(
+               column(12, 
+                      h4('Mapping File format example for the Step 2 PCR (adding indices)'),
+                      h5('Note: the table can contain other columns, but it must contain the "TECAN_*" columns')
+               )
+             ),
+             fluidRow(
+               column(12, DT::dataTableOutput('example_tbl_step2'))
              )
     )
   )

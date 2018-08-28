@@ -57,9 +57,18 @@ get_files_created = function(x){
   x[sapply(x, file.exists)]
 }
 
-#' loading example mapping file
-load_ex_map_file = function(){
-  df = read.delim('../data/basic_96well.txt', sep='\t')
+#' loading example mapping file for Step2 PCR
+load_ex_map_file = function(step=1){
+  step = as.numeric(step)
+  if(step == 1){
+    f = '../data/PCR-Step1_96well.txt'
+  } else
+  if(step == 2){
+    f = '../data/PCR-Step1_96well.txt'
+  } else {
+    stop('"step" option value not recognized')
+  }
+  df = read.delim(f, sep='\t')
   colnames(df)[1] = '#SampleID'
   return(df)
 }
@@ -103,9 +112,21 @@ shinyServer(function(input, output, session) {
     }
   )
   
-  # example data table
-  output$example_tbl = DT::renderDataTable(
-    load_ex_map_file(),
+  # example data tables
+  ## Step 1 PCR
+  output$example_tbl_step1 = DT::renderDataTable(
+    load_ex_map_file(step=1),
+    extensions = c('Buttons'),
+    rownames = FALSE,
+    options = list(
+      pageLength = 40,
+      dom = 'Brt',
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    )
+  )
+  ## Step 2 PCR
+  output$example_tbl_step2 = DT::renderDataTable(
+    load_ex_map_file(step=2),
     extensions = c('Buttons'),
     rownames = FALSE,
     options = list(
