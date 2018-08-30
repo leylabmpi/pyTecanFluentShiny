@@ -58,10 +58,12 @@ shinyUI(fluidPage(
                hr(),
                h3('Notes'),
                tags$ul(
-                        tags$li('Sample locations in plates numbered are column-wise'),
+                        tags$li('Samples are pooled based on sample name (eg., all samples named "control" will be pooled, regardless of source plate'),
+                        tags$li('The final order of the pooled samples will match the order of samples in the input table'),
+                        tags$li('Sample locations in plates are numbered column-wise'),
                         tags$li('All volumes are in ul'),
                         tags$li('Labware types with "PCR Adapter 96 Well and ..." or "PCR Adapter 384 Well and ..." will include a plate adapter'),
-                        tags$li('App to convert well index:', tags$a(href='http://shiny-wetlab.eb.local:3838/RTecanFluentShiny/well_index/', 'well index'))
+                        tags$li('If needed, there\'s an app to convert the well index:', tags$a(href='http://shiny-wetlab.eb.local:3838/RTecanFluentShiny/well_index/', 'well index'))
           )
         )    
       )
@@ -92,7 +94,6 @@ shinyUI(fluidPage(
                          value = 'all')
         ),
         column(4,
-               br(),
                h4('Sample file columns'),
                textInput('sample_col', 
                          label = 'Column containing the samples',
@@ -114,7 +115,7 @@ shinyUI(fluidPage(
                          value = 'None')
         ),
         column(4,
-               h4('Mapping file'),
+               h4('Mapping file (optional)'),
                fileInput("map_file", 
                          label = "Map File: a QIIME-formatted mapping file"),
                selectInput('map_format',
