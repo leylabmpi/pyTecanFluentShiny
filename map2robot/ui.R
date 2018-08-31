@@ -156,7 +156,7 @@ shinyUI(fluidPage(
                             value = 2.0),
                numericInput('errorperc',
                             label = "% total volume to include in calculating total reagent needed",
-                            value = 10)
+                            value = 15)
         ),
         column(4,
                h4('Liquid classes'),
