@@ -193,6 +193,9 @@ shinyUI(fluidPage(
                              label = "All mastermix in one labware instead of one labware per destination plate?",
                              value = TRUE)
         )
+      ),
+      fluidRow(
+        column(12, tags$blockquote("NOTE: if primer is added directly to the mastermix, then set 'Primer volume' to 0"))
       )
     ),
     tabPanel("Example Input: Step1 PCR",
