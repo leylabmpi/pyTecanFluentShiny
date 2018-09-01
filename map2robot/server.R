@@ -41,9 +41,15 @@ call_map2robot = function(script_path, subcommand,input){
       # labware type
       c('--mm-labware-type', add_quotes(input$mm_labware_type))
     ) 
-    ## mapping
+    ## boolean options
     if(input$mm_one_source == TRUE){   # one source labare for MM
       options = c(options, c('--mm-one-source'))
+    }
+    if(input$prm_in_mm == TRUE){   # primers in mastermix
+      options = c(options, c('--prm-in-mm'))
+    }
+    if(input$water_in_mm == TRUE){   # water in mastermix
+      options = c(options, c('--water-in-mm'))
     }
   }
   # call with options

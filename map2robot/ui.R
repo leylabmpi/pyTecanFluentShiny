@@ -151,9 +151,18 @@ shinyUI(fluidPage(
                numericInput('mmvolume',
                             label = "MasterMix volume per PCR",
                             value = 13.1),
-               numericInput('prmvolume',
-                            label = "Primer volume (assuming primers are combined in 1 tube)",
-                            value = 2.0),
+               checkboxInput('prm_in_mm',
+                             label = "Primer pre-added to mastermix?",
+                             value = FALSE),
+               conditionalPanel(
+                 condition = "input.prm_in_mm == false",
+                 numericInput('prmvolume',
+                              label = "Primer volume (assuming primers are combined in 1 tube)",
+                              value = 2.0)
+               ),
+               checkboxInput('water_in_mm',
+                             label = "Water pre-added to mastermix?",
+                             value = FALSE),
                numericInput('errorperc',
                             label = "% total volume to include in calculating total reagent needed",
                             value = 15)
@@ -163,15 +172,21 @@ shinyUI(fluidPage(
                textInput('mm_liq',
                          label = "Mastermix liquid class",
                          value = "MasterMix Free Multi Wall Disp"),
-               textInput('primer_liq',
-                         label = "Primer liquid class",
-                         value = "Water Free Single Wall Disp"),
+               conditionalPanel(
+                 condition = "input.prm_in_mm == false",
+                  textInput('primer_liq',
+                            label = "Primer liquid class",
+                            value = "Water Free Single Wall Disp")
+               ),
                textInput('sample_liq',
                          label = "Sample liquid class",
                          value = "Water Free Single Wall Disp"),
-               textInput('water_liq',
-                         label = "Water liquid class",
-                         value = "Water Free Single Wall Disp")
+               conditionalPanel(
+                 condition = "input.water_in_mm == false",
+                 textInput('water_liq',
+                           label = "Water liquid class",
+                           value = "Water Free Single Wall Disp")
+               )
         ),
         column(4,
                h4('Multi-dispense'),
