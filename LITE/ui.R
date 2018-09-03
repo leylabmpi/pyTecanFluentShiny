@@ -31,6 +31,7 @@ shinyUI(fluidPage(
     tabPanel("Description", 
       fluidRow(
         column(12,
+               h5('First, make sure to reads the NGS pipeline docs on', tags$a(href="https://confluence.eb.local:8443/display/D3PROTOCOL/NGS+pipelines", "Confluence")),
                h5('Convert a QIIME-formatted mapping file to a GWL file, which is used by the TECAN robot to conduct LITE (hacked Nextera) library prep (ie., combining MasterMix, primers, samples, etc)'),
                h5('The mapping file must contain some extra columns that will tell the robot where the samples are.'),
                h3('Input'),

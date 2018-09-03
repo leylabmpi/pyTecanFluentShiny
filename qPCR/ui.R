@@ -31,6 +31,7 @@ shinyUI(fluidPage(
     tabPanel("Input/Output", 
       fluidRow(
         column(7,
+               h5('First, make sure to reads the NGS pipeline docs on', tags$a(href="https://confluence.eb.local:8443/display/D3PROTOCOL/NGS+pipelines", "Confluence")),
                br(),
                h4('Description'),
                h6('Create a worklist file for the TECAN Fluent robot for qPCR setup.'),

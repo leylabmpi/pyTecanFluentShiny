@@ -31,6 +31,7 @@ shinyUI(fluidPage(
     tabPanel("Description",
       fluidRow(
         column(12,
+               h5('First, make sure to reads the NGS pipeline docs on', tags$a(href="https://confluence.eb.local:8443/display/D3PROTOCOL/NGS+pipelines", "Confluence")),
                h3('Input'),
                h4('The input is an Excel or tab-delimited file with columns:'),
                h5('"TECAN_labware_name"'),

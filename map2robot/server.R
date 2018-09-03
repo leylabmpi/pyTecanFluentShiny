@@ -70,7 +70,7 @@ load_ex_map_file = function(step=1){
     f = '../data/PCR-Step1_96well.txt'
   } else
   if(step == 2){
-    f = '../data/PCR-Step1_96well.txt'
+    f = '../data/PCR-Step2_96well.txt'
   } else {
     stop('"step" option value not recognized')
   }
@@ -88,6 +88,38 @@ shinyServer(function(input, output, session) {
   #script_path = '/usr/local/bin/pyTecanFluent'
   script_path = '/home/shiny/miniconda3/envs/py3/bin/pyTecanFluent'
   subcommand = 'map2robot'
+  
+  # updating UI
+  observe({
+    x = input$PCR_step
+    if (x == 1){
+      # PCR step 1
+      updateNumericInput(session, "mmvolume",
+                         label = "MasterMix volume per PCR",
+                         value = 13.1,
+                         min = 0,
+                         max = 200)
+      updateNumericInput(session, 'prmvolume',
+                         label = "Primer volume (assuming primers are combined in 1 tube)",
+                         value = 2.0,
+                         min = 0,
+                         max = 100,
+                         step = 0.5)
+    } else {
+      # PCR step 2
+      updateNumericInput(session, "mmvolume",
+                        label = "MasterMix volume per PCR",
+                        value = 12.5,
+                        min = 0,
+                        max = 200)
+      updateNumericInput(session, 'prmvolume',
+                         label = "Primer volume (assuming primers are combined in 1 tube)",
+                         value = 4.0,
+                         min = 0,
+                         max = 100,
+                         step = 0.5)
+      }
+  })
   
   # calling script
   script_out = eventReactive(input$runBtn, {

@@ -7,7 +7,7 @@ shinyUI(fluidPage(
   titlePanel("Map2Robot"),
   fluidRow(
     column(6,
-      h5('Convert a QIIME-formatted mapping file into a Tecan worklist file for barcoded PCR setup')
+      h5('Convert a QIIME-formatted mapping file into a Tecan worklist file for (barcoded) PCR setup')
     )
   ),
   fluidRow(
@@ -31,6 +31,7 @@ shinyUI(fluidPage(
     tabPanel("Description", 
       fluidRow(
         column(12,
+               h5('First, make sure to reads the NGS pipeline docs on', tags$a(href="https://confluence.eb.local:8443/display/D3PROTOCOL/NGS+pipelines", "Confluence")),
                h5('Convert a QIIME-formatted mapping file to a GWL file, which is used by the TECAN robot to conduct the NGS amplicon PCR prep (ie., combining MasterMix, primers, samples, etc)'),
                h5('The mapping file must contain some extra columns that will tell the robot where the samples are.'),
                h3('Input'),
@@ -144,60 +145,44 @@ shinyUI(fluidPage(
       ),
       fluidRow(
         column(4,
-               h4("Total volumes"),
+               h4("Main parameters"),
+               numericInput('PCR_step',
+                            label = "Which PCR step (1 or 2)?",
+                            value = 1,
+                            min = 1, 
+                            max = 2, 
+                            step = 1),
                numericInput('pcrvolume',
                             label = "Total volume per PCR",
-                            value = 25),
-               numericInput('mmvolume',
-                            label = "MasterMix volume per PCR",
-                            value = 13.1),
-               checkboxInput('prm_in_mm',
-                             label = "Primer pre-added to mastermix?",
-                             value = FALSE),
-               conditionalPanel(
-                 condition = "input.prm_in_mm == false",
-                 numericInput('prmvolume',
-                              label = "Primer volume (assuming primers are combined in 1 tube)",
-                              value = 2.0)
-               ),
-               checkboxInput('water_in_mm',
-                             label = "Water pre-added to mastermix?",
-                             value = FALSE),
+                            value = 25, 
+                            min = 5, 
+                            max = 200,
+                            step = 5),
                numericInput('errorperc',
                             label = "% total volume to include in calculating total reagent needed",
-                            value = 15)
+                            value = 15,
+                            min = 0,
+                            max = 100,
+                            step = 5)
         ),
         column(4,
-               h4('Liquid classes'),
-               textInput('mm_liq',
-                         label = "Mastermix liquid class",
-                         value = "MasterMix Free Multi Wall Disp"),
-               conditionalPanel(
-                 condition = "input.prm_in_mm == false",
-                  textInput('primer_liq',
-                            label = "Primer liquid class",
-                            value = "Water Free Single Wall Disp")
-               ),
-               textInput('sample_liq',
-                         label = "Sample liquid class",
-                         value = "Water Free Single Wall Disp"),
-               conditionalPanel(
-                 condition = "input.water_in_mm == false",
-                 textInput('water_liq',
-                           label = "Water liquid class",
-                           value = "Water Free Single Wall Disp")
-               )
-        ),
-        column(4,
-               h4('Multi-dispense'),
+               h4('MasterMix'),
+               numericInput('mmvolume',
+                            label = "MasterMix volume per PCR",
+                            value = 13.1,
+                            min = 0,
+                            max = 200),   # PCR2 = 12.5
                numericInput('n_tip_reuse',
-                            label = "Number of tip reuses for multi-dispense",
-                            value = 4),
+                            label = "Number of tip reuses for MasterMix multi-dispense",
+                            value = 4,
+                            min = 1,
+                            max = 99),
                numericInput('n_multi_disp',
                             label = "Number of multi-dispenses per tip (more multi-disp = more extra volume needed)",
-                            value = 6),
+                            value = 6,
+                            min = 1,
+                            max = 20),
                br(),
-               h4('Mastermix labware'),
                selectInput('mm_labware_type',
                            label = "Labware type for mastermix",
                            choices = c('25ml_1 waste' = '25ml_1 waste',
@@ -207,10 +192,51 @@ shinyUI(fluidPage(
                checkboxInput('mm_one_source',
                              label = "All mastermix in one labware instead of one labware per destination plate?",
                              value = TRUE)
+        ),
+        column(4,
+               h4("Other reagents"),
+               checkboxInput('prm_in_mm',
+                             label = "Primer pre-added to mastermix?",
+                             value = FALSE),
+               checkboxInput('water_in_mm',
+                             label = "Water pre-added to mastermix?",
+                             value = FALSE),
+               conditionalPanel(
+                 condition = "input.prm_in_mm == false",
+                 numericInput('prmvolume',
+                              label = "Primer volume (assuming primers are combined in 1 tube)",
+                              value = 2.0,
+                              min = 0,
+                              max = 100,
+                              step = 0.5)    # PCR2 =  4 
+               ),
+               h5('Make sure to add diluted PicoGreen to the MasterMix!')
         )
-      ),
+      )
+    ),
+    tabPanel("Liquid classes", 
       fluidRow(
-        column(12, tags$blockquote("NOTE: if primer is added directly to the mastermix, then set 'Primer volume' to 0"))
+             column(4,
+                    h4('Liquid classes'),
+                    textInput('mm_liq',
+                              label = "Mastermix liquid class",
+                              value = "MasterMix Free Multi Wall Disp"),
+                    conditionalPanel(
+                      condition = "input.prm_in_mm == false",
+                      textInput('primer_liq',
+                                label = "Primer liquid class",
+                                value = "Water Free Single Wall Disp")
+                    ),
+                    textInput('sample_liq',
+                              label = "Sample liquid class",
+                              value = "Water Free Single Wall Disp"),
+                    conditionalPanel(
+                      condition = "input.water_in_mm == false",
+                      textInput('water_liq',
+                                label = "Water liquid class",
+                                value = "Water Free Single Wall Disp")
+                    )
+        )
       )
     ),
     tabPanel("Example Input: Step1 PCR",
