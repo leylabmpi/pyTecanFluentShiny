@@ -105,6 +105,11 @@ shinyServer(function(input, output, session) {
                          min = 0,
                          max = 100,
                          step = 0.5)
+      updateNumericInput(session, 'rxns',
+                         label = "Number of replicate PCRs per sample",
+                         value = 3,
+                         min = 1,
+                         max = 99)
     } else {
       # PCR step 2
       updateNumericInput(session, "mmvolume",
@@ -118,6 +123,11 @@ shinyServer(function(input, output, session) {
                          min = 0,
                          max = 100,
                          step = 0.5)
+      updateNumericInput(session, 'rxns',
+                         label = "Number of replicate PCRs per sample",
+                         value = 1,
+                         min = 1,
+                         max = 99)
       }
   })
   

@@ -130,12 +130,16 @@ shinyUI(fluidPage(
         column(4,
                numericInput('deststart',
                             label = "Start well number on destination plate",
-                            value = 1)
+                            value = 1,
+                            min = 1,
+                            max = 384)
         ),
         column(4,
                numericInput('rxns',
                             label = "Number of replicate PCRs per sample",
-                            value = 3)
+                            value = 3,
+                            min = 1,
+                            max = 99)
         )
       )
     ),
