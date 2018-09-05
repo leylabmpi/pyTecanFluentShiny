@@ -130,6 +130,19 @@ shinyServer(function(input, output, session) {
                          max = 99)
       }
   })
+  observe({
+    x = input$mm_single_disp
+    if(x == TRUE){
+      updateNumericInput(session, 'n_multi_disp',
+                         label = "Number of multi-dispenses per tip (more multi-disp = more extra volume needed)",
+                         value = 1,
+                         min = 1,
+                         max = 1)
+      updateTextInput(session, 'mm_liq',
+                         label = "Mastermix liquid class",
+                         value = "MasterMix Free Single Wall Disp")
+    }
+  })
   
   # calling script
   script_out = eventReactive(input$runBtn, {
@@ -161,20 +174,8 @@ shinyServer(function(input, output, session) {
   )
   
   # example data tables
-  ## Step 1 PCR
-  output$example_tbl_step1 = DT::renderDataTable(
-    load_ex_map_file(step=1),
-    extensions = c('Buttons'),
-    rownames = FALSE,
-    options = list(
-      pageLength = 40,
-      dom = 'Brt',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-    )
-  )
-  ## Step 2 PCR
-  output$example_tbl_step2 = DT::renderDataTable(
-    load_ex_map_file(step=2),
+  output$example_tbl = DT::renderDataTable(
+    load_ex_map_file(step=input$PCR_step),
     extensions = c('Buttons'),
     rownames = FALSE,
     options = list(

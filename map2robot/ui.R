@@ -25,6 +25,18 @@ shinyUI(fluidPage(
       uiOutput('download_btn'),
       br(),
       br()
+    ),
+    column(6,
+           br(),
+           numericInput('PCR_step',
+                        label = "Which PCR step (1 = gene-specific or 2 = adding barcodes)?",
+                        value = 1,
+                        min = 1, 
+                        max = 2, 
+                        step = 1,
+                        width='100%'),
+           br(),
+           br()
     )
   ),
   tabsetPanel(
@@ -150,12 +162,6 @@ shinyUI(fluidPage(
       fluidRow(
         column(4,
                h4("Main parameters"),
-               numericInput('PCR_step',
-                            label = "Which PCR step (1 or 2)?",
-                            value = 1,
-                            min = 1, 
-                            max = 2, 
-                            step = 1),
                numericInput('pcrvolume',
                             label = "Total volume per PCR",
                             value = 25, 
@@ -175,18 +181,7 @@ shinyUI(fluidPage(
                             label = "MasterMix volume per PCR",
                             value = 13.1,
                             min = 0,
-                            max = 200),   # PCR2 = 12.5
-               numericInput('n_tip_reuse',
-                            label = "Number of tip reuses for MasterMix multi-dispense",
-                            value = 4,
-                            min = 1,
-                            max = 99),
-               numericInput('n_multi_disp',
-                            label = "Number of multi-dispenses per tip (more multi-disp = more extra volume needed)",
-                            value = 6,
-                            min = 1,
-                            max = 20),
-               br(),
+                            max = 200),
                selectInput('mm_labware_type',
                            label = "Labware type for mastermix",
                            choices = c('25ml_1 waste' = '25ml_1 waste',
@@ -212,13 +207,16 @@ shinyUI(fluidPage(
                               value = 2.0,
                               min = 0,
                               max = 100,
-                              step = 0.5)    # PCR2 =  4 
+                              step = 0.5)    
                ),
                h5('Make sure to add diluted PicoGreen to the MasterMix!')
         )
       )
     ),
-    tabPanel("Liquid classes", 
+    tabPanel("Liquid transfer", 
+      fluidRow(
+               column(12, h4('Liquid transfer options'))
+      ),
       fluidRow(
              column(4,
                     h4('Liquid classes'),
@@ -240,10 +238,26 @@ shinyUI(fluidPage(
                                 label = "Water liquid class",
                                 value = "Water Free Single Wall Disp")
                     )
+             ),
+              column(4,
+                     h4('MasterMix pipetting'),
+                     numericInput('n_tip_reuse',
+                                  label = "Number of tip reuses for MasterMix multi-dispense",
+                                  value = 4,
+                                  min = 1,
+                                  max = 99),
+                     numericInput('n_multi_disp',
+                                  label = "Number of multi-dispenses per tip (more multi-disp = more extra volume needed)",
+                                  value = 6,
+                                  min = 1,
+                                  max = 20),
+                     checkboxInput('mm_single_disp',
+                                   label = "Use single dispense instead of multi-dispense",
+                                   value = FALSE)
         )
       )
     ),
-    tabPanel("Example Input: Step1 PCR",
+    tabPanel("Example Input",
              fluidRow(
                column(12, 
                       h4('Mapping File format example for the Step 1 PCR (gene-specific primers)'),
@@ -251,18 +265,7 @@ shinyUI(fluidPage(
                )
              ),
              fluidRow(
-               column(12, DT::dataTableOutput('example_tbl_step1'))
-             )
-    ),
-    tabPanel("Example Input: Step2 PCR",
-             fluidRow(
-               column(12, 
-                      h4('Mapping File format example for the Step 2 PCR (adding indices)'),
-                      h5('Note: the table can contain other columns, but it must contain the "TECAN_*" columns')
-               )
-             ),
-             fluidRow(
-               column(12, DT::dataTableOutput('example_tbl_step2'))
+               column(12, DT::dataTableOutput('example_tbl'))
              )
     )
   )
