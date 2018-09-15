@@ -139,7 +139,7 @@ shinyUI(fluidPage(
                            selected = '25ml_1 waste'),
                br(),
                checkboxInput('reuse_tips',
-                             label = "Re-use tips for each dispense of the dilutant?",
+                             label = "Re-use tips for each dispense of the dilutant? (WARNING: dilutant volumes must all use the same tip size!)",
                              value = FALSE)
         )
       )
