@@ -69,6 +69,7 @@ call_dilute = function(script_path, subcommand,input){
   }
   # call with options
   options = paste(c(subcommand, options), collapse=' ')
+  print(options)
   system2(script_path, options, stdout=TRUE, stderr=TRUE)
 }
 
