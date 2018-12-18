@@ -120,7 +120,7 @@ shinyUI(fluidPage(
                             value = 30.0),
                numericInput('mintotal',
                             label = "Minimum post-dilution total volume",
-                            value = 10.0),
+                            value = 20.0),
                checkboxInput('only_dil',
                              label = "If sample conc. is <=0, only add dilutant?",
                              value = FALSE)
