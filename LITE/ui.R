@@ -35,8 +35,9 @@ shinyUI(fluidPage(
                h5('Convert a QIIME-formatted mapping file to a GWL file, which is used by the TECAN robot to conduct LITE (hacked Nextera) library prep (ie., combining MasterMix, primers, samples, etc)'),
                h5('The mapping file must contain some extra columns that will tell the robot where the samples are.'),
                h3('Input'),
-               h4('Extra columns needed in the mapping file:'),
-               h6(br('If no barcoding, single barcoding, or dual barcodes already combined:')),
+               h4('Columns needed in the mapping file:'),
+               h5('[optional] "SampleID"'),
+               h6('The name of each sample (if not provided, samples will named by sample order)'),
                h5('"TECAN_sample_labware_name"'),
                h6('The sample labware name on the robot worktable'),
                h5('"TECAN_sample_labware_type"'),
@@ -78,6 +79,8 @@ shinyUI(fluidPage(
                h6('A table listing the labware to be placed on the robot worktable'),
                h5('*.gwl'),
                h6('A "worklist" file with instructions for the robot'),
+               h5('*BIORAD-Destination_plate.txt'),
+               h6('Load this into the BioRad PCR software to add sample IDs to the plate layout'),
                h3('Notes'),
                tags$ul(
                  tags$li('All volumes are in ul'),
@@ -187,10 +190,10 @@ shinyUI(fluidPage(
                h4('Multi-dispense'),
                numericInput('tag_n_tip_reuse',
                             label = "Tagmentation mastermix: number of tip reuses for dispense",
-                            value = 6),
+                            value = 1),
                numericInput('pcr_n_tip_reuse',
                             label = "PCR mastermix: number of tip reuses for dispense",
-                            value = 6)
+                            value = 1)
         )
       )
     ),
