@@ -130,7 +130,7 @@ shinyUI(fluidPage(
         column(4,
                numericInput('deststart',
                             label = "Start well number on destination plate",
-                            value = 1)
+                            value = 1, min = 1, max = 384)
         )
       )
     ),
@@ -143,19 +143,19 @@ shinyUI(fluidPage(
                h4("Total volumes"),
                numericInput('tag_mm_volume',
                             label = "Tagmentation MasterMix volume per reaction",
-                            value = 3.0),
+                            value = 3.0, min = 1, max = 100),
                numericInput('pcr_mm_volume',
                             label = "PCR MasterMix volume per reaction",
-                            value = 18.0),
+                            value = 18.0, min = 1, max = 100),
                numericInput('sample_volume',
                             label = "Sample volume per reaction",
-                            value = 2.0),
+                            value = 2.0, min = 0, max = 100),
                numericInput('primer_volume',
                             label = "Primer volume (assuming primers are combined in 1 tube/well)",
-                            value = 2.0),
+                            value = 2.0, min = 0, max = 100),
                numericInput('errorperc',
                             label = "% total volume to include in calculating total reagent needed",
-                            value = 10)
+                            value = 10, min = 0, max = 100)
         ),
         column(4,
                h4('Liquid classes'),
@@ -190,10 +190,10 @@ shinyUI(fluidPage(
                h4('Multi-dispense'),
                numericInput('tag_n_tip_reuse',
                             label = "Tagmentation mastermix: number of tip reuses for dispense",
-                            value = 1),
+                            value = 1, min = 1, max = 12),
                numericInput('pcr_n_tip_reuse',
                             label = "PCR mastermix: number of tip reuses for dispense",
-                            value = 1)
+                            value = 1, min = 1, max = 12)
         )
       )
     ),
