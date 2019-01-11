@@ -57,7 +57,7 @@ get_files_created = function(x){
 #' loading example mapping file
 load_ex_map_file = function(){
   df = read.delim('../data/LITE_96well.txt', sep='\t')
-  colnames(df)[1] = '#SampleID'
+  colnames(df)[1] = 'SampleID'
   return(df)
 }
 
