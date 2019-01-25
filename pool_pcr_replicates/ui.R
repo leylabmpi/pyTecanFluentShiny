@@ -4,10 +4,10 @@ library(shiny)
 #-- UI --#
 shinyUI(fluidPage(
   
-  titlePanel("Pool"),
+  titlePanel("Pool PCR replicates"),
   fluidRow(
     column(6,
-      h5('Create robot commands for pooling samples')
+      h5('Create robot commands for pooling PCR replicates')
     )
   ),
   fluidRow(
