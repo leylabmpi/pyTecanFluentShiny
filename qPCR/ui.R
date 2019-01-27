@@ -7,7 +7,7 @@ shinyUI(fluidPage(
   titlePanel("qPCR"),
   fluidRow(
     column(12,
-      h5('Convert a qPCR setup table file into a Tecan worklist file for barcoded PCR setup')
+      h5('Convert a qPCR setup table file into a Tecan worklist file')
     )
   ),
   fluidRow(
@@ -34,9 +34,9 @@ shinyUI(fluidPage(
                h5('First, make sure to reads the NGS pipeline docs on', tags$a(href="https://confluence.eb.local:8443/display/D3PROTOCOL/NGS+pipelines", "Confluence")),
                br(),
                h4('Description'),
-               h6('Create a worklist file for the TECAN Fluent robot for qPCR setup.'),
+               h6('This app creates worklist and labware files for the TECAN Fluent robot.'),
                h6('The input is an exported plate layout from the BioRad qPCR software.'),
-               h6('The file format should be Excel or CSV.'),
+               h6('The robot will setup the qPCR assay based on the BioRad qPCR plate layout'),
                br(),
                h5('Generating the input table:'),
                h6('Just create a plate layout for your experiment, then export in "long" format and add some extra columns:'),
@@ -49,7 +49,13 @@ shinyUI(fluidPage(
                 tags$li('"Sample labware type"'),
                 tags$ul(
                   tags$li('labware type (must EXACTLY match an existing labware type)'),
-                  tags$li('Example: "96 Eppendorf TwinTec PCR"')
+                  tags$li('labware types:'),
+                  tags$ul(
+                    tags$li('"1.5ml Eppendorf"'),
+                    tags$li('"2.0ml Eppendorf"'),
+                    tags$li('"PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR"'),
+                    tags$li('"PCR Adapter 384 Well and 384 Well Biorad PCR"')
+                  )
                 ),
                 tags$li('"Sample location"'),
                 tags$ul(
@@ -79,6 +85,7 @@ shinyUI(fluidPage(
                tags$ul(
                 tags$li('Sample locations in plates numbered are column-wise (left-to-right)'),
                 tags$li('The setup file (input table) MUST have a header (capitalization doesn\'t matter)'),
+                tags$li('For labware: "PCR Adapter" means that the plate MUST be placed on a metal adapter'),
                 tags$li('All volumes are in ul')
                )
         ),
@@ -108,12 +115,22 @@ shinyUI(fluidPage(
       fluidRow(
         column(4,
                h4('Source labware'),
-               textInput('mm_type',
-                         label = "Labware type containing the MasterMix",
-                         value = '1.5ml Eppendorf waste'),
-               textInput('water_type',
-                         label = "Labware type containing the Water",
-                         value = "25ml_1 waste")
+               selectInput('mm_type',
+                           label = "Labware type containing the Mastermix",
+                           choices = c('25ml trough' = '25ml_1 waste',
+                                       '1.5ml Eppendorf tube' = '1.5ml Eppendorf waste',
+                                       '2ml Eppendorf tube' = '2ml Eppendorf waste',
+                                       '5ml Eppendorf tube' = 'Eppi_5ml_2X_tube_rack',
+                                       '10ml Falcon tube' = 'Falcon_10ml_3X_tube_rack'),
+                           selected = '2ml Eppendorf waste'),
+               selectInput('water_type',
+                           label = "Labware type containing the PCR water",
+                           choices = c('25ml trough' = '25ml_1 waste',
+                                       '1.5ml Eppendorf tube' = '1.5ml Eppendorf waste',
+                                       '2ml Eppendorf tube' = '2ml Eppendorf waste',
+                                       '5ml Eppendorf tube' = 'Eppi_5ml_2X_tube_rack',
+                                       '10ml Falcon tube' = 'Falcon_10ml_3X_tube_rack'),
+                           selected = '25ml_1 waste')
         ),
         column(4,
                h4("Destination labware"),
