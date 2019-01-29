@@ -166,6 +166,12 @@ shinyUI(fluidPage(
              fluidRow(
                column(12, DT::dataTableOutput('example_tbl'))
              )
+    ),
+    tabPanel("TECAN webserver",
+             fluidRow(
+               br(),
+               column(12, htmlOutput('tecan_ws'))
+             )
     )
   )
 ))

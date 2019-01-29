@@ -101,5 +101,10 @@ shinyServer(function(input, output, session) {
       buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
     )
   )
+  
+  # TECAN webserver
+  output$tecan_ws <- renderUI({
+    tags$iframe(src = 'http://10.35.156.190/', height=500, width=1000)
+  })
 })
 
