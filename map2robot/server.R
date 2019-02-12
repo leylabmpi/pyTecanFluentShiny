@@ -134,7 +134,7 @@ shinyServer(function(input, output, session) {
     x = input$mm_single_disp
     if(x == TRUE){
       updateNumericInput(session, 'n_multi_disp',
-                         label = "Number of multi-dispenses per tip (more multi-disp = more extra volume needed)",
+                         label = "Number of multi-dispenses per tip",
                          value = 1,
                          min = 1,
                          max = 1)

@@ -136,8 +136,9 @@ shinyUI(fluidPage(
                            label = "Destination plate labware type (# of wells)",
                            choices = c('96 Well Eppendorf TwinTec PCR' = '96 Well Eppendorf TwinTec PCR',
                                        'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR' = 'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR',
-                                       '384 Well Biorad PCR' = '384 Well Biorad PCR'),
-                           selected = '96-well')
+                                       '384 Well Biorad PCR' = '384 Well Biorad PCR',
+                                       'PCR Adapter 384 Well and 384 Well Biorad PCR' = 'PCR Adapter 384 Well and 384 Well Biorad PCR'),
+                           selected = 'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR')
         ),
         column(4,
                numericInput('deststart',
@@ -242,18 +243,18 @@ shinyUI(fluidPage(
               column(4,
                      h4('MasterMix pipetting'),
                      numericInput('n_tip_reuse',
-                                  label = "Number of tip reuses for MasterMix multi-dispense",
-                                  value = 4,
+                                  label = "Number of tip reuses for MasterMix",
+                                  value = 6,
                                   min = 1,
                                   max = 99),
                      numericInput('n_multi_disp',
-                                  label = "Number of multi-dispenses per tip (more multi-disp = more extra volume needed)",
+                                  label = "Number of multi-dispenses per tip",
                                   value = 6,
                                   min = 1,
                                   max = 20),
                      checkboxInput('mm_single_disp',
                                    label = "Use single dispense instead of multi-dispense",
-                                   value = FALSE)
+                                   value = TRUE)
         )
       )
     ),
