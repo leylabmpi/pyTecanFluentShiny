@@ -208,9 +208,20 @@ shinyUI(fluidPage(
                               value = 2.0,
                               min = 0,
                               max = 100,
-                              step = 0.5)    
+                              step = 0.5)
+                 ),
+               conditionalPanel(
+                 condition = "input.prm_in_mm == true",
+                 h5('Make sure to increase the MasterMix volume to include the primer volume!')
+                 ),
+               conditionalPanel(
+                 condition = "input.water_in_mm == true",
+                 h5('Make sure to increase the MasterMix volume to include the water volume!')
                ),
-               h5('Make sure to add diluted PicoGreen to the MasterMix!')
+               conditionalPanel(
+                 condition = "input.PCR_step == 1",
+                 h5('Make sure to add diluted PicoGreen (eg., 0.6 ul per rxn) to the MasterMix!')
+               )
         )
       )
     ),
