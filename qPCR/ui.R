@@ -153,7 +153,11 @@ shinyUI(fluidPage(
                          value = "Water Free Single Wall Disp"),
                textInput('water_liq',
                          label = "Water liquid class",
-                         value = "Water Free Single Wall Disp")
+                         value = "Water Free Single Wall Disp"),
+               h4('Other'),
+               numericInput('n_tip_reuse',
+                            label = "Number of tip re-uses for aliquoting the mastermix",
+                            value = 4, min = 1, max = 12)
         )
       )
     ),

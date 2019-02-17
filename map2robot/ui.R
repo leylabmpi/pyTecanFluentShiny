@@ -255,7 +255,7 @@ shinyUI(fluidPage(
               column(4,
                      h4('MasterMix pipetting'),
                      numericInput('n_tip_reuse',
-                                  label = "Number of tip reuses for MasterMix",
+                                  label = "Number of tip re-uses for MasterMix",
                                   value = 6,
                                   min = 1,
                                   max = 99),
@@ -265,7 +265,7 @@ shinyUI(fluidPage(
                                   min = 1,
                                   max = 20),
                      checkboxInput('mm_single_disp',
-                                   label = "Use single dispense instead of multi-dispense",
+                                   label = "Use single dispense instead of multi-dispense?",
                                    value = TRUE)
         )
       )
