@@ -193,7 +193,7 @@ shinyUI(fluidPage(
                             value = 4, min = 1, max = 12),
                numericInput('pcr_n_tip_reuse',
                             label = "PCR mastermix: number of tip re-uses",
-                            value = 1, min = 1, max = 12)
+                            value = 4, min = 1, max = 12)
         ),
         column(4,
                h4('Liquid classes'),
