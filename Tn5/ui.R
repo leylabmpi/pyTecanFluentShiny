@@ -153,7 +153,7 @@ shinyUI(fluidPage(
                numericInput('target_sample_ng',
                             label = "Target (optimal) amount of DNA (ng) used per rxn",
                             value = 5.0, min = 0, max = 100),  
-               selectInput('tag_mm_labware_type',
+               selectInput('tag_Tn5_labware_type',
                            label = "Labware type for Tn5 enzyme",
                            choices = c('25ml trough (in 100ml trough)' = '25ml_1 waste',
                                        '1.5ml Eppendorf tube' = '1.5ml Eppendorf waste',
