@@ -74,7 +74,7 @@ shinyUI(fluidPage(
                h5('Tagmentation assay files = "*_tag_*"'),
                h5('PCR assay files = "*_pcr_*"'),
                h5('*_report.txt'),
-               h6('A summary of the PCR assay setup'),
+               h6('A summary of the reagents required'),
                h5('*_map.txt'),
                h6('A samples file with added PCR assay information'),
                h5('*_labware.txt'),
@@ -128,7 +128,7 @@ shinyUI(fluidPage(
                                        'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR' = 'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR',
                                        '384 Well Biorad PCR' = '384 Well Biorad PCR',
                                        'PCR Adapter 384 Well and 384 Well Biorad PCR' = 'PCR Adapter 384 Well and 384 Well Biorad PCR'),
-                           selected = 'PCR Adapter 384 Well and 384 Well Biorad PCR')
+                           selected = 'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR')
         ),
         column(4,
                numericInput('deststart',
@@ -208,7 +208,7 @@ shinyUI(fluidPage(
                          value = "Water Free Single Wall Disp"),
                textInput('sample_liq',
                          label = "Sample liquid class",
-                         value = "Water Free Single Wall Disp"),
+                         value = "Water Contact Wet Single"),
                textInput('pcr_mm_liq',
                          label = "PCR: Mastermix liquid class",
                          value = "MasterMix Free Single"),
