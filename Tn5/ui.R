@@ -208,7 +208,7 @@ shinyUI(fluidPage(
                          value = "Water Free Single Wall Disp"),
                textInput('sample_liq',
                          label = "Sample liquid class",
-                         value = "Water Contact Wet Single"),
+                         value = "Water Free Single Wall Disp"),
                textInput('pcr_mm_liq',
                          label = "PCR: Mastermix liquid class",
                          value = "MasterMix Free Single"),
