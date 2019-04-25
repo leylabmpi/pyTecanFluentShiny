@@ -31,6 +31,7 @@ call_Tn5 = function(script_path, subcommand,input){
       c('--min-sample-volume', input$min_sample_volume),
       c('--max-sample-volume', input$max_sample_volume),
       c('--target-ng-sample', input$target_sample_ng),
+      c('--buffer-dilution', input$buffer_dilution),
       c('--tag-Tn5-labware-type', add_quotes(input$tag_Tn5_labware_type)),
       c('--tag-buffer-labware-type', add_quotes(input$tag_buffer_labware_type)),
       c('--tag-n-tip-reuse', input$tag_n_tip_reuse),
