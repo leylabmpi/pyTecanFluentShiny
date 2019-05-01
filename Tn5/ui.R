@@ -192,8 +192,8 @@ shinyUI(fluidPage(
                hr(),
                h4('Multi-dispense'),
                numericInput('tag_n_tip_reuse',
-                            label = "Tagmentation mastermix: number of tip re-uses",
-                            value = 1, min = 1, max = 12),
+                            label = "Tagmentation mastermix: number of tip re-uses for H2O (only if H2O is aliquoted 1st)",
+                            value = 4, min = 1, max = 12),
                numericInput('pcr_n_tip_reuse',
                             label = "PCR mastermix: number of tip re-uses",
                             value = 4, min = 1, max = 12)
