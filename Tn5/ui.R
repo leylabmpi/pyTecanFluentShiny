@@ -206,7 +206,7 @@ shinyUI(fluidPage(
                textInput('tag_buffer_liq',
                          label = "Tagmentation: buffer liquid class",
                          value = "Tn5 Contact Wet Single Ignore"),
-               textInput('water_liq',
+               textInput('tag_water_liq',
                          label = "Tagmentation: Water liquid class",
                          value = "Water Contact Wet Single Ignore"),
                textInput('sample_liq',
