@@ -43,10 +43,10 @@ call_Tn5 = function(script_path, subcommand,input){
       # Liquid classes
       c('--tag-Tn5-liq', add_quotes(input$tag_Tn5_liq)),
       c('--tag-buffer-liq', add_quotes(input$tag_buffer_liq)),
+      c('--tag-water-liq', add_quotes(input$tag_water_liq)),
       c('--sample-liq', add_quotes(input$sample_liq)),
       c('--pcr-mm-liq', add_quotes(input$pcr_mm_liq)),
       c('--primer-liq', add_quotes(input$primer_liq)),
-      c('--water-liq', add_quotes(input$water_liq)),
       # misc
       c('--water-labware-type', add_quotes(input$water_labware_type)),
       c('--error-perc', add_quotes(input$errorperc))
