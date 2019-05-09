@@ -62,7 +62,7 @@ shinyUI(fluidPage(
                h5('"TECAN_primer_labware_type"'),
                h6('The primer plate labware type on the robot worktable (eg., "96 Well Eppendorf TwinTec PCR"'),
                h5('"TECAN_primer_target_position"'),
-               h6('The position (well) of your samples in your labware (numeric values; column-wise ordering)'),
+               h6('The position (eg., well) of your primers (numeric values; column-wise ordering)'),
                br(),
                h4('Primers:'),
                tags$ul(
