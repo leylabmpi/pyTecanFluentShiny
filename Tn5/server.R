@@ -28,12 +28,9 @@ call_Tn5 = function(script_path, subcommand,input){
       # Reagents
       ## Tagmentation
       c('--tag-rxn-volume', input$tag_rxn_volume),
-      c('--min-sample-volume', input$min_sample_volume),
-      c('--max-sample-volume', input$max_sample_volume),
-      c('--target-ng-sample', input$target_sample_ng),
-      c('--buffer-dilution', input$buffer_dilution),
+      c('--sample-conc', input$sample_conc),
+      c('--sample-volume', input$sample_volume),
       c('--tag-Tn5-labware-type', add_quotes(input$tag_Tn5_labware_type)),
-      c('--tag-buffer-labware-type', add_quotes(input$tag_buffer_labware_type)),
       c('--tag-n-tip-reuse', input$tag_n_tip_reuse),
       ## PCR
       c('--pcr-mm-volume', input$pcr_mm_volume),
@@ -42,13 +39,10 @@ call_Tn5 = function(script_path, subcommand,input){
       c('--pcr-n-tip-reuse', input$pcr_n_tip_reuse),
       # Liquid classes
       c('--tag-Tn5-liq', add_quotes(input$tag_Tn5_liq)),
-      c('--tag-buffer-liq', add_quotes(input$tag_buffer_liq)),
-      c('--tag-water-liq', add_quotes(input$tag_water_liq)),
       c('--sample-liq', add_quotes(input$sample_liq)),
       c('--pcr-mm-liq', add_quotes(input$pcr_mm_liq)),
       c('--primer-liq', add_quotes(input$primer_liq)),
       # misc
-      c('--water-labware-type', add_quotes(input$water_labware_type)),
       c('--error-perc', add_quotes(input$errorperc))
     ) 
   }
