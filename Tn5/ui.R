@@ -33,9 +33,15 @@ shinyUI(fluidPage(
         column(12,
                h5('First, make sure to reads the NGS pipeline docs on', tags$a(href="https://confluence.eb.local:8443/display/D3PROTOCOL/NGS+pipelines", "Confluence")),
                h5('Convert a table of samples to a GWL file, which is used by the TECAN robot to conduct custom-Tn5 NGS library prep'),
-               h5('The samples file must contain some extra columns that will tell the robot where the samples are.'),
+               h5('This app assumes that there are only 2 reagents for the Tn5 incubation:'),
+               tags$ul(
+                 tags$li('Tn5 MasterMix (Tn5 + Tn5 buffer + water)'),
+                 tags$li('Your DNA samples')
+               ),
+               h5('This app assumes that the DNA samples are all at appox. the same DNA concentration'),
+               hr(),
                h3('Input'),
-               h4('Columns needed in the samples file:'),
+               h4('Columns needed in the samples file (see "Example Input" tab for an example)'),
                h5('[optional] "SampleID"'),
                h6('The name of each sample (if not provided, samples will named by sample order)'),
                h5('"TECAN_sample_labware_name"'),
