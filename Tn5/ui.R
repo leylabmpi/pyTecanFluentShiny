@@ -162,7 +162,7 @@ shinyUI(fluidPage(
                                        '1.5ml Eppendorf tube' = '1.5ml Eppendorf waste',
                                        '2ml Eppendorf tube' = '2ml Eppendorf waste',
                                        '5ml Eppendorf tube' = '5ml Eppendorf waste',
-                                       '10ml Falcon tube' = '10ml_Falcon'),
+                                       '10ml Falcon tube' = '10ml Falcon'),
                            selected = '2ml Eppendorf waste'),
                selectInput('tag_buffer_labware_type',
                            label = "Labware type for Tn5 enzyme buffer",
@@ -170,7 +170,7 @@ shinyUI(fluidPage(
                                        '1.5ml Eppendorf tube' = '1.5ml Eppendorf waste',
                                        '2ml Eppendorf tube' = '2ml Eppendorf waste',
                                        '5ml Eppendorf tube' = '5ml Eppendorf waste',
-                                       '10ml Falcon tube' = '10ml_Falcon'),
+                                       '10ml Falcon tube' = '10ml Falcon'),
                            selected = '2ml Eppendorf waste')
         ),
         column(4,
@@ -187,7 +187,7 @@ shinyUI(fluidPage(
                                        '1.5ml Eppendorf tube' = '1.5ml Eppendorf waste',
                                        '2ml Eppendorf tube' = '2ml Eppendorf waste',
                                        '5ml Eppendorf tube' = '5ml Eppendorf waste',
-                                       '10ml Falcon tube' = '10ml_Falcon'),
+                                       '10ml Falcon tube' = '10ml Falcon'),
                            selected = '5ml Eppendorf waste'),
                hr(),
                h4('Multi-dispense'),
@@ -229,7 +229,7 @@ shinyUI(fluidPage(
                                        '1.5ml Eppendorf tube' = '1.5ml Eppendorf waste',
                                        '2ml Eppendorf tube' = '2ml Eppendorf waste',
                                        '5ml Eppendorf tube' = '5ml Eppendorf waste',
-                                       '10ml Falcon tube' = '10ml_Falcon'),
+                                       '10ml Falcon tube' = '10ml Falcon'),
                            selected = '25ml_1 waste')
         )
       )

@@ -189,7 +189,7 @@ shinyUI(fluidPage(
                                        '1.5ml Eppendorf tube' = '1.5ml Eppendorf waste',
                                        '2ml Eppendorf tube' = '2ml Eppendorf waste',
                                        '5ml Eppendorf tube' = '5ml Eppendorf waste',
-                                       '10ml Falcon tube' = '10ml_Falcon'),
+                                       '10ml Falcon tube' = '10ml Falcon'),
                            selected = '5ml Eppendorf waste'),
                checkboxInput('mm_one_source',
                              label = "All mastermix in one labware instead of one labware per destination plate?",

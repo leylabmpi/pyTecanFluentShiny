@@ -39,7 +39,13 @@ shinyUI(fluidPage(
                h6('The robot will setup the qPCR assay based on the BioRad qPCR plate layout'),
                br(),
                h5('Generating the input table:'),
-               h6('Just create a plate layout for your experiment, then export in "long" format and add some extra columns:'),
+               h6('Just create a plate layout for your experiment, then export by doing the following:'),
+               tags$ul(
+                 tags$li('In the plate layout view, click "spreadsheet view/importer"'),
+                 tags$li('Right click on the table, then clik "Export to Excel"')
+                 ),
+              h5('Input table format:'),
+              h6('See the "Example Input" tab for an example'),
               tags$ul(
                 tags$li('"Sample labware name"'),
                 tags$ul(
@@ -52,7 +58,9 @@ shinyUI(fluidPage(
                   tags$li('labware types:'),
                   tags$ul(
                     tags$li('"1.5ml Eppendorf"'),
-                    tags$li('"2.0ml Eppendorf"'),
+                    tags$li('"2ml Eppendorf"'),
+                    tags$li('"5ml Eppendorf"'),
+                    tags$li('"10ml Falcon"'),
                     tags$li('"PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR"'),
                     tags$li('"PCR Adapter 384 Well and 384 Well Biorad PCR"')
                   )
@@ -121,7 +129,7 @@ shinyUI(fluidPage(
                                        '1.5ml Eppendorf tube' = '1.5ml Eppendorf waste',
                                        '2ml Eppendorf tube' = '2ml Eppendorf waste',
                                        '5ml Eppendorf tube' = '5ml Eppendorf waste',
-                                       '10ml Falcon tube' = '10ml_Falcon'),
+                                       '10ml Falcon tube' = '10ml Falcon'),
                            selected = '2ml Eppendorf waste'),
                selectInput('water_type',
                            label = "Labware type containing the PCR water",
@@ -129,7 +137,7 @@ shinyUI(fluidPage(
                                        '1.5ml Eppendorf tube' = '1.5ml Eppendorf waste',
                                        '2ml Eppendorf tube' = '2ml Eppendorf waste',
                                        '5ml Eppendorf tube' = '5ml Eppendorf waste',
-                                       '10ml Falcon tube' = '10ml_Falcon'),
+                                       '10ml Falcon tube' = '10ml Falcon'),
                            selected = '25ml_1 waste')
         ),
         column(4,
@@ -143,7 +151,7 @@ shinyUI(fluidPage(
                                        'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR' = 'PCR Adapter 96 Well and 96 Well Eppendorf TwinTec PCR',
                                        '384 Well Biorad PCR' = '384 Well Biorad PCR',
                                        'PCR Adapter 384 Well and 384 Well Biorad PCR' = 'PCR Adapter 384 Well and 384 Well Biorad PCR'),
-                           selected = '96 Well Eppendorf TwinTec PC')
+                           selected = '384 Well Biorad PCR')
         ),
         column(4,
                h4('Liquid classes'),
