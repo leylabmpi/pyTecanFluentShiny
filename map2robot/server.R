@@ -94,6 +94,9 @@ shinyServer(function(input, output, session) {
     x = input$PCR_step
     if (x == 1){
       # PCR step 1
+      updateTextInput(session, 'prefix',
+                         label = 'Output file name prefix',
+                         value = 'TECAN_NGS_amplicon_PCR1')
       updateNumericInput(session, "mmvolume",
                          label = "MasterMix volume per PCR",
                          value = 13.1,
@@ -110,8 +113,12 @@ shinyServer(function(input, output, session) {
                          value = 3,
                          min = 1,
                          max = 99)
+      
     } else {
       # PCR step 2
+      updateTextInput(session, 'prefix',
+                      label = 'Output file name prefix',
+                      value = 'TECAN_NGS_amplicon_PCR2')
       updateNumericInput(session, "mmvolume",
                         label = "MasterMix volume per PCR",
                         value = 12.5,
