@@ -92,6 +92,9 @@ shinyServer(function(input, output, session) {
   # updating UI
   observe({
     x = input$PCR_step
+    if (is.na(x)){
+      return(NA)
+    } 
     if (x == 1){
       # PCR step 1
       updateTextInput(session, 'prefix',
