@@ -7,7 +7,7 @@ shinyUI(fluidPage(
   titlePanel("Map2Robot"),
   fluidRow(
     column(6,
-      h5('Convert a QIIME-formatted mapping file into a Tecan worklist file for (barcoded) PCR setup')
+      h5('Convert a table of samples (see "Example input" tab) into a Tecan worklist file for (barcoded) PCR setup')
     )
   ),
   fluidRow(
@@ -44,10 +44,10 @@ shinyUI(fluidPage(
       fluidRow(
         column(12,
                h5('First, make sure to reads the NGS pipeline docs on', tags$a(href="https://confluence.eb.local:8443/display/D3PROTOCOL/NGS+pipelines", "Confluence")),
-               h5('Convert a QIIME-formatted mapping file to a GWL file, which is used by the TECAN robot to conduct the NGS amplicon PCR prep (ie., combining MasterMix, primers, samples, etc)'),
-               h5('The mapping file must contain some extra columns that will tell the robot where the samples are.'),
+               h5('Convert a table of samples (see "Example input" tab) into insructions used by the TECAN robot to conduct the NGS amplicon PCR prep (ie., combining MasterMix, primers, samples, etc)'),
+               h5('The input table file must contain some extra columns that will tell the robot where the samples are.'),
                h3('Input'),
-               h4('Extra columns needed in the mapping file:'),
+               h4('Extra columns needed in the input table file:'),
                h6(br('If no barcoding, single barcoding, or dual barcodes already combined:')),
                h5('"TECAN_sample_labware_name"'),
                h6('The sample labware name on the robot worktable'),
@@ -72,8 +72,8 @@ shinyUI(fluidPage(
                br(),
                h4('Controls:'),
                tags$ul(
-                 tags$li('For the positive & negative controls, include them in the mapping file'),
-                 tags$li('If the controls (or samples) are provided in a tube, include them in the mapping file and use either "1.5ml Eppendorf" or "2ml Eppendorf" for the labware type'),
+                 tags$li('For the positive & negative controls, include them in the input table file'),
+                 tags$li('If the controls (or samples) are provided in a tube, include them in the input table and use either "1.5ml Eppendorf" or "2ml Eppendorf" for the labware type'),
                  tags$li('See the example input table (under the "Example Input" tab)')
                ),
                h4('Labware:'),
@@ -87,7 +87,7 @@ shinyUI(fluidPage(
                h5('*_BIORAD-*.txt'),
                h6('>=1 file for importing into the BIORAD PrimePCR software for sample labeling'),
                h5('*_map.txt'),
-               h6('A mapping file with added PCR assay information'),
+               h6('The input table file, but with added PCR assay information'),
                h5('*_labware.txt'),
                h6('A table listing the labware to be placed on the robot worktable'),
                h5('*.gwl'),
@@ -110,9 +110,9 @@ shinyUI(fluidPage(
       fluidRow(
         column(4,
                h4('Input file'),
-               fileInput("MapFile", "A QIIME-formatted mapping file with extra columns (see Description)"),
+               fileInput("MapFile", "An input table file with specific columns (see Description)"),
                textInput('rows',
-                            label = 'Which rows of the mapping file to use (eg., "all"=all rows; "1-48"=rows1-48; "1,3,5-6"=rows1+3+5+6)?',
+                            label = 'Which rows of the input table file to use (eg., "all"=all rows; "1-48"=rows1-48; "1,3,5-6"=rows1+3+5+6)?',
                             value = 'all')
         ),
         column(4,
@@ -274,7 +274,7 @@ shinyUI(fluidPage(
     tabPanel("Example Input",
              fluidRow(
                column(12, 
-                      h4('Mapping File format example for the Step 1 PCR (gene-specific primers)'),
+                      h4('Input table File format example for the Step 1 PCR (gene-specific primers)'),
                       h5('Note: the table can contain other columns, but it must contain the "TECAN_*" columns')
                )
              ),

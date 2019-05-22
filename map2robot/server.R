@@ -63,7 +63,7 @@ get_files_created = function(x){
   x[sapply(x, file.exists)]
 }
 
-#' loading example mapping file for Step2 PCR
+#' loading example input table file for Step2 PCR
 load_ex_map_file = function(step=1){
   step = as.numeric(step)
   if(step == 1){
