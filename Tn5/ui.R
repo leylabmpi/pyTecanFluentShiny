@@ -39,6 +39,20 @@ shinyUI(fluidPage(
                  tags$li('Your DNA samples')
                ),
                h5('This app assumes that the DNA samples are all at appox. the same DNA concentration'),
+               h5('The robot will perform the following steps:'),
+               tags$ul(
+                 tags$li('Tagmentation prep (Tn5 incubation)'),
+                 tags$ul(
+                  tags$li('Tn5 MasterMix (Tn5 + Tn5 buffer + water) aliquoted to destination plate wells'),
+                  tags$li('DNA samples aliquoted to destination plate wells')
+                 ),
+                 tags$li('PCR prep (PCR with barcoded primers)'),
+                 tags$ul(
+                   tags$li('PCR mastermix aliquoted to post-tagmentation sample wells'),
+                   tags$li('Barcoded primters aliquoted to post-tagmentation sample wells')
+                 )
+               ),
+               h5('This app assumes that the DNA samples are all at appox. the same DNA concentration'),
                hr(),
                h3('Input'),
                h4('Columns needed in the samples file (see "Example Input" tab for an example)'),
@@ -152,7 +166,7 @@ shinyUI(fluidPage(
                             label = "Concentration of DNA samples (ng/ul)",
                             value = 1.0, min = 0, max = 100),    
                numericInput('sample_volume',
-                            label = "Volume of DNA samples to user per tagmentation rxn (ng)",
+                            label = "Volume of DNA samples to user per tagmentation rxn (ul)",
                             value = 1.0, min = 0, max = 100), 
                selectInput('tag_Tn5_labware_type',
                            label = "Labware type for Tn5 MasterMix (Tn5 + buffer + water)",
@@ -182,7 +196,7 @@ shinyUI(fluidPage(
                hr(),
                h4('Multi-dispense'),
                numericInput('tag_n_tip_reuse',
-                            label = "Tagmentation mastermix: number of tip re-uses for H2O (only if H2O is aliquoted 1st)",
+                            label = "Tagmentation mastermix: number of tip re-uses",
                             value = 4, min = 1, max = 12),
                numericInput('pcr_n_tip_reuse',
                             label = "PCR mastermix: number of tip re-uses",
@@ -205,8 +219,8 @@ shinyUI(fluidPage(
                hr(),
                h4('Misc'),
                numericInput('errorperc',
-                            label = "% total volume to include in calculating total reagent needed",
-                            value = 20, min = 0, max = 100)
+                            label = "% extra volume to include in calculating total reagents needed",
+                            value = 30, min = 0, max = 100)
         )
       )
     ),
