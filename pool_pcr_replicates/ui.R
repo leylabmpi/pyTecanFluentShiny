@@ -45,8 +45,8 @@ shinyUI(fluidPage(
                  tags$li("[optional] A column designating the sample volume (overrides the 'volume' parameter)"),
                  tags$li("NOTE: you can select column names in the 'Input/Output' tab")
                ),
-               h4('Mapping file'),
-               h5("If a mapping file is provided (same names as in the pooling file), then the mapping file will be trimmed to just those pooled, and the final pooled locations will be added to the mapping table."),
+               h4('Metadata file'),
+               h5("If a sample metadata file is provided (same names as in the pooling file), then the metadata file will be trimmed to just those pooled, and the final pooled locations will be added to the metadata table."),
                h5('The added columns have the prefix: "TECAN_postPool_*"'),
                h3('Output'),
                h4('The output files consist of the following files:'),
@@ -54,10 +54,10 @@ shinyUI(fluidPage(
                tags$ul(tags$li('A table listing the labware to be placed on the robot worktable')),
                h5('*.gwl'),
                tags$ul(tags$li('A "worklist" file with instructions for the robot')),
-               h5('IF mapping file provided: *_map.txt'),
-               tags$ul(tags$li('A mapping file trimmed to just pooled samples')),
+               h5('IF metadata file provided: *_map.txt'),
+               tags$ul(tags$li('A metadata file trimmed to just pooled samples')),
                h5('ELSE: *_samples.txt'),
-               tags$ul(tags$li('A simpler table than the mapping file that designates the designation locations of all samples')),
+               tags$ul(tags$li('A simpler table than the metadata file that designates the designation locations of all samples')),
                hr(),
                h3('Notes'),
                tags$ul(
@@ -118,9 +118,9 @@ shinyUI(fluidPage(
                          value = 'None')
         ),
         column(4,
-               h4('Mapping file (optional)'),
+               h4('Metadata file (optional)'),
                fileInput("map_file", 
-                         label = "Map File: a QIIME-formatted mapping file"),
+                         label = "Metadata file: a table with sample metadata"),
                selectInput('map_format',
                            label = "File  excel or tab-delimited. If blank, the format will be guessed",
                            choices = c(' ' = 'blank',
@@ -152,10 +152,7 @@ shinyUI(fluidPage(
                              value = 30.0),
                 textInput('liqcls',
                           label = 'Liquid class for pooling',
-                          value = 'Water Free Single')#,
-                #checkboxInput("new_tips", 
-                #              label = "New tips for each sample replicate?",
-                #              value = FALSE)
+                          value = 'Water Free Single')
         ),
         column(4,
                h4('Destination labware'),
@@ -170,14 +167,14 @@ shinyUI(fluidPage(
                                        '2ml Eppendorf' = '2ml Eppendorf',
                                        '5ml Eppendorf' = '5ml Eppendorf waste',
                                        '25ml trough' = '25ml_1 waste'),
-                           selected = '25ml_1 waste'),
+                           selected = '96 Well Eppendorf TwinTec PCR'),
                numericInput('deststart',
                             label = "Starting position (eg., well) on the destination labware",
                             value = 1)
         )
       )
     ),
-    tabPanel("Example Input: PCR samples",
+    tabPanel("Example Input: Sample file",
       fluidRow(
         column(12, 
                h4('Sample File format example (pooling replicate PCRs)'),
@@ -188,10 +185,10 @@ shinyUI(fluidPage(
         column(12, DT::dataTableOutput('example_pcr_sample_tbl'))
       )
     ),
-    tabPanel("Example Input: mapping",
+    tabPanel("Example Input: Metadata file",
      fluidRow(
        column(12,
-              h4('Mapping File format example'),
+              h4('Metadata File format example'),
               h5('Note: the table can include more columns')
               )
      ),
@@ -199,17 +196,17 @@ shinyUI(fluidPage(
        column(12, DT::dataTableOutput('example_map_tbl'))
      )
     ),
-    tabPanel("Example Input: combine all samples",
-             fluidRow(
-               column(12, 
-                      h4('Sample File format example (pooling all samples)'),
-                      h5('Note: the table can include more columns')
-               )
-             ),
-             fluidRow(
-               column(12, DT::dataTableOutput('example_gen_sample_tbl'))
-     )
-    ),
+    # tabPanel("Example Input: combine all samples",
+    #          fluidRow(
+    #            column(12, 
+    #                   h4('Sample File format example (pooling all samples)'),
+    #                   h5('Note: the table can include more columns')
+    #            )
+    #          ),
+    #          fluidRow(
+    #            column(12, DT::dataTableOutput('example_gen_sample_tbl'))
+    #  )
+    # ),
     tabPanel("TECAN webserver",
              fluidRow(
                br(),
