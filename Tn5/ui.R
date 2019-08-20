@@ -197,10 +197,10 @@ shinyUI(fluidPage(
                h4('Multi-dispense'),
                numericInput('tag_n_tip_reuse',
                             label = "Tagmentation mastermix: number of tip re-uses",
-                            value = 4, min = 1, max = 12),
+                            value = 12, min = 1, max = 96),
                numericInput('pcr_n_tip_reuse',
                             label = "PCR mastermix: number of tip re-uses",
-                            value = 4, min = 1, max = 12)
+                            value = 1, min = 1, max = 12)
         ),
         column(4,
                h4('Liquid classes'),
