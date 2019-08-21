@@ -220,7 +220,7 @@ shinyUI(fluidPage(
                h4('Misc'),
                numericInput('errorperc',
                             label = "% extra volume to include in calculating total reagents needed",
-                            value = 30, min = 0, max = 100)
+                            value = 15, min = 0, max = 100)
         )
       )
     ),
