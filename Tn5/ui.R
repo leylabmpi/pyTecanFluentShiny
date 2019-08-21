@@ -161,7 +161,7 @@ shinyUI(fluidPage(
                h4("Tagmentation"),
                numericInput('tag_rxn_volume',
                             label = "Total tagmentation rxn volume per well",
-                            value = 15.0, min = 0, max = 100),
+                            value = 20.0, min = 0, max = 100),
                numericInput('sample_conc',
                             label = "Concentration of DNA samples (ng/ul)",
                             value = 1.0, min = 0, max = 100),    
