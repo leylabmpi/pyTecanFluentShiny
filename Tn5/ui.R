@@ -220,7 +220,13 @@ shinyUI(fluidPage(
                h4('Misc'),
                numericInput('errorperc',
                             label = "% extra volume to include in calculating total reagents needed",
-                            value = 15, min = 0, max = 100)
+                            value = 15, min = 0, max = 100),
+               selectInput('Tn5_calc_method',
+                           label = "Method for calculating the amount of Tn5 based on DNA input. ('Silke_*' = based on Silke's tests on Marek's batches, 'Marek' = from his protocol)",
+                           choices = c('Silke_Fall2019' = 'Silke_Fall2019',
+                                       'Silke_Spring2019' = 'Silke_Spring2019', 
+                                       'Marek' = 'Marek'),
+                           selected = 'Silke_Fall2019')
         )
       )
     ),

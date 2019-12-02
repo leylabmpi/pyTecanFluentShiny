@@ -43,7 +43,8 @@ call_Tn5 = function(script_path, subcommand,input){
       c('--pcr-mm-liq', add_quotes(input$pcr_mm_liq)),
       c('--primer-liq', add_quotes(input$primer_liq)),
       # misc
-      c('--error-perc', add_quotes(input$errorperc))
+      c('--error-perc', add_quotes(input$errorperc)),
+      c('--Tn5-calc-method', input$Tn5_calc_method)
     ) 
   }
   # call with options

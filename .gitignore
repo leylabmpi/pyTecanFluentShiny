@@ -34,3 +34,6 @@ tests/.DS_Store
 tests/data/.DS_Store
 ~*
 ._*
+.Rproj.user
+packrat/lib*/
+packrat/src/
