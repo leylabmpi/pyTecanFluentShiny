@@ -161,7 +161,13 @@ shinyServer(function(input, output, session) {
     options = list(
       pageLength = 40,
       dom = 'Brt',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      buttons = list(
+        list(extend = "copy", title = NULL), 
+        'csv', 
+        list(extend = 'excel', title = NULL),
+        'pdf', 
+        'print'
+      )
     )
   )
   # sample mapping table
@@ -172,7 +178,13 @@ shinyServer(function(input, output, session) {
     options = list(
       pageLength = 40,
       dom = 'Brt',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      buttons = list(
+        list(extend = "copy", title = NULL), 
+        'csv', 
+        list(extend = 'excel', title = NULL),
+        'pdf', 
+        'print'
+      )
     )
   )
   # example general sample data table
@@ -183,7 +195,13 @@ shinyServer(function(input, output, session) {
     options = list(
       pageLength = 40,
       dom = 'Brt',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      buttons = list(
+        list(extend = "copy", title = NULL), 
+        'csv', 
+        list(extend = 'excel', title = NULL),
+        'pdf', 
+        'print'
+      )
     )
   )
   

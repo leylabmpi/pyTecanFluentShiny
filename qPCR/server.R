@@ -97,10 +97,17 @@ shinyServer(function(input, output, session) {
   output$example_tbl = DT::renderDataTable(
     load_ex_file(),
     extensions = c('Buttons'),
+    rownames = FALSE,
     options = list(
       pageLength = 200,
       dom = 'Brt',
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      buttons = list(
+        list(extend = "copy", title = NULL), 
+        'csv', 
+        list(extend = 'excel', title = NULL),
+        'pdf', 
+        'print'
+      )
     )
   )
   
