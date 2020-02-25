@@ -50,11 +50,11 @@ shinyUI(fluidPage(
                h4('Extra columns needed in the input table file:'),
                h6(br('If no barcoding, single barcoding, or dual barcodes already combined:')),
                h5('"TECAN_sample_labware_name"'),
-               h6('The sample labware name on the robot worktable'),
+               h6('The sample labware name on the robot worktable (eg., a 96-well plate containing all DNA samples)'),
                h5('"TECAN_sample_labware_type"'),
                h6('The type of labware containing samples (eg., "96 Well Eppendorf TwinTec PCR")'),
                h5('"TECAN_sample_target_position"'),
-               h6('The well or tube location (a number)'),
+               h6('The well or tube location (a number) in the source sample labware (eg., "2" is well B1 in a 96-well plate of DNA samples)'),
                h5('"TECAN_sample_rxn_volume"'),
                h6('The volume of sample to use per PCR (ul)'),
                h5('"TECAN_primer_labware_name"'),
@@ -62,7 +62,12 @@ shinyUI(fluidPage(
                h5('"TECAN_primer_labware_type"'),
                h6('The primer plate labware type on the robot worktable (eg., "96 Well Eppendorf TwinTec PCR"'),
                h5('"TECAN_primer_target_position"'),
-               h6('The position (eg., well) of your primers (numeric values; column-wise ordering)'),
+               h6('The source position (eg., well) of the primers (numeric values; column-wise ordering)'),
+               br(),
+               h4('Destination positions:'),
+               tags$ul(
+                 tags$li('The destination positions of the samples in the destination (PCR) labware is automatically determined and depends on the number of replcite PCRs per sample')
+               ),
                br(),
                h4('Primers:'),
                tags$ul(
