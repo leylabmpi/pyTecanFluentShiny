@@ -49,13 +49,13 @@ shinyUI(fluidPage(
               tags$ul(
                 tags$li('"Sample labware name"'),
                 tags$ul(
-                  tags$li('labware name containing the sample (any name that you want)'),
+                  tags$li('Labware name containing the sample (any name that you want)'),
                   tags$li('Exmaple: "source plate"')
                 ),
                 tags$li('"Sample labware type"'),
                 tags$ul(
-                  tags$li('labware type (must EXACTLY match an existing labware type)'),
-                  tags$li('labware types:'),
+                  tags$li('Labware type (must EXACTLY match an existing labware type)'),
+                  tags$li('Labware types:'),
                   tags$ul(
                     tags$li('"1.5ml Eppendorf"'),
                     tags$li('"2ml Eppendorf"'),
@@ -67,12 +67,13 @@ shinyUI(fluidPage(
                 ),
                 tags$li('"Sample location"'),
                 tags$ul(
-                  tags$li('location of sample in the source plate'),
-                  tags$li('numeric; column-wise indexing')
+                  tags$li('Location of sample in the source plate'),
+                  tags$li('Numeric; column-wise indexing'),
+                  tags$li('For eppendorf tubes, use the location on the tube holder')
                 ),
                 tags$li('"Sample volume"'),
                 tags$ul(
-                  tags$li('numeric; sample volume in ul')
+                  tags$li('Numeric; sample volume in ul')
                 ),
                 tags$li('"MM name"'),
                 tags$ul(
@@ -93,6 +94,7 @@ shinyUI(fluidPage(
                tags$ul(
                 tags$li('Sample locations in plates numbered are column-wise (left-to-right)'),
                 tags$li('The setup file (input table) MUST have a header (capitalization doesn\'t matter)'),
+                tags$li('Extra columns in the setup file are ignored (besides those listed above'),
                 tags$li('For labware: "PCR Adapter" means that the plate MUST be placed on a metal adapter'),
                 tags$li('All volumes are in ul')
                )

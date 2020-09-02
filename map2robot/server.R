@@ -194,7 +194,7 @@ shinyServer(function(input, output, session) {
       buttons = list(
         list(extend = "copy", title = NULL), 
         'csv', 
-        list(extend = 'excel', title = NULL),
+        list(extend = 'excel', title = NULL, filename = 'map2robot_example.xlsx'),
         'pdf', 
         'print'
       )
