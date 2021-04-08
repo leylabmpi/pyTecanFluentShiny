@@ -164,10 +164,11 @@ shinyUI(fluidPage(
                             value = 20.0, min = 0, max = 100),
                numericInput('sample_conc',
                             label = "Concentration of DNA samples (ng/ul)",
-                            value = 1.0, min = 0, max = 100),    
+                            value = 5.0, min = 0, max = 100),    
                numericInput('sample_volume',
                             label = "Volume of DNA samples to user per tagmentation rxn (ul)",
-                            value = 5.0, min = 0, max = 100), 
+                            value = 1.0, min = 0, max = 100), 
+               h5('  Note: 5-10 ng total gDNA per reaction is optimal.'),
                selectInput('tag_Tn5_labware_type',
                            label = "Labware type for Tn5 MasterMix (Tn5 + buffer + water)",
                            choices = c('25ml trough (in 100ml trough)' = '25ml_1 waste',
@@ -175,7 +176,9 @@ shinyUI(fluidPage(
                                        '2ml Eppendorf tube' = '2ml Eppendorf waste',
                                        '5ml Eppendorf tube' = '5ml Eppendorf waste',
                                        '10ml Falcon tube' = '10ml Falcon'),
-                           selected = '2ml Eppendorf waste')
+                           selected = '5ml Eppendorf waste'),
+               h4('Creating the Tn5 MasterMix'),
+               h5('See ', tags$a(href="https://confluence.eb.local:8443/pages/viewpage.action?pageId=85963946", "the Confluence protocol"))
         ),
         column(3,
                h4('PCR'),
@@ -193,8 +196,8 @@ shinyUI(fluidPage(
                                        '5ml Eppendorf tube' = '5ml Eppendorf waste',
                                        '10ml Falcon tube' = '10ml Falcon'),
                            selected = '5ml Eppendorf waste'),
-               h4('Creating the MasterMix'),
-               h5('See ', tags$a(href="https://confluence.eb.local:8443/pages/viewpage.action?pageId=47656819", "the Confluence protocol"))
+               h4('Creating the PCR MasterMix'),
+               h5('See ', tags$a(href="https://confluence.eb.local:8443/pages/viewpage.action?pageId=85963946", "the Confluence protocol"))
         ),
         column(3,
                h4('Multi-dispense'),
