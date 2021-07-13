@@ -25,7 +25,7 @@ call_Tn5_onBead = function(script_path, subcommand,input){
       c('--sup-volume', input$sup_volume),
       c('--mm-volume', input$mm_volume),
       c('--primer-volume', input$primer_volume),
-      c('--pcr-mm-labware-type', add_quotes(input$mm_labware_type)),
+      c('--mm-labware-type', add_quotes(input$mm_labware_type)),
       # Liquid classes
       c('--sup-liq', add_quotes(input$sup_liq)),
       c('--mm-liq', add_quotes(input$mm_liq)),
