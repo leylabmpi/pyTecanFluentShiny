@@ -63,14 +63,8 @@ shinyUI(fluidPage(
                br(),
                h4('Primers:'),
                tags$ul(
-                 tags$li('If primer volume set to 0, then primers are skipped.')
-               ),
-               br(),
-               h4('Controls:'),
-               tags$ul(
-                 tags$li('For the positive & negative controls, include them in the samples file'),
-                 tags$li('If the controls (or samples) are provided in a tube, include them in the samples file and use either "1.5ml Eppendorf" or "2ml Eppendorf" for the labware type'),
-                 tags$li('See the example input table (under the "Example Input" tab)')
+                 tags$li('If primer volume set to 0, then primers are skipped.'),
+                 tags$li('Primers should be in primer plates of all pairwise combinations.')
                ),
                br(),
                h4('Output files:'),

@@ -8,6 +8,7 @@ __pycache__/
 
 # R
 .Rhistory
+packrat/
 
 # Distribution / packaging
 .Python
