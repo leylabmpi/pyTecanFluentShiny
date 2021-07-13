@@ -42,6 +42,7 @@ shinyUI(fluidPage(
                    tags$li('Barcoded primers aliquoted to sample wells')
                  )
                ),
+               h5('NOTE: the MasterMix will be added directly to the samples after the storage buffer is removed!'),
                hr(),
                h3('Input'),
                h4('Columns needed in the samples file (see "Example Input" tab for an example)'),
