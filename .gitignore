@@ -11,6 +11,9 @@ __pycache__/
 packrat/
 
 # Distribution / packaging
+.RData
+archive/
+renv/
 .Python
 env/
 build/
